@@ -16,7 +16,7 @@
     <div id="app">
         <app></app>
     </div>
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ secure_asset('js/app.js') }}"></script>
     <script src="{{ secure_asset('plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ secure_asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ secure_asset('dist/js/adminlte.min.js') }}"></script>
