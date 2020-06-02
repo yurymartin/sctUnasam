@@ -278,7 +278,7 @@ export default {
     methods: {
         listarCondicion(buscar) {
             axios
-                .get(`/api/condiciones/?buscar=${buscar}`)
+                .get(`/api/condiciones?buscar=${buscar}`)
                 .then(response => {
                     var respuesta = response.data;
                     this.arrayCondiciones = respuesta.condiciones;
