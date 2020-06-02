@@ -1,0 +1,113 @@
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Dashboard from './components/Dashboard'
+import Home from './components/Home'
+import Empleado from './components/Empleado'
+import Temperatura from './components/Temperatura'
+import Condicion from './components/Condicion'
+import Tipo_Usuario from './components/Tipo_Usuario'
+import Usuario from './components/Usuario'
+import Login from './components/Login'
+import Error404 from './components/404'
+
+Vue.use(VueRouter)
+
+const router = new VueRouter({
+    routes: [{
+            path: '/home',
+            name: '/dashboard',
+            component: Dashboard,
+            children: [{
+                    path: '/home',
+                    name: 'home',
+                    component: Home,
+                    meta: {
+                        Auth: true
+                    }
+                },
+                {
+                    path: '/empleados',
+                    name: 'empleados',
+                    component: Empleado,
+                    meta: {
+                        Auth: true
+                    }
+                },
+                {
+                    path: '/temperaturas',
+                    name: 'temperaturas',
+                    component: Temperatura,
+                    meta: {
+                        Auth: true
+                    }
+                },
+                {
+                    path: '/condiciones',
+                    name: 'condiciones',
+                    component: Condicion,
+                    meta: {
+                        Auth: true
+                    }
+                },
+                {
+                    path: '/tipo_usuarios',
+                    name: 'tipo_usuarios',
+                    component: Tipo_Usuario,
+                    meta: {
+                        Auth: true
+                    }
+                },
+                {
+                    path: '/usuarios',
+                    name: 'usuarios',
+                    component: Usuario,
+                    meta: {
+                        Auth: true
+                    }
+                },
+            ]
+        },
+        {
+            path: '/login',
+            name: 'login',
+            component: Login,
+            meta: {
+                login: true
+            }
+        },
+        {
+            path: '*',
+            component: Error404,
+        }
+    ],
+    mode: 'history'
+})
+
+router.beforeEach((to, from, next) => {
+    if (to.meta.Auth && !window.localStorage.getItem('token')) {
+        next({
+            path: '/login'
+        });
+    } else {
+        if (localStorage.getItem("token")) {
+            axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
+        } else {
+            axios.defaults.headers.common['Authorization'] = null;
+        }
+        next();
+    }
+});
+
+
+router.beforeEach((to, from, next) => {
+    if (to.meta.login && window.localStorage.getItem('token')) {
+        next({
+            path: '/home'
+        });
+    } else {
+        next();
+    }
+});
+
+
+export default router
