@@ -269,14 +269,13 @@ export default {
             message: "",
             errorTipo: 0,
             errorMostrarMsjTipo: [],
-            buscar: "",
-            token: localStorage.getItem("token")
+            buscar: ""
         };
     },
     methods: {
         listarTipo(buscar) {
             axios
-                .get(`api/tipo_usuarios/?buscar=${buscar}`)
+                .get(`/api/tipo_usuarios?buscar=${buscar}`)
                 .then(response => {
                     var respuesta = response.data;
                     this.arrayTipo = respuesta.tipo_usuarios;

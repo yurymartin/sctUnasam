@@ -345,7 +345,6 @@ export default {
             offset: 3,
             buscar: "",
             date: "",
-            token: localStorage.getItem("token"),
             selected: null
         };
     },
