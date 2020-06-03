@@ -275,7 +275,9 @@ export default {
     methods: {
         listarTipo(buscar) {
             axios
-                .get(`/api/tipo_usuarios?buscar=${buscar}`)
+                .get(
+                    `https://sctunasam.herokuapp.com/api/tipo_usuarios?buscar=${buscar}`
+                )
                 .then(response => {
                     var respuesta = response.data;
                     this.arrayTipo = respuesta.tipo_usuarios;
