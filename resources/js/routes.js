@@ -78,6 +78,10 @@ const router = new VueRouter({
         {
             path: '*',
             component: Error404,
+        },
+        {
+            path: '/',
+            component: Login,
         }
     ],
     mode: 'history'

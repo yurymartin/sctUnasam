@@ -65898,6 +65898,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '*',
     component: _components_404__WEBPACK_IMPORTED_MODULE_10__["default"]
+  }, {
+    path: '/',
+    component: _components_Login__WEBPACK_IMPORTED_MODULE_9__["default"]
   }],
   mode: 'history'
 });
