@@ -44,7 +44,7 @@
             </a>
 
             <!-- Sidebar -->
-            <div class="sidebar">
+            <div class="sidebar" v-if="arraykey.length">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
@@ -79,9 +79,9 @@
                         <li
                             class="nav-item"
                             v-if="
-                                tipo_usuario === 'ADMINISTRADOR' ||
-                                    tipo_usuario === 'ENFERMERO' ||
-                                    tipo_usuario === 'EMPLEADO'
+                                key == arraykey[0].key ||
+                                    key == arraykey[1].key ||
+                                    key == arraykey[2].key
                             "
                         >
                             <router-link to="/home" class="nav-link">
@@ -94,10 +94,7 @@
                             </router-link>
                         </li>
 
-                        <li
-                            class="nav-item"
-                            v-if="tipo_usuario === 'ADMINISTRADOR'"
-                        >
+                        <li class="nav-item" v-if="key == arraykey[0].key">
                             <router-link to="/empleados" class="nav-link">
                                 <i class="nav-icon far fa-address-card"></i>
                                 <p>
@@ -111,8 +108,7 @@
                         <li
                             class="nav-item"
                             v-if="
-                                tipo_usuario === 'ADMINISTRADOR' ||
-                                    tipo_usuario === 'ENFERMERO'
+                                key == arraykey[0].key || key == arraykey[2].key
                             "
                         >
                             <router-link to="/temperaturas" class="nav-link">
@@ -126,10 +122,7 @@
                             </router-link>
                         </li>
 
-                        <li
-                            class="nav-item"
-                            v-if="tipo_usuario === 'ADMINISTRADOR'"
-                        >
+                        <li class="nav-item" v-if="key == arraykey[0].key">
                             <router-link to="/condiciones" class="nav-link">
                                 <i class="nav-icon fas fa-head-side-cough"></i>
                                 <p>
@@ -141,10 +134,7 @@
                             </router-link>
                         </li>
 
-                        <li
-                            class="nav-item"
-                            v-if="tipo_usuario === 'ADMINISTRADOR'"
-                        >
+                        <li class="nav-item" v-if="key == arraykey[0].key">
                             <router-link to="/tipo_usuarios" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
@@ -156,10 +146,7 @@
                             </router-link>
                         </li>
 
-                        <li
-                            class="nav-item"
-                            v-if="tipo_usuario === 'ADMINISTRADOR'"
-                        >
+                        <li class="nav-item" v-if="key == arraykey[0].key">
                             <router-link to="/usuarios" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
@@ -217,11 +204,13 @@
 
         <footer class="main-footer">
             <div class="float-right d-none d-sm-inline">
-                Anything you want
+                sistema de control de temperatura v1.0
             </div>
             <strong
-                >Copyright &copy; 2014-2019
-                <a href="https://adminlte.io">AdminLTE.io</a>.</strong
+                >Copyright &copy; 2019 || developed by
+                <a href="https://www.facebook.com/yurizito.martin">
+                    Yury martin chauca</a
+                >.</strong
             >
             All rights reserved.
         </footer>
@@ -234,7 +223,11 @@ export default {
         return {
             tipo_usuario: localStorage.getItem("tipo_usuario"),
             name: localStorage.getItem("name"),
-            email: localStorage.getItem("email")
+            email: localStorage.getItem("email"),
+            key: localStorage.getItem("key"),
+            buscar: "",
+            arrayTipo: [],
+            arraykey: []
         };
     },
     methods: {
@@ -242,10 +235,6 @@ export default {
             axios
                 .post(`/api/logout`)
                 .then(response => {
-                    // localStorage.removeItem("tipo_usuario");
-                    // localStorage.removeItem("token");
-                    // localStorage.removeItem("name");
-                    // localStorage.removeItem("email");
                     localStorage.clear();
                 })
                 .then(() => {
@@ -254,7 +243,27 @@ export default {
                 .catch(error => {
                     console.log(error);
                 });
+        },
+        listarTipo(buscar) {
+            axios
+                .get(`api/tipo_usuarios/?buscar=${buscar}`)
+                .then(response => {
+                    var respuesta = response.data;
+                    this.arrayTipo = respuesta.tipo_usuarios;
+                })
+                .then(() => {
+                    this.arrayTipo.map(el => {
+                        this.arraykey.push({ key: el.key });
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         }
+    },
+    beforeMount() {
+        this.listarTipo(this.buscar);
+        // console.log(this.arraykey);
     }
 };
 </script>

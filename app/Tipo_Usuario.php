@@ -9,7 +9,7 @@ class Tipo_Usuario extends Model
 {
     use SoftDeletes;
     protected $table = 'tipo_usuarios';
-    protected $fillable = ['tipo', 'descripcion', 'activo'];
+    protected $fillable = ['tipo', 'key', 'descripcion', 'activo'];
     protected $hidden = ['created_at', 'updated_at'];
 
     public function scopeActivo($query)

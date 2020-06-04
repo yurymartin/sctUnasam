@@ -14,17 +14,20 @@ class TipoUsuarioSeeder extends Seeder
     {
         DB::table('tipo_usuarios')->insert([
             'tipo' => 'ADMINISTRADOR',
-            'descripcion' => 'tiene acceso a todo el sistema',
+            'key' => bcrypt('administrador'),
+            'descripcion' => 'tipo de usuario que tiene acceso a todo el sistema',
         ]);
 
         DB::table('tipo_usuarios')->insert([
-            'tipo' => 'ENFERMERO',
-            'descripcion' => 'tiene acceso al registro de temperaturas',
+            'tipo' => 'MEDICO',
+            'key' => bcrypt('medico'),
+            'descripcion' => 'tipo de usuario que tiene acceso solo a registrar la temperatura',
         ]);
 
         DB::table('tipo_usuarios')->insert([
             'tipo' => 'EMPLEADO',
-            'descripcion' => 'tiene el acceso al perfil que le pertenece',
+            'key' => bcrypt('empleado'),
+            'descripcion' => 'tipo de usuaro que tiene solo acceso a su perfil',
         ]);
     }
 }

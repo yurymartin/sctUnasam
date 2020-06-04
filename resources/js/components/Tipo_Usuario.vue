@@ -5,14 +5,14 @@
                 <div class="row">
                     <div class="col-md-9"></div>
                     <div class="col-md-3">
-                        <button
+                        <!-- <button
                             type="button"
                             class="btn btn-primary btn-block"
                             @click="abrirModal('tipo_usuario', 'registrar')"
                         >
                             <i class="far fa-plus-square"></i
                             ><b> REGISTRAR NUEVA TIPO DE USUARIO</b>
-                        </button>
+                        </button> -->
                         <!-- MODAL -->
                         <div class="modal fade text-sm" id="modal">
                             <div class="modal-dialog">

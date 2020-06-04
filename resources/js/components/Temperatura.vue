@@ -63,6 +63,7 @@
                                             <div class="col-md-10 form-group">
                                                 <label>Persona (*)</label>
                                                 <v-select
+                                                    v-model="select"
                                                     class="style-chooser text-lg"
                                                     @search="selectEmpleados"
                                                     label="empleado"
@@ -321,6 +322,7 @@ import "vue-select/dist/vue-select.css";
 export default {
     data() {
         return {
+            select: "",
             id: 0,
             empleado_id: 0,
             temperatura: 0,
@@ -344,14 +346,10 @@ export default {
             },
             offset: 3,
             buscar: "",
-            date: "",
-            selected: null
+            date: ""
         };
     },
     computed: {
-        imagen() {
-            return this.imagenMiniatura;
-        },
         isActived: function() {
             return this.pagination.current_page;
         },
@@ -527,7 +525,6 @@ export default {
             return this.errorTemperatura;
         },
         cerrarModal() {
-            this.selected = null;
             this.tipoAccion = 0;
             this.tituloModal = "";
             this.id = 0;
@@ -538,6 +535,7 @@ export default {
             this.arrayEmpleados = [];
             this.errorTemperatura = 0;
             this.errorMostrarMsjTemperatura = [];
+            this.select = "";
             $("#modal").modal("hide");
         },
         abrirModal(modelo, accion, data = []) {

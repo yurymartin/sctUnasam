@@ -2201,15 +2201,14 @@ __webpack_require__.r(__webpack_exports__);
       message: "",
       errorCondicion: 0,
       errorMostrarMsjCondicion: [],
-      buscar: "",
-      token: localStorage.getItem("token")
+      buscar: ""
     };
   },
   methods: {
     listarCondicion: function listarCondicion(buscar) {
       var _this = this;
 
-      axios.get("api/condiciones/?buscar=".concat(buscar)).then(function (response) {
+      axios.get("/api/condiciones?buscar=" + buscar).then(function (response) {
         var respuesta = response.data;
         _this.arrayCondiciones = respuesta.condiciones;
       })["catch"](function (error) {
@@ -2599,23 +2598,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       tipo_usuario: localStorage.getItem("tipo_usuario"),
       name: localStorage.getItem("name"),
-      email: localStorage.getItem("email")
+      email: localStorage.getItem("email"),
+      key: localStorage.getItem("key"),
+      buscar: "",
+      arrayTipo: [],
+      arraykey: []
     };
   },
   methods: {
@@ -2623,17 +2615,32 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post("/api/logout").then(function (response) {
-        // localStorage.removeItem("tipo_usuario");
-        // localStorage.removeItem("token");
-        // localStorage.removeItem("name");
-        // localStorage.removeItem("email");
         localStorage.clear();
       }).then(function () {
         _this.$router.push("/login");
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    listarTipo: function listarTipo(buscar) {
+      var _this2 = this;
+
+      axios.get("api/tipo_usuarios/?buscar=".concat(buscar)).then(function (response) {
+        var respuesta = response.data;
+        _this2.arrayTipo = respuesta.tipo_usuarios;
+      }).then(function () {
+        _this2.arrayTipo.map(function (el) {
+          _this2.arraykey.push({
+            key: el.key
+          });
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
+  },
+  beforeMount: function beforeMount() {
+    this.listarTipo(this.buscar); // console.log(this.arraykey);
   }
 });
 
@@ -3575,12 +3582,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         if (response.data.res) {
           _this2.token = response.data.token.token;
           _this2.type = response.data.type;
+          _this2.key = response.data.tipo_usuario.key;
           _this2.tipo_usuario = response.data.tipo_usuario.tipo;
           _this2.name = response.data.name;
           _this2.email = response.data.email;
           localStorage.setItem("token", _this2.type + " " + _this2.token);
           localStorage.setItem("tipo_usuario", _this2.tipo_usuario);
           localStorage.setItem("name", _this2.name);
+          localStorage.setItem("key", _this2.key);
           localStorage.setItem("email", _this2.email);
 
           _this2.$router.push("/home");
@@ -3942,12 +3951,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      select: "",
       id: 0,
       empleado_id: 0,
       temperatura: 0,
@@ -3971,15 +3982,10 @@ __webpack_require__.r(__webpack_exports__);
       },
       offset: 3,
       buscar: "",
-      date: "",
-      token: localStorage.getItem("token"),
-      selected: null
+      date: ""
     };
   },
   computed: {
-    imagen: function imagen() {
-      return this.imagenMiniatura;
-    },
     isActived: function isActived() {
       return this.pagination.current_page;
     },
@@ -4144,7 +4150,6 @@ __webpack_require__.r(__webpack_exports__);
       return this.errorTemperatura;
     },
     cerrarModal: function cerrarModal() {
-      this.selected = null;
       this.tipoAccion = 0;
       this.tituloModal = "";
       this.id = 0;
@@ -4155,6 +4160,7 @@ __webpack_require__.r(__webpack_exports__);
       this.arrayEmpleados = [];
       this.errorTemperatura = 0;
       this.errorMostrarMsjTemperatura = [];
+      this.select = "";
       $("#modal").modal("hide");
     },
     abrirModal: function abrirModal(modelo, accion) {
@@ -4506,8 +4512,7 @@ __webpack_require__.r(__webpack_exports__);
       message: "",
       errorTipo: 0,
       errorMostrarMsjTipo: [],
-      buscar: "",
-      token: localStorage.getItem("token")
+      buscar: ""
     };
   },
   methods: {
@@ -45417,235 +45422,249 @@ var render = function() {
       [
         _vm._m(1),
         _vm._v(" "),
-        _c("div", { staticClass: "sidebar" }, [
-          _c("div", { staticClass: "user-panel mt-3 pb-3 mb-3 d-flex" }, [
-            _vm._m(2),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "info" },
-              [
-                _c("router-link", {
-                  staticClass: "d-block",
-                  attrs: { to: "/home" },
-                  domProps: { textContent: _vm._s(_vm.name) }
-                }),
+        _vm.arraykey.length
+          ? _c("div", { staticClass: "sidebar" }, [
+              _c("div", { staticClass: "user-panel mt-3 pb-3 mb-3 d-flex" }, [
+                _vm._m(2),
                 _vm._v(" "),
-                _c("router-link", {
-                  staticClass: "d-block",
-                  attrs: { to: "/home" },
-                  domProps: { textContent: _vm._s(_vm.tipo_usuario) }
-                })
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("nav", { staticClass: "mt-2" }, [
-            _c(
-              "ul",
-              {
-                staticClass: "nav nav-pills nav-sidebar flex-column",
-                attrs: {
-                  "data-widget": "treeview",
-                  role: "menu",
-                  "data-accordion": "false"
-                }
-              },
-              [
-                _vm.tipo_usuario === "ADMINISTRADOR" ||
-                _vm.tipo_usuario === "ENFERMERO" ||
-                _vm.tipo_usuario === "EMPLEADO"
-                  ? _c(
-                      "li",
-                      { staticClass: "nav-item" },
-                      [
-                        _c(
-                          "router-link",
-                          { staticClass: "nav-link", attrs: { to: "/home" } },
+                _c(
+                  "div",
+                  { staticClass: "info" },
+                  [
+                    _c("router-link", {
+                      staticClass: "d-block",
+                      attrs: { to: "/home" },
+                      domProps: { textContent: _vm._s(_vm.name) }
+                    }),
+                    _vm._v(" "),
+                    _c("router-link", {
+                      staticClass: "d-block",
+                      attrs: { to: "/home" },
+                      domProps: { textContent: _vm._s(_vm.tipo_usuario) }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("nav", { staticClass: "mt-2" }, [
+                _c(
+                  "ul",
+                  {
+                    staticClass: "nav nav-pills nav-sidebar flex-column",
+                    attrs: {
+                      "data-widget": "treeview",
+                      role: "menu",
+                      "data-accordion": "false"
+                    }
+                  },
+                  [
+                    _vm.key == _vm.arraykey[0].key ||
+                    _vm.key == _vm.arraykey[1].key ||
+                    _vm.key == _vm.arraykey[2].key
+                      ? _c(
+                          "li",
+                          { staticClass: "nav-item" },
                           [
-                            _c("i", { staticClass: "nav-icon fas fa-home" }),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v("\n                                Home"),
-                              _c(
-                                "span",
-                                { staticClass: "right badge badge-danger" },
-                                [_vm._v("New")]
-                              )
-                            ])
-                          ]
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "nav-link",
+                                attrs: { to: "/home" }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "nav-icon fas fa-home"
+                                }),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _vm._v(
+                                    "\n                                Home"
+                                  ),
+                                  _c(
+                                    "span",
+                                    { staticClass: "right badge badge-danger" },
+                                    [_vm._v("New")]
+                                  )
+                                ])
+                              ]
+                            )
+                          ],
+                          1
                         )
-                      ],
-                      1
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.tipo_usuario === "ADMINISTRADOR"
-                  ? _c(
-                      "li",
-                      { staticClass: "nav-item" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "nav-link",
-                            attrs: { to: "/empleados" }
-                          },
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.key == _vm.arraykey[0].key
+                      ? _c(
+                          "li",
+                          { staticClass: "nav-item" },
                           [
-                            _c("i", {
-                              staticClass: "nav-icon far fa-address-card"
-                            }),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v(
-                                "\n                                Empleados"
-                              ),
-                              _c(
-                                "span",
-                                { staticClass: "right badge badge-danger" },
-                                [_vm._v("New")]
-                              )
-                            ])
-                          ]
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "nav-link",
+                                attrs: { to: "/empleados" }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "nav-icon far fa-address-card"
+                                }),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _vm._v(
+                                    "\n                                Empleados"
+                                  ),
+                                  _c(
+                                    "span",
+                                    { staticClass: "right badge badge-danger" },
+                                    [_vm._v("New")]
+                                  )
+                                ])
+                              ]
+                            )
+                          ],
+                          1
                         )
-                      ],
-                      1
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.tipo_usuario === "ADMINISTRADOR" ||
-                _vm.tipo_usuario === "ENFERMERO"
-                  ? _c(
-                      "li",
-                      { staticClass: "nav-item" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "nav-link",
-                            attrs: { to: "/temperaturas" }
-                          },
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.key == _vm.arraykey[0].key ||
+                    _vm.key == _vm.arraykey[2].key
+                      ? _c(
+                          "li",
+                          { staticClass: "nav-item" },
                           [
-                            _c("i", {
-                              staticClass: "nav-icon fas fa-temperature-high"
-                            }),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v(
-                                "\n                                Temperaturas"
-                              ),
-                              _c(
-                                "span",
-                                { staticClass: "right badge badge-danger" },
-                                [_vm._v("New")]
-                              )
-                            ])
-                          ]
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "nav-link",
+                                attrs: { to: "/temperaturas" }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass:
+                                    "nav-icon fas fa-temperature-high"
+                                }),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _vm._v(
+                                    "\n                                Temperaturas"
+                                  ),
+                                  _c(
+                                    "span",
+                                    { staticClass: "right badge badge-danger" },
+                                    [_vm._v("New")]
+                                  )
+                                ])
+                              ]
+                            )
+                          ],
+                          1
                         )
-                      ],
-                      1
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.tipo_usuario === "ADMINISTRADOR"
-                  ? _c(
-                      "li",
-                      { staticClass: "nav-item" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "nav-link",
-                            attrs: { to: "/condiciones" }
-                          },
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.key == _vm.arraykey[0].key
+                      ? _c(
+                          "li",
+                          { staticClass: "nav-item" },
                           [
-                            _c("i", {
-                              staticClass: "nav-icon fas fa-head-side-cough"
-                            }),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v(
-                                "\n                                Condicion"
-                              ),
-                              _c(
-                                "span",
-                                { staticClass: "right badge badge-danger" },
-                                [_vm._v("New")]
-                              )
-                            ])
-                          ]
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "nav-link",
+                                attrs: { to: "/condiciones" }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "nav-icon fas fa-head-side-cough"
+                                }),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _vm._v(
+                                    "\n                                Condicion"
+                                  ),
+                                  _c(
+                                    "span",
+                                    { staticClass: "right badge badge-danger" },
+                                    [_vm._v("New")]
+                                  )
+                                ])
+                              ]
+                            )
+                          ],
+                          1
                         )
-                      ],
-                      1
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.tipo_usuario === "ADMINISTRADOR"
-                  ? _c(
-                      "li",
-                      { staticClass: "nav-item" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "nav-link",
-                            attrs: { to: "/tipo_usuarios" }
-                          },
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.key == _vm.arraykey[0].key
+                      ? _c(
+                          "li",
+                          { staticClass: "nav-item" },
                           [
-                            _c("i", { staticClass: "nav-icon fas fa-users" }),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v(
-                                "\n                                Tipo de Usuarios"
-                              ),
-                              _c(
-                                "span",
-                                { staticClass: "right badge badge-danger" },
-                                [_vm._v("New")]
-                              )
-                            ])
-                          ]
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "nav-link",
+                                attrs: { to: "/tipo_usuarios" }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "nav-icon fas fa-users"
+                                }),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _vm._v(
+                                    "\n                                Tipo de Usuarios"
+                                  ),
+                                  _c(
+                                    "span",
+                                    { staticClass: "right badge badge-danger" },
+                                    [_vm._v("New")]
+                                  )
+                                ])
+                              ]
+                            )
+                          ],
+                          1
                         )
-                      ],
-                      1
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.tipo_usuario === "ADMINISTRADOR"
-                  ? _c(
-                      "li",
-                      { staticClass: "nav-item" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "nav-link",
-                            attrs: { to: "/usuarios" }
-                          },
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.key == _vm.arraykey[0].key
+                      ? _c(
+                          "li",
+                          { staticClass: "nav-item" },
                           [
-                            _c("i", { staticClass: "nav-icon fas fa-users" }),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v(
-                                "\n                                Usuarios"
-                              ),
-                              _c(
-                                "span",
-                                { staticClass: "right badge badge-danger" },
-                                [_vm._v("New")]
-                              )
-                            ])
-                          ]
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "nav-link",
+                                attrs: { to: "/usuarios" }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "nav-icon fas fa-users"
+                                }),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _vm._v(
+                                    "\n                                Usuarios"
+                                  ),
+                                  _c(
+                                    "span",
+                                    { staticClass: "right badge badge-danger" },
+                                    [_vm._v("New")]
+                                  )
+                                ])
+                              ]
+                            )
+                          ],
+                          1
                         )
-                      ],
-                      1
-                    )
-                  : _vm._e()
-              ]
-            )
-          ])
-        ])
+                      : _vm._e()
+                  ]
+                )
+              ])
+            ])
+          : _vm._e()
       ]
     ),
     _vm._v(" "),
@@ -45717,14 +45736,16 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("footer", { staticClass: "main-footer" }, [
       _c("div", { staticClass: "float-right d-none d-sm-inline" }, [
-        _vm._v("\n            Anything you want\n        ")
+        _vm._v("\n            sistema de control de temperatura v1.0\n        ")
       ]),
       _vm._v(" "),
       _c("strong", [
-        _vm._v("Copyright © 2014-2019\n            "),
-        _c("a", { attrs: { href: "https://adminlte.io" } }, [
-          _vm._v("AdminLTE.io")
-        ]),
+        _vm._v("Copyright © 2019 || developed by\n            "),
+        _c(
+          "a",
+          { attrs: { href: "https://www.facebook.com/yurizito.martin" } },
+          [_vm._v("\n                Yury martin chauca")]
+        ),
         _vm._v(".")
       ]),
       _vm._v("\n        All rights reserved.\n    ")
@@ -47005,6 +47026,13 @@ var render = function() {
                               on: {
                                 search: _vm.selectEmpleados,
                                 input: _vm.getEmpleados
+                              },
+                              model: {
+                                value: _vm.select,
+                                callback: function($$v) {
+                                  _vm.select = $$v
+                                },
+                                expression: "select"
                               }
                             })
                           ],
@@ -47476,23 +47504,6 @@ var render = function() {
           _c("div", { staticClass: "col-md-9" }),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-3" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary btn-block",
-                attrs: { type: "button" },
-                on: {
-                  click: function($event) {
-                    return _vm.abrirModal("tipo_usuario", "registrar")
-                  }
-                }
-              },
-              [
-                _c("i", { staticClass: "far fa-plus-square" }),
-                _c("b", [_vm._v(" REGISTRAR NUEVA TIPO DE USUARIO")])
-              ]
-            ),
-            _vm._v(" "),
             _c(
               "div",
               { staticClass: "modal fade text-sm", attrs: { id: "modal" } },

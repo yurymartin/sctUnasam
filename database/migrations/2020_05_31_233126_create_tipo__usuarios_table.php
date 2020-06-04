@@ -16,6 +16,7 @@ class CreateTipoUsuariosTable extends Migration
         Schema::create('tipo_usuarios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('tipo', 45)->nullable();
+            $table->string('key')->nullable();
             $table->string('descripcion')->nullable();
             $table->boolean('activo')->default(1);
             $table->softDeletes();
