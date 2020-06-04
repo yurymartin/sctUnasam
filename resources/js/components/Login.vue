@@ -101,7 +101,6 @@ export default {
             name: "",
             email: "",
             tipo_usuario_id: 1,
-            email: "",
             password: "",
             arrayTipoUsers: [],
             errorEmail: false,
@@ -141,7 +140,6 @@ export default {
                         this.key = response.data.tipo_usuario.key;
                         this.tipo_usuario = response.data.tipo_usuario.tipo;
                         this.name = response.data.name;
-                        this.email = response.data.email;
                         localStorage.setItem(
                             "token",
                             this.type + " " + this.token
@@ -149,7 +147,6 @@ export default {
                         localStorage.setItem("tipo_usuario", this.tipo_usuario);
                         localStorage.setItem("name", this.name);
                         localStorage.setItem("key", this.key);
-                        localStorage.setItem("email", this.email);
                         this.$router.push("/home");
                         Swal.fire({
                             position: "center",
