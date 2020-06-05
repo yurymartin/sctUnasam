@@ -24,7 +24,7 @@
                 <p>declaro los siguente respecto a mis condiciones de salud</p>
                 <br />
                 <h5>PRESENTO ALGUNA DE LAS SIGUENTES CONDICIONES DE SALUD* SI NO</h5>
-                <table>
+                <table class="table">
                     <thead>
                         <tr>
                             <th>condicion</th>

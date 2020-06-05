@@ -57543,7 +57543,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("table", [
+            _c("table", { staticClass: "table" }, [
               _vm._m(2),
               _vm._v(" "),
               _c(
