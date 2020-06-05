@@ -8,7 +8,7 @@
                         <button
                             type="button"
                             class="btn btn-primary btn-block"
-                            @click="abrirModal('condicion', 'registrar')"
+                            @click="abrirModal('sintoma', 'registrar')"
                         >
                             <i class="far fa-plus-square"></i
                             ><b> REGISTRAR NUEVA CONDICION</b>
@@ -54,13 +54,13 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12 form-group">
-                                            <label for="condicion"
-                                                >Condicion (*)</label
+                                            <label for="sintoma"
+                                                >Sintoma (*)</label
                                             >
                                             <input
                                                 type="text"
-                                                v-model="condicion"
-                                                placeholder="condicion"
+                                                v-model="sintoma"
+                                                placeholder="sintoma"
                                                 class="form-control"
                                             />
                                         </div>
@@ -143,7 +143,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Condicion</th>
+                                    <th>Sintoma</th>
                                     <th>Activo</th>
                                     <th></th>
                                 </tr>
@@ -154,7 +154,7 @@
                                     :key="item.id"
                                 >
                                     <td v-text="index"></td>
-                                    <td v-text="item.condicion"></td>
+                                    <td v-text="item.sintoma"></td>
                                     <td>
                                         <span
                                             class="badge badge-success"
@@ -170,7 +170,7 @@
                                             type="button"
                                             @click="
                                                 abrirModal(
-                                                    'condicion',
+                                                    'sintoma',
                                                     'actualizar',
                                                     item
                                                 )
@@ -247,10 +247,8 @@ export default {
     data() {
         return {
             id: 0,
-            condicion: "",
+            sintoma: "",
             activo: 0,
-            genero: "MASCULINO",
-            edad: "",
             arrayCondiciones: [],
             modal: 0,
             tituloModal: "",
@@ -264,10 +262,10 @@ export default {
     methods: {
         listarCondicion(buscar) {
             axios
-                .get("/api/condiciones?buscar=" + buscar)
+                .get("/api/sintomas?buscar=" + buscar)
                 .then(response => {
                     var respuesta = response.data;
-                    this.arrayCondiciones = respuesta.condiciones;
+                    this.arrayCondiciones = respuesta.sintomas;
                 })
                 .catch(error => {
                     console.log(error);
@@ -278,8 +276,8 @@ export default {
                 return;
             }
             axios
-                .post(`/api/condiciones`, {
-                    condicion: this.condicion,
+                .post(`/api/sintomas`, {
+                    sintoma: this.sintoma,
                     activo: 1
                 })
                 .then(response => {
@@ -287,7 +285,7 @@ export default {
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "Condicion Registrada Exitosamente",
+                        title: "Sintoma Registrada Exitosamente",
                         showConfirmButton: false,
                         timer: 1000
                     });
@@ -303,8 +301,8 @@ export default {
             }
             let id = this.id;
             axios
-                .put(`/api/condiciones/${id}`, {
-                    condicion: this.condicion,
+                .put(`/api/sintomas/${id}`, {
+                    sintoma: this.sintoma,
                     activo: this.activo
                 })
                 .then(response => {
@@ -312,7 +310,7 @@ export default {
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "Condicion Actualizado Exitosamente",
+                        title: "Sintoma Actualizado Exitosamente",
                         showConfirmButton: false,
                         timer: 1000
                     });
@@ -334,11 +332,11 @@ export default {
             }).then(result => {
                 if (result.value) {
                     axios
-                        .delete(`/api/condiciones/${id}`)
+                        .delete(`/api/sintomas/${id}`)
                         .then(res => {
                             Swal.fire(
                                 "Eliminado!",
-                                "La condicion fue eliminada",
+                                "La sintoma fue eliminada",
                                 "success"
                             );
                             this.listarCondicion(this.buscar);
@@ -351,12 +349,12 @@ export default {
         },
         cambiarActivo(id, estado) {
             axios
-                .put(`/api/condicionesAD/${id}/${estado}`, {})
+                .put(`/api/sintomasAD/${id}/${estado}`, {})
                 .then(() => {
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "Se cambio el estado de la condicion",
+                        title: "Se cambio el estado de la sintoma",
                         showConfirmButton: false,
                         timer: 1000
                     });
@@ -370,9 +368,9 @@ export default {
             this.errorCondicion = 0;
             this.errorMostrarMsjCondicion = [];
 
-            if (!this.condicion)
+            if (!this.sintoma)
                 this.errorMostrarMsjCondicion.push(
-                    "la condicion no puede estar vacio"
+                    "la sintoma no puede estar vacio"
                 );
 
             if (this.errorMostrarMsjCondicion.length) this.errorCondicion = 1;
@@ -383,7 +381,7 @@ export default {
             this.tipoAccion = 0;
             this.tituloModal = "";
             this.id = 0;
-            this.condicion = "";
+            this.sintoma = "";
             this.activo = "";
             this.errorCondicion = 0;
             this.errorMostrarMsjCondicion = [];
@@ -395,11 +393,11 @@ export default {
                 keyboard: false
             });
             switch (modelo) {
-                case "condicion": {
+                case "sintoma": {
                     switch (accion) {
                         case "registrar": {
                             this.tituloModal = "REGISTRAR NUEVA CONDICION";
-                            this.condicion = "";
+                            this.sintoma = "";
                             this.tipoAccion = 1;
                             break;
                         }
@@ -407,7 +405,7 @@ export default {
                             this.tituloModal = "ACTUALIZAR UNA CONDICON";
                             this.tipoAccion = 2;
                             this.id = data["id"];
-                            this.condicion = data["condicion"];
+                            this.sintoma = data["sintoma"];
                             this.activo = data["activo"];
                             break;
                         }

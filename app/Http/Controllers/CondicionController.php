@@ -12,14 +12,14 @@ class CondicionController extends Controller
     {
         $buscar = $request->buscar;
         $condiciones = Condicion::buscar($buscar)->get();
-        return response()->json(['condiciones' => $condiciones, 'code' => 200]);
+        return response()->json(['condiciones' => $condiciones, 'status' => 200]);
     }
 
 
     public function getCondiciones()
     {
         $condiciones = Condicion::activo()->get();
-        return response()->json(['condiciones' => $condiciones, 'code' => 200]);
+        return response()->json(['condiciones' => $condiciones, 'status' => 200]);
     }
 
     public function store(Request $request)
@@ -49,7 +49,7 @@ class CondicionController extends Controller
         return response()->json([
             'data' => $input,
             'message' => 'Condicion actualizado correctamente',
-            'code' => 200
+            'status' => 200
         ]);
     }
 
@@ -58,7 +58,7 @@ class CondicionController extends Controller
         Condicion::destroy($id);
         return response()->json([
             'message' => 'Condicion eliminado correctamente',
-            'code' => 200
+            'status' => 200
         ]);
     }
 
@@ -72,7 +72,7 @@ class CondicionController extends Controller
         return response()->json([
             'activo' => $activo,
             'message' => 'Cambio el estado correctamentea',
-            'code' => 200
+            'status' => 200
         ]);
     }
 }

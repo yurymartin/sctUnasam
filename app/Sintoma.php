@@ -5,16 +5,16 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Condicion extends Model
+class Sintoma extends Model
 {
     use SoftDeletes;
-    protected $table = 'condiciones';
-    protected $fillable = ['condicion', 'activo'];
+    protected $table = 'sintomas';
+    protected $fillable = ['sintoma', 'activo'];
     protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
 
-    public function detalle_condiciones()
+    public function detalle_sintomas()
     {
-        return $this->hasMany(Detalle_Condicion::class, 'id');
+        return $this->hasMany(Detalle_Sintoma::class, 'id');
     }
 
     public function scopeActivo($query)
@@ -25,7 +25,7 @@ class Condicion extends Model
     public function scopeBuscar($query, $buscar)
     {
         if ($buscar) {
-            $query = $query->where('condicion', 'LIKE', "%$buscar%");
+            $query = $query->where('sintoma', 'LIKE', "%$buscar%");
         }
         return $query;
     }

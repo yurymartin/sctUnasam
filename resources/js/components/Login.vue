@@ -98,9 +98,13 @@ import Swal from "sweetalert2";
 export default {
     data() {
         return {
-            name: "",
+            nombres: "",
+            apellidos: "",
+            direccion: "",
+            celular: "",
+            dni: "",
             email: "",
-            tipo_usuario_id: 1,
+            tipo_usuario_id: "3",
             password: "",
             arrayTipoUsers: [],
             errorEmail: false,
@@ -138,14 +142,23 @@ export default {
                         this.token = response.data.token.token;
                         this.type = response.data.type;
                         this.key = response.data.tipo_usuario.key;
-                        this.tipo_usuario = response.data.tipo_usuario.tipo;
-                        this.name = response.data.name;
+                        this.persona = response.data.persona.id;
+                        this.nombres = response.data.persona.nombres;
+                        this.apellidos = response.data.persona.apellidos;
+                        this.dni = response.data.persona.dni;
+                        this.direccion = response.data.persona.direccion;
+                        this.celular = response.data.persona.celular;
+                        console.log(response.data.persona);
                         localStorage.setItem(
                             "token",
                             this.type + " " + this.token
                         );
-                        localStorage.setItem("tipo_usuario", this.tipo_usuario);
-                        localStorage.setItem("name", this.name);
+                        localStorage.setItem("persona", this.persona);
+                        localStorage.setItem("nombres", this.nombres);
+                        localStorage.setItem("apellidos", this.apellidos);
+                        localStorage.setItem("dni", this.dni);
+                        localStorage.setItem("direccion", this.direccion);
+                        localStorage.setItem("celular", this.celular);
                         localStorage.setItem("key", this.key);
                         this.$router.push("/home");
                         Swal.fire({

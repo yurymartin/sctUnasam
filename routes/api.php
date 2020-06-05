@@ -28,15 +28,31 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('getCondiciones', 'CondicionController@getCondiciones');
     Route::put('condicionesAD/{id}/{activo}', 'CondicionController@condicionesAD');
 
-    Route::apiResource('empleados', 'EmpleadoController');
-    Route::get('getEmpleados', 'EmpleadoController@getEmpleados');
-    Route::put('empleadosAD/{id}/{activo}', 'EmpleadoController@empleadosAD');
+    Route::apiResource('sintomas', 'SintomaController');
+    Route::get('getSintomas', 'SintomaController@getSintomas');
+    Route::put('sintomasAD/{id}/{activo}', 'SintomaController@sintomasAD');
+
+    Route::apiResource('personas', 'PersonaController');
+    Route::get('getPersonas', 'PersonaController@getPersonas');
+    Route::put('personasAD/{id}/{activo}', 'PersonaController@personasAD');
 
     Route::apiResource('temperaturas', 'TemperaturaController');
+    Route::get('getTemperaturas/{id}', 'TemperaturaController@getTemperaturas');
     Route::put('temperaturasAD/{id}/{activo}', 'TemperaturaController@temperaturasAD');
 
     Route::apiResource('tipo_usuarios', 'TipoUsuarioController');
     Route::put('tipo_usuariosAD/{id}/{activo}', 'TipoUsuarioController@tipo_usuariosAD');
+
+    Route::apiResource('organos', 'OrganoController');
+    Route::get('getOrganos', 'OrganoController@getOrganos');
+    Route::put('organosAD/{id}/{activo}', 'OrganoController@organosAD');
+
+    Route::post('juramentacion', 'JuramentacionController@store');
+    Route::get('verifyDocumento/{id}', 'JuramentacionController@verifyDocumento');
+
+    Route::apiResource('unidades_organicas', 'UnidadesOrganicasController');
+    Route::get('getUnidades_Organicas', 'UnidadesOrganicasController@getUnidades_Organicas');
+    Route::put('unidades_organicasAD/{id}/{activo}', 'UnidadesOrganicasController@unidades_organicasAD');
 
     Route::apiResource('users', 'UserController');
     Route::put('usersAD/{id}/{activo}', 'UserController@usersAD');

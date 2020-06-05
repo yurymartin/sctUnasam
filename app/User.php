@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'empleado_id', 'tipo_usuario_id', 'name', 'email', 'password'
+        'persona_id', 'tipo_usuario_id', 'name', 'email', 'password'
     ];
 
     /**
@@ -49,9 +49,9 @@ class User extends Authenticatable
         return $this->belongsTo(Tipo_Usuario::class, 'tipo_usuario_id');
     }
 
-    public function empleados()
+    public function personas()
     {
-        return $this->belongsTo(Empleado::class, 'empleado_id');
+        return $this->belongsTo(Persona::class, 'persona_id');
     }
 
     public function scopeBuscar($query, $buscar)

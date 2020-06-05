@@ -13,7 +13,7 @@ class TemperaturaSeeder extends Seeder
     public function run()
     {
         DB::table('temperaturas')->insert([
-            'empleado_id' => 1,
+            'persona_id' => 1,
             'temperatura' => '20',
             'fecha' => Carbon::now()->toDateString(),
             'hora' => Carbon::now()->toTimeString(),

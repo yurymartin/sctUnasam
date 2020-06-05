@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Tipo_Usuario;
+use App\Unida_Organica;
 use Illuminate\Http\Request;
 
-class TipoUsuarioController extends Controller
+class UnidadesOrganicasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +15,15 @@ class TipoUsuarioController extends Controller
     public function index(Request $request)
     {
         $buscar = $request->buscar;
-        $tipo_usuarios = Tipo_Usuario::buscar($buscar)->get();
-        return response()->json(['tipo_usuarios' => $tipo_usuarios, 'code' => 200]);
+        $unidades_organicas = Unida_Organica::with('organos')->buscar($buscar)->get();
+        return response()->json(['unidades_organicas' => $unidades_organicas, 'status' => 200]);
     }
 
-    public function getTipo_usuario()
+    public function getUnidades_Organicas(Request $request)
     {
-        $tipo_usuarios = Tipo_Usuario::activo()
-            ->orderBy('id', 'desc')
-            ->get();
-        return response()->json(['tipo_usuarios' => $tipo_usuarios, 'code' => 200]);
+        $organo_id = $request->organo_id;
+        $unidades_organicas = Unida_Organica::where('organo_id', '=', $organo_id)->activo()->get();
+        return response()->json(['unidades_organicas' => $unidades_organicas, 'status' => 200]);
     }
 
     /**
@@ -36,73 +35,73 @@ class TipoUsuarioController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        Tipo_Usuario::create($input);
+        Unida_Organica::create($input);
         return response()->json([
             'data' => $input,
-            'message' => 'el tipo de usuario fue insertado correctamente',
-            'code' => 200
+            'message' => 'la unidad organica fue insertado correctamente',
+            'status' => 200
         ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tipo_Usuario  $tipo_Usuario
+     * @param  \App\Unida_Organica  $tipo_Usuario
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $tipo_usuario = Tipo_Usuario::findOrFail($id)->first();
-        return response()->json(['tipo_usuario' => $tipo_usuario, 'code' => 200]);
+        $organo = Unida_Organica::findOrFail($id)->first();
+        return response()->json(['organo' => $organo, 'status' => 200]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tipo_Usuario  $tipo_Usuario
+     * @param  \App\Unida_Organica  $tipo_Usuario
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        $tipo_usuario = Tipo_Usuario::findOrFail($id);
-        $tipo_usuario->update($input);
+        $organo = Unida_Organica::findOrFail($id);
+        $organo->update($input);
 
         return response()->json([
             'data' => $input,
             'message' => 'el tipo de usuario fue actualizado correctamente',
-            'code' => 200
+            'status' => 200
         ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tipo_Usuario  $tipo_Usuario
+     * @param  \App\Unida_Organica  $tipo_Usuario
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Tipo_Usuario::destroy($id);
+        Unida_Organica::destroy($id);
         return response()->json([
             'message' => 'el tipo de usuario fue eliminado correctamente',
-            'code' => 200
+            'status' => 200
         ]);
     }
 
-    public function tipo_usuariosAD(Request $request, $id, $activo)
+    public function unidades_organicasAD(Request $request, $id, $activo)
     {
         $newActivo = !($request->activo);
-        $tipo_usuario = Tipo_Usuario::findOrFail($id);
-        $tipo_usuario->activo = $newActivo;
-        $tipo_usuario->update();
+        $organo = Unida_Organica::findOrFail($id);
+        $organo->activo = $newActivo;
+        $organo->update();
 
         return response()->json([
             'activo' => $activo,
             'newActivo' => $newActivo,
             'message' => 'Cambio el estado correctamentea',
-            'code' => 200
+            'status' => 200
         ]);
     }
 }

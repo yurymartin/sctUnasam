@@ -5,10 +5,15 @@ import Home from './components/Home'
 import Empleado from './components/Empleado'
 import Temperatura from './components/Temperatura'
 import Condicion from './components/Condicion'
+import Sintoma from './components/Sintoma'
+import Organo from './components/Organo'
+import Unidad_Organica from './components/Unidad_Organica'
 import Tipo_Usuario from './components/Tipo_Usuario'
 import Usuario from './components/Usuario'
 import Login from './components/Login'
 import Error404 from './components/404'
+import Juramentacion from './components/Juramentacion'
+import Perfil from './components/Perfil'
 
 Vue.use(VueRouter)
 
@@ -50,6 +55,30 @@ const router = new VueRouter({
                     }
                 },
                 {
+                    path: '/sintomas',
+                    name: 'sintomas',
+                    component: Sintoma,
+                    meta: {
+                        Auth: true
+                    }
+                },
+                {
+                    path: '/organos',
+                    name: 'organos',
+                    component: Organo,
+                    meta: {
+                        Auth: true
+                    }
+                },
+                {
+                    path: '/unidades_organicas',
+                    name: 'unidades_organicas',
+                    component: Unidad_Organica,
+                    meta: {
+                        Auth: true
+                    }
+                },
+                {
                     path: '/tipo_usuarios',
                     name: 'tipo_usuarios',
                     component: Tipo_Usuario,
@@ -61,6 +90,22 @@ const router = new VueRouter({
                     path: '/usuarios',
                     name: 'usuarios',
                     component: Usuario,
+                    meta: {
+                        Auth: true
+                    }
+                },
+                {
+                    path: '/juramentacion',
+                    name: 'juramentacion',
+                    component: Juramentacion,
+                    meta: {
+                        Auth: true
+                    }
+                },
+                {
+                    path: '/perfil',
+                    name: 'perfil',
+                    component: Perfil,
                     meta: {
                         Auth: true
                     }

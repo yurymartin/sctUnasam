@@ -65,11 +65,11 @@
                                                 <v-select
                                                     v-model="select"
                                                     class="style-chooser text-lg"
-                                                    @search="selectEmpleados"
-                                                    label="empleado"
-                                                    :options="arrayEmpleados"
-                                                    placeholder="Buscar empleado por el dni, nombres o apellidos..."
-                                                    @input="getEmpleados"
+                                                    @search="selectPersonas"
+                                                    label="persona"
+                                                    :options="arrayPersonas"
+                                                    placeholder="Buscar persona por el dni, nombres o apellidos..."
+                                                    @input="getPersonas"
                                                 ></v-select>
                                             </div>
                                             <div class="col-md-2 form-group">
@@ -187,12 +187,12 @@
                                     :key="item.id"
                                 >
                                     <td v-text="index"></td>
-                                    <td v-text="item.empleados.dni"></td>
+                                    <td v-text="item.personas.dni"></td>
                                     <td
                                         v-text="
-                                            item.empleados.nombres +
+                                            item.personas.nombres +
                                                 ' ' +
-                                                item.empleados.apellidos
+                                                item.personas.apellidos
                                         "
                                     ></td>
                                     <td v-text="item.temperatura"></td>
@@ -324,12 +324,12 @@ export default {
         return {
             select: "",
             id: 0,
-            empleado_id: 0,
+            persona_id: 0,
             temperatura: 0,
             estado: "",
             activo: 0,
             arrayTemperaturas: [],
-            arrayEmpleados: [],
+            arrayPersonas: [],
             modal: 0,
             tituloModal: "",
             tipoAccion: 0,
@@ -400,24 +400,24 @@ export default {
             //enviar la peticion para visaulizar la data de la pagina
             me.listarTemperatura(page, date, buscar);
         },
-        selectEmpleados(search, loading) {
+        selectPersonas(search, loading) {
             let me = this;
             loading(true);
-            var url = "/api/getEmpleados?filtro=" + search;
+            var url = "/api/getPersonas?filtro=" + search;
             axios
                 .get(url)
                 .then(function(response) {
                     let respuesta = response.data;
-                    me.arrayEmpleados = respuesta.empleados;
+                    me.arrayPersonas = respuesta.personas;
                     loading(false);
                 })
                 .catch(function(error) {
                     console.log(error);
                 });
         },
-        getEmpleados(val1) {
+        getPersonas(val1) {
             this.loading = true;
-            this.empleado_id = val1.id;
+            this.persona_id = val1.id;
         },
         registrarTemperatura() {
             if (this.validarTemperatura()) {
@@ -425,7 +425,7 @@ export default {
             }
             axios
                 .post(`/api/temperaturas`, {
-                    empleado_id: this.empleado_id,
+                    persona_id: this.persona_id,
                     temperatura: this.temperatura,
                     estado: this.estado
                 })
@@ -459,9 +459,10 @@ export default {
             let id = this.id;
             axios
                 .put(`/api/temperaturas/${id}`, {
-                    empleado_id: this.empleado_id,
+                    persona_id: this.persona_id,
                     temperatura: this.temperatura,
-                    estado: this.estado
+                    estado: this.estado,
+                    activo: this.activo
                 })
                 .then(response => {
                     this.cerrarModal();
@@ -509,7 +510,7 @@ export default {
             this.errorTemperatura = 0;
             this.errorMostrarMsjTemperatura = [];
 
-            if (this.empleado_id == 0)
+            if (this.persona_id == 0)
                 this.errorMostrarMsjTemperatura.push(
                     "Seleccione la nombres del empleado"
                 );
@@ -528,11 +529,11 @@ export default {
             this.tipoAccion = 0;
             this.tituloModal = "";
             this.id = 0;
-            this.empleado_id = 0;
+            this.persona_id = 0;
             this.temperatura = "";
             this.estado = "";
             this.activo = 0;
-            this.arrayEmpleados = [];
+            this.arrayPersonas = [];
             this.errorTemperatura = 0;
             this.errorMostrarMsjTemperatura = [];
             this.select = "";
@@ -548,27 +549,22 @@ export default {
                 case "temperaturas": {
                     switch (accion) {
                         case "registrar": {
-                            this.tituloModal = "REGISTRAR NUEVO EMPLEADO";
-                            this.nombres_id = 0;
+                            this.tituloModal = "NUEVO REGISTO DE TEMPERATURA";
+                            this.persona_id = 0;
                             this.temperatura = "";
-                            this.nombres = "";
-                            this.apellidos = "";
-                            this.edad = "";
-                            this.genero = "MASCULINO";
+                            this.estado = "";
                             this.activo = 0;
                             this.tipoAccion = 1;
                             break;
                         }
                         case "actualizar": {
-                            this.tituloModal = "ACTUALIZAR UNA CONDICON";
+                            this.tituloModal =
+                                "ACTUALIZAR REGISTO DE TEMPERATURA";
                             this.tipoAccion = 2;
                             this.id = data["id"];
-                            this.nombres_id = data["nombres_id"];
+                            this.persona_id = data["persona_id"];
                             this.temperatura = data["temperatura"];
-                            this.nombres = data["nombres"];
-                            this.apellidos = data["apellidos"];
-                            this.edad = data["edad"];
-                            this.genero = data["genero"];
+                            this.estado = data["estado"];
                             this.activo = data["activo"];
                             break;
                         }

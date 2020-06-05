@@ -8,14 +8,14 @@
                         <button
                             type="button"
                             class="btn btn-primary btn-block"
-                            @click="abrirModal('empleados', 'registrar')"
+                            @click="abrirModal('personas', 'registrar')"
                         >
                             <i class="far fa-plus-square"></i
                             ><b> REGISTRAR NUEVO EMPLEADO</b>
                         </button>
                         <!-- MODAL -->
                         <div class="modal fade text-sm" id="modal">
-                            <div class="modal-dialog modal-xl">
+                            <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h4
@@ -40,14 +40,14 @@
                                                 obligatorios</span
                                             >
                                             <br /><br />
-                                            <div v-show="errorEmpleado">
+                                            <div v-show="errorPersona">
                                                 <div
                                                     class="alert alert-danger"
                                                     role="alert"
                                                 >
                                                     <div
                                                         v-for="(error,
-                                                        index) in errorMostrarMsjEmpleado"
+                                                        index) in errorMostrarMsjPersona"
                                                         :key="error"
                                                         v-text="
                                                             index +
@@ -60,35 +60,12 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6 form-group">
-                                                <label>Condicion (*)</label>
-                                                <select
-                                                    class="form-control"
-                                                    v-model="condicion_id"
-                                                >
-                                                    <option value="0">
-                                                        -- Seleccionar la
-                                                        condicion del empleado
-                                                        --
-                                                    </option>
-                                                    <option
-                                                        v-for="item in arrayCondiciones"
-                                                        :key="item.id"
-                                                        v-text="item.condicion"
-                                                        :value="item.id"
-                                                    ></option>
-                                                </select>
-                                                <!-- <v-select
-                                                    @search="selectCondicion"
-                                                    label="condicion"
-                                                    :options="arrayCondiciones"
-                                                    placeholder="Buscar condicion..."
-                                                    @input="getCondiciones"
-                                                ></v-select> -->
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <label for="empleado"
-                                                    >DNI (*)</label
+                                            <div class="col-md-4 form-group">
+                                                <label for="persona"
+                                                    >DNI
+                                                    <span class="text-danger"
+                                                        >(*)</span
+                                                    ></label
                                                 >
                                                 <input
                                                     type="number"
@@ -103,9 +80,12 @@
                                                     >maximo 8 digitios</span
                                                 >
                                             </div>
-                                            <div class="col-md-6 form-group">
+                                            <div class="col-md-12 form-group">
                                                 <label for="nombres"
-                                                    >Nombres (*)</label
+                                                    >Nombres
+                                                    <span class="text-danger"
+                                                        >(*)</span
+                                                    ></label
                                                 >
                                                 <input
                                                     type="text"
@@ -115,9 +95,12 @@
                                                     autocomplete="off"
                                                 />
                                             </div>
-                                            <div class="col-md-6 form-group">
+                                            <div class="col-md-12 form-group">
                                                 <label for="apellidos"
-                                                    >Apellidos (*)</label
+                                                    >Apellidos
+                                                    <span class="text-danger"
+                                                        >(*)</span
+                                                    ></label
                                                 >
                                                 <input
                                                     type="text"
@@ -127,30 +110,27 @@
                                                     autocomplete="off"
                                                 />
                                             </div>
-                                            <div class="col-md-2 form-group">
-                                                <label for="edad">Edad</label>
+                                            <div class="col-md-6 form-group">
+                                                <label for="edad"
+                                                    >Direccion</label
+                                                >
                                                 <input
-                                                    type="number"
+                                                    type="text"
                                                     class="form-control"
-                                                    v-model="edad"
+                                                    v-model="direccion"
                                                     placeholder="edad"
                                                 />
                                             </div>
-                                            <div class="col-md-4 form-group">
-                                                <label for="genero"
-                                                    >Genero</label
+                                            <div class="col-md-6 form-group">
+                                                <label for="edad"
+                                                    >Celular</label
                                                 >
-                                                <select
+                                                <input
+                                                    type="text"
                                                     class="form-control"
-                                                    v-model="genero"
-                                                >
-                                                    <option value="MASCULINO"
-                                                        >MASCULINO</option
-                                                    >
-                                                    <option value="FEMENINO"
-                                                        >FEMENINO</option
-                                                    >
-                                                </select>
+                                                    v-model="celular"
+                                                    placeholder="edad"
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -168,7 +148,7 @@
                                         <button
                                             type="button"
                                             class="btn btn-primary w-25"
-                                            @click="registrarEmpleado()"
+                                            @click="registrarPersona()"
                                             v-if="tipoAccion == 1"
                                         >
                                             <i class="far fa-save"></i> Guardar
@@ -176,7 +156,7 @@
                                         <button
                                             type="button"
                                             class="btn btn-success w-25"
-                                            @click="actualizarEmpleado()"
+                                            @click="actualizarPersona()"
                                             v-if="tipoAccion == 2"
                                         >
                                             <i class="far fa-edit"></i> Editar
@@ -211,14 +191,14 @@
                                     class="form-control float-right"
                                     placeholder="Buscar"
                                     v-model="buscar"
-                                    @keyup="listarEmpleado(1, buscar)"
+                                    @keyup="listarPersona(1, buscar)"
                                 />
 
                                 <div class="input-group-append">
                                     <button
                                         type="submit"
                                         class="btn btn-default"
-                                        @click="listarEmpleado(1, buscar)"
+                                        @click="listarPersona(1, buscar)"
                                     >
                                         <i class="fas fa-search"></i>
                                     </button>
@@ -236,30 +216,23 @@
                                     <th>DNI</th>
                                     <th>Nombres</th>
                                     <th>Apellidos</th>
-                                    <th>Edad</th>
-                                    <th>Genero</th>
-                                    <th>Condicion</th>
+                                    <th>Direccion</th>
+                                    <th>Celular</th>
                                     <th>Activo</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr
-                                    v-for="(item, index) in arrayEmpleados"
+                                    v-for="(item, index) in arrayPersonas"
                                     :key="item.id"
                                 >
                                     <td v-text="index"></td>
                                     <td v-text="item.dni"></td>
                                     <td v-text="item.nombres"></td>
                                     <td v-text="item.apellidos"></td>
-                                    <td v-text="item.edad"></td>
-                                    <td v-text="item.genero"></td>
-                                    <td>
-                                        <span
-                                            class="badge badge-primary"
-                                            v-text="item.condiciones.condicion"
-                                        ></span>
-                                    </td>
+                                    <td v-text="item.direccion"></td>
+                                    <td v-text="item.celular"></td>
                                     <td>
                                         <span
                                             class="badge badge-success"
@@ -275,7 +248,7 @@
                                             type="button"
                                             @click="
                                                 abrirModal(
-                                                    'empleados',
+                                                    'personas',
                                                     'actualizar',
                                                     item
                                                 )
@@ -321,7 +294,7 @@
                                         <button
                                             type="button"
                                             class="btn btn-danger btn-sm"
-                                            @click="eliminarEmpleado(item.id)"
+                                            @click="eliminarPersona(item.id)"
                                         >
                                             <i class="far fa-trash-alt"></i>
                                         </button>
@@ -331,7 +304,7 @@
                         </table>
                         <div
                             class="d-flex justify-content-center mt-5 mr-5"
-                            v-if="!arrayEmpleados.length"
+                            v-if="!arrayPersonas.length"
                         >
                             <div class="spinner-border" role="status">
                                 <span class="sr-only">Loading...</span>
@@ -414,22 +387,20 @@ export default {
     data() {
         return {
             id: 0,
-            condicion_id: 0,
             dni: "",
             nombres: "",
             apellidos: "",
-            edad: 0,
-            genero: "MASCULINO",
+            direccion: 0,
+            celular: "",
             activo: 0,
             edad: "",
-            arrayEmpleados: [],
-            arrayCondiciones: [],
+            arrayPersonas: [],
             modal: 0,
             tituloModal: "",
             tipoAccion: 0,
             message: "",
-            errorEmpleado: 0,
-            errorMostrarMsjEmpleado: [],
+            errorPersona: 0,
+            errorMostrarMsjPersona: [],
             pagination: {
                 total: 0,
                 current_page: 0,
@@ -475,12 +446,12 @@ export default {
         vSelect
     },
     methods: {
-        listarEmpleado(page, buscar) {
+        listarPersona(page, buscar) {
             axios
-                .get(`/api/empleados?page=${page}&buscar=${buscar}`)
+                .get(`/api/personas?page=${page}&buscar=${buscar}`)
                 .then(response => {
                     var respuesta = response.data;
-                    this.arrayEmpleados = respuesta.empleados.data;
+                    this.arrayPersonas = respuesta.personas.data;
                     this.pagination = respuesta.pagination;
                 })
                 .catch(error => {
@@ -492,61 +463,47 @@ export default {
             //acualizar la pagina Actual
             me.pagination.current_page = page;
             //enviar la peticion para visaulizar la data de la pagina
-            me.listarEmpleado(page, buscar);
+            me.listarPersona(page, buscar);
         },
-        selectCondicion() {
-            axios
-                .get(`/api/getCondiciones`)
-                .then(response => {
-                    let respuesta = response.data;
-                    this.arrayCondiciones = respuesta.condiciones;
-                    console.log(response.data);
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        },
-        registrarEmpleado() {
-            if (this.validarEmpleado()) {
+        registrarPersona() {
+            if (this.validarPersona()) {
                 return;
             }
             axios
-                .post(`/api/empleados`, {
-                    condicion_id: this.condicion_id,
+                .post(`/api/personas`, {
                     dni: this.dni,
                     nombres: this.nombres,
                     apellidos: this.apellidos,
-                    edad: this.edad,
-                    genero: this.genero
+                    direccion: this.direccion,
+                    celular: this.celular
                 })
                 .then(response => {
                     this.cerrarModal();
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "Empleado Registrado Exitosamente",
+                        title: "Persona Registrado Exitosamente",
                         showConfirmButton: false,
                         timer: 1000
                     });
-                    this.listarEmpleado(1, this.buscar);
+                    this.listarPersona(1, this.buscar);
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
-        actualizarEmpleado() {
-            if (this.validarEmpleado()) {
+        actualizarPersona() {
+            if (this.validarPersona()) {
                 return;
             }
             let id = this.id;
             axios
-                .put(`/api/empleados/${id}`, {
-                    condicion_id: this.condicion_id,
+                .put(`/api/personas/${id}`, {
                     dni: this.dni,
                     nombres: this.nombres,
                     apellidos: this.apellidos,
-                    edad: this.edad,
-                    genero: this.genero,
+                    direccion: this.direccion,
+                    celular: this.celular,
                     activo: this.activo
                 })
                 .then(response => {
@@ -554,17 +511,17 @@ export default {
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "Empleado Actualizado Exitosamente",
+                        title: "Persona Actualizado Exitosamente",
                         showConfirmButton: false,
                         timer: 1000
                     });
-                    this.listarEmpleado(1, this.buscar);
+                    this.listarPersona(1, this.buscar);
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
-        eliminarEmpleado(id) {
+        eliminarPersona(id) {
             Swal.fire({
                 title: "Estas seguro?",
                 text: "No podrás revertir esto!",
@@ -576,14 +533,14 @@ export default {
             }).then(result => {
                 if (result.value) {
                     axios
-                        .delete(`/api/empleados/${id}`)
+                        .delete(`/api/personas/${id}`)
                         .then(res => {
                             Swal.fire(
                                 "Eliminado!",
-                                "El empleado fue eliminada",
+                                "El persona fue eliminada",
                                 "success"
                             );
-                            this.listarEmpleado(1, this.buscar);
+                            this.listarPersona(1, this.buscar);
                         })
                         .catch(error => {
                             console.log(error);
@@ -593,92 +550,74 @@ export default {
         },
         cambiarActivo(id, estado) {
             axios
-                .put(`/api/empleadosAD/${id}/${estado}`, {})
+                .put(`/api/personasAD/${id}/${estado}`, {})
                 .then(() => {
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "Se cambio el estado del empleado",
+                        title: "Se cambio el estado del persona",
                         showConfirmButton: false,
                         timer: 1000
                     });
-                    this.listarEmpleado(1, this.buscar);
+                    this.listarPersona(1, this.buscar);
                 })
                 .catch(() => {
                     console.log(error);
                 });
         },
-        validarEmpleado() {
-            this.errorEmpleado = 0;
-            this.errorMostrarMsjEmpleado = [];
-
-            if (this.condicion_id == 0)
-                this.errorMostrarMsjEmpleado.push(
-                    "Seleccione la condicion del empleado"
-                );
+        validarPersona() {
+            this.errorPersona = 0;
+            this.errorMostrarMsjPersona = [];
 
             if (!this.dni)
-                this.errorMostrarMsjEmpleado.push(
-                    "El dni no puede estar vacio"
-                );
+                this.errorMostrarMsjPersona.push("El dni no puede estar vacio");
 
             if (this.dni.length > 8)
-                this.errorMostrarMsjEmpleado.push(
-                    "El dni supero los 8 digitos"
-                );
+                this.errorMostrarMsjPersona.push("El dni supero los 8 digitos");
 
             if (!this.nombres)
-                this.errorMostrarMsjEmpleado.push(
+                this.errorMostrarMsjPersona.push(
                     "Los nombres no pueden estar vacio"
                 );
 
             if (!this.apellidos)
-                this.errorMostrarMsjEmpleado.push(
+                this.errorMostrarMsjPersona.push(
                     "Los apellidos no pueden estar vacio"
                 );
 
-            if (!this.edad)
-                this.errorMostrarMsjEmpleado.push(
-                    "La edad no puede estar vacio"
-                );
+            if (this.errorMostrarMsjPersona.length) this.errorPersona = 1;
 
-            if (this.errorMostrarMsjEmpleado.length) this.errorEmpleado = 1;
-
-            return this.errorEmpleado;
+            return this.errorPersona;
         },
         cerrarModal() {
             this.tipoAccion = 0;
             this.tituloModal = "";
             this.id = 0;
-            this.condicion_id = 0;
             this.dni = "";
             this.nombres = "";
             this.apellidos = "";
             this.edad = "";
             this.genero = "MASCULINO";
             this.activo = 0;
-            this.arrayCondiciones = [];
-            this.errorEmpleado = 0;
-            this.errorMostrarMsjEmpleado = [];
+            this.errorPersona = 0;
+            this.errorMostrarMsjPersona = [];
             $("#modal").modal("hide");
         },
         abrirModal(modelo, accion, data = []) {
-            this.selectCondicion();
             $("#modal").modal({
                 backdrop: "static",
                 keyboard: false
             });
             switch (modelo) {
-                case "empleados": {
+                case "personas": {
                     switch (accion) {
                         case "registrar": {
                             this.tituloModal = "REGISTRAR NUEVO EMPLEADO";
-                            this.condicion_id = 0;
                             this.dni = "";
                             this.nombres = "";
                             this.apellidos = "";
-                            this.edad = "";
-                            this.genero = "MASCULINO";
+                            this.direccion = "";
+                            this.celular = "";
                             this.activo = 0;
                             this.tipoAccion = 1;
                             break;
@@ -687,12 +626,11 @@ export default {
                             this.tituloModal = "ACTUALIZAR UNA CONDICON";
                             this.tipoAccion = 2;
                             this.id = data["id"];
-                            this.condicion_id = data["condicion_id"];
                             this.dni = data["dni"];
                             this.nombres = data["nombres"];
                             this.apellidos = data["apellidos"];
-                            this.edad = data["edad"];
-                            this.genero = data["genero"];
+                            this.direccion = data["direccion"];
+                            this.celular = data["celular"];
                             this.activo = data["activo"];
                             break;
                         }
@@ -702,7 +640,7 @@ export default {
         }
     },
     mounted() {
-        this.listarEmpleado(1, this.buscar);
+        this.listarPersona(1, this.buscar);
     }
 };
 </script>

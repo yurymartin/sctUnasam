@@ -13,8 +13,15 @@ class CondicionSeeder extends Seeder
     public function run()
     {
         DB::table('condiciones')->insert([
-            'condicion' => 'Saludable',
-            'descripcion' => 'El empleado se encuentra bien de salud',
+            'condicion' => 'Mayor a 65 años',
+        ]);
+
+        DB::table('condiciones')->insert([
+            'condicion' => 'Hipertension Arterial',
+        ]);
+
+        DB::table('condiciones')->insert([
+            'condicion' => 'Cancer',
         ]);
     }
 }

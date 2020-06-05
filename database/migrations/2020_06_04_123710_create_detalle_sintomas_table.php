@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTemperaturasTable extends Migration
+class CreateDetalleSintomasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateTemperaturasTable extends Migration
      */
     public function up()
     {
-        Schema::create('temperaturas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('detalle_sintomas', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('persona_id')->unsigned();
             $table->foreign('persona_id')->references('id')->on('personas');
-            $table->double('temperatura', 9, 1)->default(0);
-            $table->date('fecha')->default('2001-01-01');
-            $table->time('hora')->default('12:00:00');
-            $table->string('estado')->default('SALUDABLE');
-            $table->boolean('activo')->default(1);
+            $table->integer('sintoma_id')->unsigned();
+            $table->foreign('sintoma_id')->references('id')->on('sintomas');
+            $table->boolean('respuesta')->default(0);
             $table->softDeletes();
-            $table->timestamps();
         });
     }
 
@@ -34,6 +31,6 @@ class CreateTemperaturasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('temperaturas');
+        Schema::dropIfExists('detalle_sintomas');
     }
 }

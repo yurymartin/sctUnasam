@@ -8,14 +8,14 @@
                         <button
                             type="button"
                             class="btn btn-primary btn-block"
-                            @click="abrirModal('condicion', 'registrar')"
+                            @click="abrirModal('organo', 'registrar')"
                         >
                             <i class="far fa-plus-square"></i
-                            ><b> REGISTRAR NUEVA CONDICION</b>
+                            ><b> REGISTRAR NUEVA ORGANO</b>
                         </button>
                         <!-- MODAL -->
                         <div class="modal fade text-sm" id="modal">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h4
@@ -40,13 +40,13 @@
                                                 obligatorios</span
                                             >
                                             <br /><br />
-                                            <div v-show="errorCondicion">
+                                            <div v-show="errorUnidad">
                                                 <div
                                                     class="alert alert-danger"
                                                     role="alert"
                                                 >
                                                     <div
-                                                        v-for="error in errorMostrarMsjCondicion"
+                                                        v-for="error in errorMostrarMsjUnidad"
                                                         :key="error"
                                                         v-text="error"
                                                     ></div>
@@ -54,13 +54,45 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12 form-group">
-                                            <label for="condicion"
-                                                >Condicion (*)</label
+                                            <label for="">Organos</label>
+                                            <select
+                                                v-model="organo_id"
+                                                class="form-control"
+                                            >
+                                                <option value="0"
+                                                    >--Seleccionar el
+                                                    organo--</option
+                                                >
+                                                <option
+                                                    v-for="item in arrayOrganos"
+                                                    :key="item.id"
+                                                    :value="item.id"
+                                                    v-text="item.organo"
+                                                ></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                            <label for="organo"
+                                                >Nombre del Organo
+                                                <span class="text-danger"
+                                                    >(*)</span
+                                                ></label
                                             >
                                             <input
                                                 type="text"
-                                                v-model="condicion"
-                                                placeholder="condicion"
+                                                v-model="unidad"
+                                                placeholder="Nombre"
+                                                class="form-control"
+                                            />
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <label for="organo"
+                                                >Abreviatura</label
+                                            >
+                                            <input
+                                                type="text"
+                                                v-model="slug"
+                                                placeholder="abreviatura del organo"
                                                 class="form-control"
                                             />
                                         </div>
@@ -79,7 +111,7 @@
                                         <button
                                             type="button"
                                             class="btn btn-primary w-25"
-                                            @click="registrarCondicion()"
+                                            @click="registrarUnidad()"
                                             v-if="tipoAccion == 1"
                                         >
                                             <i class="far fa-save"></i> Guardar
@@ -87,7 +119,7 @@
                                         <button
                                             type="button"
                                             class="btn btn-success w-25"
-                                            @click="actualizarCondicion()"
+                                            @click="actualizarUnidad()"
                                             v-if="tipoAccion == 2"
                                         >
                                             <i class="far fa-edit"></i> Editar
@@ -108,7 +140,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <b>LISTADO DE CONDICIONES</b>
+                            <b>LISTADO DE ORGANO</b>
                         </h3>
 
                         <div class="card-tools">
@@ -122,14 +154,14 @@
                                     class="form-control float-right"
                                     placeholder="Buscar"
                                     v-model="buscar"
-                                    @keyup="listarCondicion(buscar)"
+                                    @keyup="listarUnidad(buscar)"
                                 />
 
                                 <div class="input-group-append">
                                     <button
                                         type="submit"
                                         class="btn btn-default"
-                                        @click="listarCondicion(buscar)"
+                                        @click="listarUnidad(buscar)"
                                     >
                                         <i class="fas fa-search"></i>
                                     </button>
@@ -143,18 +175,24 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Condicion</th>
+                                    <th>Unidad Organica</th>
+                                    <th>Abreviatura</th>
+                                    <th>Organo</th>
+                                    <th>Abreviatura</th>
                                     <th>Activo</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr
-                                    v-for="(item, index) in arrayCondiciones"
+                                    v-for="(item, index) in arrayUnidades"
                                     :key="item.id"
                                 >
                                     <td v-text="index"></td>
-                                    <td v-text="item.condicion"></td>
+                                    <td v-text="item.unidad"></td>
+                                    <td v-text="item.slug"></td>
+                                    <td v-text="item.organos.organo"></td>
+                                    <td v-text="item.organos.slug"></td>
                                     <td>
                                         <span
                                             class="badge badge-success"
@@ -170,7 +208,7 @@
                                             type="button"
                                             @click="
                                                 abrirModal(
-                                                    'condicion',
+                                                    'organo',
                                                     'actualizar',
                                                     item
                                                 )
@@ -216,7 +254,7 @@
                                         <button
                                             type="button"
                                             class="btn btn-danger btn-sm"
-                                            @click="eliminarCondicion(item.id)"
+                                            @click="eliminarUnidad(item.id)"
                                         >
                                             <i class="far fa-trash-alt"></i>
                                         </button>
@@ -226,7 +264,7 @@
                         </table>
                         <div
                             class="d-flex justify-content-center m-5"
-                            v-if="!arrayCondiciones.length"
+                            v-if="!arrayUnidades.length"
                         >
                             <div class="spinner-border" role="status">
                                 <span class="sr-only">Loading...</span>
@@ -247,64 +285,78 @@ export default {
     data() {
         return {
             id: 0,
-            condicion: "",
+            organo_id: 0,
+            unidad: "",
+            slug: "",
             activo: 0,
-            genero: "MASCULINO",
-            edad: "",
-            arrayCondiciones: [],
+            arrayUnidades: [],
+            arrayOrganos: [],
             modal: 0,
             tituloModal: "",
             tipoAccion: 0,
             message: "",
-            errorCondicion: 0,
-            errorMostrarMsjCondicion: [],
+            errorUnidad: 0,
+            errorMostrarMsjUnidad: [],
             buscar: ""
         };
     },
     methods: {
-        listarCondicion(buscar) {
+        listarUnidad(buscar) {
             axios
-                .get("/api/condiciones?buscar=" + buscar)
+                .get("/api/unidades_organicas?buscar=" + buscar)
                 .then(response => {
                     var respuesta = response.data;
-                    this.arrayCondiciones = respuesta.condiciones;
+                    this.arrayUnidades = respuesta.unidades_organicas;
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
-        registrarCondicion() {
-            if (this.validarCondicion()) {
+        getOrganos() {
+            axios
+                .get("/api/getOrganos")
+                .then(response => {
+                    this.arrayOrganos = response.data.organos;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+        registrarUnidad() {
+            if (this.validarUnidad()) {
                 return;
             }
             axios
-                .post(`/api/condiciones`, {
-                    condicion: this.condicion,
-                    activo: 1
+                .post(`/api/unidades_organicas`, {
+                    organo_id: this.organo_id,
+                    unidad: this.unidad,
+                    slug: this.slug
                 })
                 .then(response => {
                     this.cerrarModal();
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "Condicion Registrada Exitosamente",
+                        title: "Unidad Organica Registrada Exitosamente",
                         showConfirmButton: false,
                         timer: 1000
                     });
-                    this.listarCondicion(this.buscar);
+                    this.listarUnidad(this.buscar);
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
-        actualizarCondicion() {
-            if (this.validarCondicion()) {
+        actualizarUnidad() {
+            if (this.validarUnidad()) {
                 return;
             }
             let id = this.id;
             axios
-                .put(`/api/condiciones/${id}`, {
-                    condicion: this.condicion,
+                .put(`/api/unidades_organicas/${id}`, {
+                    organo_id: this.organo_id,
+                    unidad: this.unidad,
+                    slug: this.slug,
                     activo: this.activo
                 })
                 .then(response => {
@@ -312,17 +364,17 @@ export default {
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "Condicion Actualizado Exitosamente",
+                        title: "Organo Actualizado Exitosamente",
                         showConfirmButton: false,
                         timer: 1000
                     });
-                    this.listarCondicion(this.buscar);
+                    this.listarUnidad(this.buscar);
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
-        eliminarCondicion(id) {
+        eliminarUnidad(id) {
             Swal.fire({
                 title: "Estas seguro?",
                 text: "No podrás revertir esto!",
@@ -334,14 +386,14 @@ export default {
             }).then(result => {
                 if (result.value) {
                     axios
-                        .delete(`/api/condiciones/${id}`)
+                        .delete(`/api/unidades_organicas/${id}`)
                         .then(res => {
                             Swal.fire(
                                 "Eliminado!",
-                                "La condicion fue eliminada",
+                                "La organo fue eliminada",
                                 "success"
                             );
-                            this.listarCondicion(this.buscar);
+                            this.listarUnidad(this.buscar);
                         })
                         .catch(error => {
                             console.log(error);
@@ -351,42 +403,46 @@ export default {
         },
         cambiarActivo(id, estado) {
             axios
-                .put(`/api/condicionesAD/${id}/${estado}`, {})
+                .put(`/api/unidades_organicasAD/${id}/${estado}`, {})
                 .then(() => {
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "Se cambio el estado de la condicion",
+                        title: "Se cambio el estado de la organo",
                         showConfirmButton: false,
                         timer: 1000
                     });
-                    this.listarCondicion(this.buscar);
+                    this.listarUnidad(this.buscar);
                 })
                 .catch(() => {
                     console.log(error);
                 });
         },
-        validarCondicion() {
-            this.errorCondicion = 0;
-            this.errorMostrarMsjCondicion = [];
+        validarUnidad() {
+            this.errorUnidad = 0;
+            this.errorMostrarMsjUnidad = [];
 
-            if (!this.condicion)
-                this.errorMostrarMsjCondicion.push(
-                    "la condicion no puede estar vacio"
+            if (this.organo_id === 0)
+                this.errorMostrarMsjUnidad.push("Falta seleccionar el organo");
+
+            if (!this.unidad)
+                this.errorMostrarMsjUnidad.push(
+                    "la organo no puede estar vacio"
                 );
 
-            if (this.errorMostrarMsjCondicion.length) this.errorCondicion = 1;
+            if (this.errorMostrarMsjUnidad.length) this.errorUnidad = 1;
 
-            return this.errorCondicion;
+            return this.errorUnidad;
         },
         cerrarModal() {
             this.tipoAccion = 0;
             this.tituloModal = "";
             this.id = 0;
-            this.condicion = "";
+            this.organo = "";
+            this.slug = "";
             this.activo = "";
-            this.errorCondicion = 0;
-            this.errorMostrarMsjCondicion = [];
+            this.errorUnidad = 0;
+            this.errorMostrarMsjUnidad = [];
             $("#modal").modal("hide");
         },
         abrirModal(modelo, accion, data = []) {
@@ -394,20 +450,27 @@ export default {
                 backdrop: "static",
                 keyboard: false
             });
+            this.getOrganos();
             switch (modelo) {
-                case "condicion": {
+                case "organo": {
                     switch (accion) {
                         case "registrar": {
-                            this.tituloModal = "REGISTRAR NUEVA CONDICION";
-                            this.condicion = "";
+                            this.tituloModal =
+                                "REGISTRAR UNA NUEVA UNIDAD ORGANICA";
+                            this.organo_id = 0;
+                            this.unidad = "";
+                            this.slug = "";
+                            this.activo = "";
                             this.tipoAccion = 1;
                             break;
                         }
                         case "actualizar": {
-                            this.tituloModal = "ACTUALIZAR UNA CONDICON";
+                            this.tituloModal = "ACTUALIZAR UNA UNIDAD ORGANICA";
                             this.tipoAccion = 2;
                             this.id = data["id"];
-                            this.condicion = data["condicion"];
+                            this.organo_id = data["organo_id"];
+                            this.unidad = data["unidad"];
+                            this.slug = data["slug"];
                             this.activo = data["activo"];
                             break;
                         }
@@ -417,7 +480,7 @@ export default {
         }
     },
     mounted() {
-        this.listarCondicion(this.buscar);
+        this.listarUnidad(this.buscar);
     }
 };
 </script>

@@ -5,16 +5,16 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Empleado extends Model
+class Persona extends Model
 {
     use SoftDeletes;
-    protected $table = 'empleados';
-    protected $fillable = ['dni', 'nombres', 'apellidos', 'edad', 'genero', 'condicion_id', 'activo'];
+    protected $table = 'personas';
+    protected $fillable = ['dni', 'nombres', 'apellidos', 'direccion', 'celular', 'activo'];
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function condiciones()
+    public function detalle_condiciones()
     {
-        return $this->belongsTo(Condicion::class, 'condicion_id');
+        return $this->hasMany(Condicion::class, 'condicion_id');
     }
 
     public function temperaturas()
@@ -29,19 +29,19 @@ class Empleado extends Model
 
     public function scopeActivo($query)
     {
-        return $query->where('empleados.activo', '1');
+        return $query->where('personas.activo', '1');
     }
 
     public function scopeBuscar($query, $buscar)
     {
         if ($buscar) {
-            $query =  $query->orWhere('empleados.dni', 'LIKE', "%$buscar%");
+            $query =  $query->orWhere('personas.dni', 'LIKE', "%$buscar%");
         }
         if ($buscar) {
-            $query = $query->orWhere('empleados.nombres', 'LIKE', "%$buscar%");
+            $query = $query->orWhere('personas.nombres', 'LIKE', "%$buscar%");
         }
         if ($buscar) {
-            $query = $query->orWhere('empleados.Apellidos', 'LIKE', "%$buscar%");
+            $query = $query->orWhere('personas.apellidos', 'LIKE', "%$buscar%");
         }
         return $query;
     }

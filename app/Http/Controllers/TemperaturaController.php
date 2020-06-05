@@ -8,13 +8,13 @@ use Carbon\Carbon;
 
 class TemperaturaController extends Controller
 {
-    //GET empleados
+    //GET personas
     public function index(Request $request)
     {
         // if (!$request->ajax()) return redirect('/');
         $buscar = $request->buscar;
         $date = $request->date;
-        $temperaturas = Temperatura::with('empleados')->buscar($buscar, $date)->orderBy('id', 'desc')->paginate(10);
+        $temperaturas = Temperatura::with('personas')->buscar($buscar, $date)->orderBy('id', 'desc')->paginate(10);
         return [
             'pagination' => [
                 'total'         => $temperaturas->total(),
@@ -27,16 +27,24 @@ class TemperaturaController extends Controller
         ];
     }
 
+    public function getTemperaturas($id)
+    {
+        $temperaturas = Temperatura::where('persona_id', '=', $id)->get();
+        return response()->json([
+            'temperaturas' => $temperaturas
+        ]);
+    }
+
     public function show($id)
     {
-        $temperatura = Temperatura::findOrFail($id)->with('empleados')->first();
+        $temperatura = Temperatura::findOrFail($id)->with('personas')->first();
         return response()->json(['temperatura' => $temperatura, 'code' => 200]);
     }
 
     public function store(Request $request)
     {
         $temperatura = new Temperatura();
-        $temperatura->empleado_id = $request->empleado_id;
+        $temperatura->persona_id = $request->persona_id;
         $temperatura->temperatura = $request->temperatura;
         $temperatura->estado = $request->estado;
         $temperatura->fecha = Carbon::now()->toDateString();
@@ -53,8 +61,9 @@ class TemperaturaController extends Controller
     public function update(Request $request, $id)
     {
         $temperatura = Temperatura::findOrFail($id);
-        $temperatura->empleado_id = $request->empleado_id;
+        $temperatura->persona_id = $request->persona_id;
         $temperatura->temperatura = $request->temperatura;
+        $temperatura->estado = $request->estado;
         $temperatura->activo = $request->activo;
         $temperatura->update();
 

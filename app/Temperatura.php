@@ -9,7 +9,7 @@ class Temperatura extends Model
 {
     use SoftDeletes;
     protected $table = 'temperaturas';
-    protected $fillable = ['empleado_id', 'temperatura', 'fecha', 'hora', 'estado', 'activo'];
+    protected $fillable = ['persona_id', 'temperatura', 'fecha', 'hora', 'estado', 'activo'];
     protected $hidden = ['created_at', 'updated_at'];
 
     public function scopeActivo($query)
@@ -17,9 +17,9 @@ class Temperatura extends Model
         return $query->where('temperatura.activo', '1');
     }
 
-    public function empleados()
+    public function personas()
     {
-        return $this->belongsTo(Empleado::class, 'empleado_id');
+        return $this->belongsTo(Persona::class, 'persona_id');
     }
 
     public function scopeBuscar($query, $buscar, $date)

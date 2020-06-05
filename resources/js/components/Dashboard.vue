@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper" v-if="arraykey.length">
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -30,45 +30,16 @@
         </nav>
         <!-- /.navbar -->
 
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-light-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img
-                    src="dist/img/AdminLTELogo.png"
-                    alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3"
-                    style="opacity: .8"
-                />
-                <span class="brand-text font-weight-light">SCT || UNASAM</span>
-            </a>
-
-            <!-- Sidebar -->
-            <div class="sidebar" v-if="arraykey.length">
-                <!-- Sidebar user panel (optional) -->
+        <aside class="main-sidebar sidebar-light-primary elevation-4" v-if="key == arraykey[2].key">
+            <router-link to="/perfil" class="brand-link text-center">
+                <span class="brand-text font-weight-light"><b>SCT || UNASAM</b></span>
+            </router-link>
+            <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img
-                            src="dist/img/user2-160x160.jpg"
-                            class="img-circle elevation-2"
-                            alt="User Image"
-                        />
-                    </div>
-                    <div class="info">
-                        <router-link
-                            class="d-block"
-                            to="/home"
-                            v-text="name"
-                        ></router-link>
-                        <router-link
-                            class="d-block"
-                            to="/home"
-                            v-text="tipo_usuario"
-                        ></router-link>
+                    <div class="info text-center">
+                        <h5 v-text="nombres + ' ' + apellidos"><b></b></h5>
                     </div>
                 </div>
-
-                <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul
                         class="nav nav-pills nav-sidebar flex-column"
@@ -76,14 +47,53 @@
                         role="menu"
                         data-accordion="false"
                     >
-                        <li
-                            class="nav-item"
-                            v-if="
-                                key == arraykey[0].key ||
-                                    key == arraykey[1].key ||
-                                    key == arraykey[2].key
-                            "
-                        >
+                        <li class="nav-item">
+                            <router-link to="/perfil" class="nav-link">
+                                <i class="nav-icon fas fa-id-badge"></i>
+                                <p>
+                                    Perfil<span class="right badge badge-danger"
+                                        >New</span
+                                    >
+                                </p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/juramentacion" class="nav-link">
+                                <i class="nav-icon far fa-file-alt"></i>
+                                <p>
+                                    Documento<span
+                                        class="right badge badge-danger"
+                                        >New</span
+                                    >
+                                </p>
+                            </router-link>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- -------------------------------------------SIDER BAR ---------------------------------------------- -->
+        <aside class="main-sidebar sidebar-light-primary elevation-4" v-else>
+            <router-link to="/perfil" class="brand-link text-center">
+                <span class="brand-text font-weight-light"><b>SCT || UNASAM</b></span>
+            </router-link>
+            <div class="sidebar">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="info text-center">
+                        <h5 v-text="nombres + ' ' + apellidos"><b></b></h5>
+                    </div>
+                </div>
+                <nav class="mt-2">
+                    <ul
+                        class="nav nav-pills nav-sidebar flex-column"
+                        data-widget="treeview"
+                        role="menu"
+                        data-accordion="false"
+                    >
+                        <li class="nav-item" v-if="key == arraykey[0].key">
                             <router-link to="/home" class="nav-link">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
@@ -105,12 +115,7 @@
                                 </p>
                             </router-link>
                         </li>
-                        <li
-                            class="nav-item"
-                            v-if="
-                                key == arraykey[0].key || key == arraykey[2].key
-                            "
-                        >
+                        <li class="nav-item" v-if="key == arraykey[0].key || key == arraykey[1].key">
                             <router-link to="/temperaturas" class="nav-link">
                                 <i class="nav-icon fas fa-temperature-high"></i>
                                 <p>
@@ -135,7 +140,42 @@
                         </li>
 
                         <li class="nav-item" v-if="key == arraykey[0].key">
-                            <router-link to="/tipo_usuarios" class="nav-link">
+                            <router-link to="/sintomas" class="nav-link">
+                                <i class="nav-icon fas fa-head-side-cough"></i>
+                                <p>
+                                    Sintomas<span
+                                        class="right badge badge-danger"
+                                        >New</span
+                                    >
+                                </p>
+                            </router-link>
+                        </li>
+
+                        <li class="nav-item" v-if="key == arraykey[0].key">
+                            <router-link to="/Organos" class="nav-link">
+                                <i class="nav-icon fas fa-head-side-cough"></i>
+                                <p>
+                                    Organo<span class="right badge badge-danger"
+                                        >New</span
+                                    >
+                                </p>
+                            </router-link>
+                        </li>
+
+                        <li class="nav-item" v-if="key == arraykey[0].key">
+                            <router-link to="/unidades_organicas" class="nav-link" >
+                                <i class="nav-icon fas fa-head-side-cough"></i>
+                                <p>
+                                    Unidades Organicas<span
+                                        class="right badge badge-danger"
+                                        >New</span
+                                    >
+                                </p>
+                            </router-link>
+                        </li>
+
+                        <li class="nav-item" v-if="key == arraykey[0].key ">
+                            <router-link to="/tipo_usuarios" class="nav-link" >
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Tipo de Usuarios<span
@@ -146,7 +186,7 @@
                             </router-link>
                         </li>
 
-                        <li class="nav-item" v-if="key == arraykey[0].key">
+                        <li class="nav-item" v-if="key == arraykey[0].key ">
                             <router-link to="/usuarios" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
@@ -222,9 +262,11 @@ export default {
     data() {
         return {
             tipo_usuario: localStorage.getItem("tipo_usuario"),
-            name: localStorage.getItem("name"),
             email: localStorage.getItem("email"),
             key: localStorage.getItem("key"),
+            persona: localStorage.getItem("persona"),
+            nombres: localStorage.getItem("nombres"),
+            apellidos: localStorage.getItem("apellidos"),
             buscar: "",
             arrayTipo: [],
             arraykey: []
@@ -261,7 +303,7 @@ export default {
                 });
         }
     },
-    beforeMount() {
+    mounted() {
         this.listarTipo(this.buscar);
         // console.log(this.arraykey);
     }

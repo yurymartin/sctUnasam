@@ -64,11 +64,11 @@
                                                 <label>Empleado (*)</label>
                                                 <v-select
                                                     class="style-chooser text-lg"
-                                                    @search="selectEmpleados"
-                                                    label="empleado"
-                                                    :options="arrayEmpleados"
-                                                    placeholder="Buscar empleado por el dni, nombres o apellidos..."
-                                                    @input="getEmpleados"
+                                                    @search="selectPersonas"
+                                                    label="persona"
+                                                    :options="arrayPersonas"
+                                                    placeholder="Buscar persona por el dni, nombres o apellidos..."
+                                                    @input="getPersonas"
                                                 ></v-select>
                                             </div>
                                             <div class="col-md-6 form-group">
@@ -232,12 +232,12 @@
                                     :key="item.id"
                                 >
                                     <td v-text="index"></td>
-                                    <td v-text="item.empleados.nombres"></td>
+                                    <td v-text="item.personas.nombres"></td>
                                     <td
                                         v-text="
-                                            item.empleados.nombres +
+                                            item.personas.nombres +
                                                 ' ' +
-                                                item.empleados.apellidos
+                                                item.personas.apellidos
                                         "
                                     ></td>
                                     <td v-text="item.tipo_usuarios.tipo"></td>
@@ -403,7 +403,7 @@ export default {
     data() {
         return {
             id: 0,
-            empleado_id: 0,
+            persona_id: 0,
             tipo_usuario_id: 0,
             name: "",
             email: "",
@@ -412,7 +412,7 @@ export default {
             activo: 0,
             arrayUsers: [],
             arrayTipoUsers: [],
-            arrayEmpleados: [],
+            arrayPersonas: [],
             modal: 0,
             tituloModal: "",
             tipoAccion: 0,
@@ -481,24 +481,24 @@ export default {
             //enviar la peticion para visaulizar la data de la pagina
             me.listarUser(page, date, buscar);
         },
-        selectEmpleados(search, loading) {
+        selectPersonas(search, loading) {
             let me = this;
             loading(true);
-            var url = "/api/getEmpleados?filtro=" + search;
+            var url = "/api/getPersonas?filtro=" + search;
             axios
                 .get(url)
                 .then(function(response) {
                     let respuesta = response.data;
-                    me.arrayEmpleados = respuesta.empleados;
+                    me.arrayPersonas = respuesta.personas;
                     loading(false);
                 })
                 .catch(function(error) {
                     console.log(error);
                 });
         },
-        getEmpleados(val1) {
+        getPersonas(val1) {
             this.loading = true;
-            this.empleado_id = val1.id;
+            this.persona_id = val1.id;
         },
         getTipoUsuarios() {
             var url = "/api/getTipo_usuario";
@@ -518,7 +518,7 @@ export default {
             }
             axios
                 .post(`/api/users`, {
-                    empleado_id: this.empleado_id,
+                    persona_id: this.persona_id,
                     tipo_usuario_id: this.tipo_usuario_id,
                     name: this.name,
                     email: this.email,
@@ -571,7 +571,7 @@ export default {
             let id = this.id;
             axios
                 .put(`/api/users/${id}`, {
-                    empleado_id: this.empleado_id,
+                    persona_id: this.persona_id,
                     tipo_usuario_id: this.tipo_usuario_id,
                     name: this.name,
                     email: this.email,
@@ -623,8 +623,8 @@ export default {
             this.errorUser = 0;
             this.errorMostrarMsjUser = [];
 
-            if (this.empleado_id == 0)
-                this.errorMostrarMsjUser.push("Seleccione el empleado");
+            if (this.persona_id == 0)
+                this.errorMostrarMsjUser.push("Seleccione el persona");
 
             if (this.tipo_usuario_id == 0)
                 this.errorMostrarMsjUser.push("Seleccione el tipo de usuario");
@@ -656,16 +656,17 @@ export default {
             this.tipoAccion = 0;
             this.tituloModal = "";
             this.id = 0;
-            this.empleado_id = 0;
+            this.persona_id = 0;
             this.tipo_usuario_id = 0;
             this.name = "";
             this.email = "";
             this.password = "";
+            this.confirmpassword = "";
             this.activo = 0;
             this.user = "";
             this.estado = "";
             this.activo = 0;
-            this.arrayEmpleados = [];
+            this.arrayPersonas = [];
             this.errorUser = 0;
             this.errorMostrarMsjUser = [];
             $("#modal").modal("hide");
@@ -681,7 +682,7 @@ export default {
                     switch (accion) {
                         case "registrar": {
                             this.tituloModal = "REGISTRAR NUEVO EMPLEADO";
-                            this.empleado_id = 0;
+                            this.persona_id = 0;
                             this.tipo_usuario_id = 0;
                             this.name = "";
                             this.email = "";
@@ -694,7 +695,7 @@ export default {
                             this.tituloModal = "ACTUALIZAR UNA CONDICON";
                             this.tipoAccion = 2;
                             this.id = data["id"];
-                            this.empleado_id = data["empleado_id"];
+                            this.persona_id = data["persona_id"];
                             this.tipo_usuario_id = data["tipo_usuario_id"];
                             this.name = data["name"];
                             this.email = data["email"];

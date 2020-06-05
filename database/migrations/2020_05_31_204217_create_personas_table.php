@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmpleadosTable extends Migration
+class CreatePersonasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateEmpleadosTable extends Migration
      */
     public function up()
     {
-        Schema::create('empleados', function (Blueprint $table) {
+        Schema::create('personas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('dni', 8)->unique();
             $table->string('nombres', 45)->nullable();
             $table->string('apellidos', 45)->nullable();
-            $table->integer('edad')->default(18);
-            $table->string('genero', 10)->default('Masculino');
-            $table->integer('condicion_id')->unsigned();
-            $table->foreign('condicion_id')->references('id')->on('condiciones');
+            $table->string('direccion')->nullable();
+            $table->string('celular', 45)->nullable();
             $table->boolean('activo')->default(1);
             $table->softDeletes();
             $table->timestamps();

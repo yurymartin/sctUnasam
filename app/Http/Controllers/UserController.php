@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Persona;
 use App\Tipo_Usuario;
 use App\User;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class UserController extends Controller
     {
         // if (!$request->ajax()) return redirect('/');
         $buscar = $request->buscar;
-        $users = User::with('empleados')->with('tipo_usuarios')->buscar($buscar)->orderBy('id', 'desc')->paginate(10);
+        $users = User::with('personas')->with('tipo_usuarios')->buscar($buscar)->orderBy('id', 'desc')->paginate(10);
         return [
             'pagination' => [
                 'total'         => $users->total(),
@@ -40,7 +41,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'empleado_id' => 'required|unique:users,empleado_id',
+            'persona_id' => 'required|unique:users,persona_id',
             'tipo_usuario_id' => 'required',
             'name' => 'required',
             'email' => 'required|unique:users,email',
@@ -48,7 +49,7 @@ class UserController extends Controller
         ]);
 
         $newUser = new User();
-        $newUser->empleado_id = $request->empleado_id;
+        $newUser->persona_id = $request->persona_id;
         $newUser->tipo_usuario_id = $request->tipo_usuario_id;
         $newUser->name = $request->name;
         $newUser->email = $request->email;
@@ -83,7 +84,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         // $this->validate($request, [
-        //     'empleado_id' => 'required|unique:users,empleado_id,' . $id,
+        //     'persona_id' => 'required|unique:users,persona_id,' . $id,
         //     'tipo_usuario_id' => 'required',
         //     'name' => 'required',
         //     'email' => 'required|unique:users,email,' . $id,
@@ -91,14 +92,14 @@ class UserController extends Controller
         // ]);
         $newUser = User::findOrFail($id);
         if ($request->has('password')) {
-            $newUser->empleado_id = $request->empleado_id;
+            $newUser->persona_id = $request->persona_id;
             $newUser->tipo_usuario_id = $request->tipo_usuario_id;
             $newUser->name = $request->name;
             $newUser->email = $request->email;
             $newUser->password = bcrypt($request->password);
             $newUser->save();
         } else {
-            $newUser->empleado_id = $request->empleado_id;
+            $newUser->persona_id = $request->persona_id;
             $newUser->tipo_usuario_id = $request->tipo_usuario_id;
             $newUser->name = $request->name;
             $newUser->email = $request->email;
@@ -153,14 +154,14 @@ class UserController extends Controller
         if (Auth::attempt($data)) {
             $tipo_usuario = Tipo_Usuario::findOrFail($data['tipo_usuario_id']);
             $user = Auth::user();
+            $persona = Persona::findOrFail($user->persona_id);
             $token['token'] = $user->createToken('token')->accessToken;
             return response()->json([
                 'res' => true,
                 'type' => 'Bearer',
                 "token" => $token,
                 "tipo_usuario" => $tipo_usuario,
-                "name" => $user->name,
-                "email" => $user->email,
+                "persona" => $persona,
                 "message" => "Bienvenido al sistema SCT-UNASAM",
                 "code" => 200
             ]);
