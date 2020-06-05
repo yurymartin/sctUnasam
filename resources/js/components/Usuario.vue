@@ -63,6 +63,7 @@
                                             <div class="col-md-6 form-group">
                                                 <label>Empleado (*)</label>
                                                 <v-select
+                                                    v-model="select"
                                                     class="style-chooser text-lg"
                                                     @search="selectPersonas"
                                                     label="persona"
@@ -402,6 +403,7 @@ import "vue-select/dist/vue-select.css";
 export default {
     data() {
         return {
+            select: "",
             id: 0,
             persona_id: 0,
             tipo_usuario_id: 0,
@@ -652,7 +654,6 @@ export default {
             return this.errorUser;
         },
         cerrarModal() {
-            this.selected = null;
             this.tipoAccion = 0;
             this.tituloModal = "";
             this.id = 0;
@@ -669,6 +670,7 @@ export default {
             this.arrayPersonas = [];
             this.errorUser = 0;
             this.errorMostrarMsjUser = [];
+            this.select = "";
             $("#modal").modal("hide");
         },
         abrirModal(modelo, accion, data = []) {

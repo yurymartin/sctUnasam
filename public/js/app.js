@@ -7147,12 +7147,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      select: "",
       id: 0,
       persona_id: 0,
       tipo_usuario_id: 0,
@@ -7389,7 +7391,6 @@ __webpack_require__.r(__webpack_exports__);
       return this.errorUser;
     },
     cerrarModal: function cerrarModal() {
-      this.selected = null;
       this.tipoAccion = 0;
       this.tituloModal = "";
       this.id = 0;
@@ -7406,6 +7407,7 @@ __webpack_require__.r(__webpack_exports__);
       this.arrayPersonas = [];
       this.errorUser = 0;
       this.errorMostrarMsjUser = [];
+      this.select = "";
       $("#modal").modal("hide");
     },
     abrirModal: function abrirModal(modelo, accion) {
@@ -52955,6 +52957,13 @@ var render = function() {
                               on: {
                                 search: _vm.selectPersonas,
                                 input: _vm.getPersonas
+                              },
+                              model: {
+                                value: _vm.select,
+                                callback: function($$v) {
+                                  _vm.select = $$v
+                                },
+                                expression: "select"
                               }
                             })
                           ],
