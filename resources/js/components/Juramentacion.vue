@@ -11,52 +11,37 @@
                         :key="error"
                     >
                         <b
-                            ><i class="fas fa-exclamation-triangle"></i>
-                            {{ error }}</b
+                            ><i class="fas fa-exclamation-triangle"></i
+                            >{{ error }}</b
                         >
-                        <br />
                     </div>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body text-justify" ref="content">
+                <h5><b>FORMATO PARA LEVANTAMIENTO DE INFORMACÍÓN DE SERVIDORES EN EL GRUPO DE RIESGO - COVID 19</b></h5>
                 <p>Declaracion Jurada</p>
-                <p>
-                    Yo,
-                    <label for="" v-text="persona"><b></b></label>
-                    identificado(a) con el DNI/CE N°
-                    <label for="" v-text="dni"><b></b></label>, declaro lo
-                    siguente respecto a mis condiciones de salud
-                </p>
+                <p>Yo,<label v-text="persona"><b></b></label> identificado(a) con el DNI/CE N°<label v-text="dni"><b></b></label>, </p>
+                <p>declaro los siguente respecto a mis condiciones de salud</p>
                 <br />
-                <h5>
-                    PRESENTO ALGUNA DE LAS SIGUENTES CONDICIONES DE SALUD* SI NO
-                    <span class="text-danger"><b>(*)</b></span>
-                </h5>
-                <div class="card card-body">
-                    <form class="formCondiciones">
-                        <table class="table table-hover text-nowrap">
-                            <thead>
-                                <tr>
-                                    <th>condicion</th>
-                                    <th>Respuesta</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr
-                                    v-for="item in arrayCondiciones"
-                                    :key="item.id"
-                                >
-                                    <td v-text="item.condicion"></td>
-                                    <td class="text-lg">
-                                        <span class="badge badge-info">{{
-                                            item.respuesta ? "SI" : "NO"
-                                        }}</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </form>
-                </div>
+                <h5>PRESENTO ALGUNA DE LAS SIGUENTES CONDICIONES DE SALUD* SI NO</h5>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>condicion</th>
+                            <th>Respuesta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in arrayCondiciones" :key="item.id">
+                            <td v-text="item.condicion"></td>
+                            <td>
+                                <span class="badge badge-info">{{
+                                    item.respuesta ? "SI" : "NO"
+                                }}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <br /><br />
                 <p>
                     *Factores de riesgo de acuerdo a Documento técnico aprobado
@@ -70,10 +55,7 @@
                 <hr />
                 <hr />
                 <h5>
-                    <b
-                        >FICHA DE SINTOMATOLOGIA COVIT-19 PAR AEL REGRESO AL
-                        TRABAJO</b
-                    >
+                    <b>FICHA DE SINTOMATOLOGIA COVIT-19 PAR AEL REGRESO AL TRABAJO</b>
                 </h5>
                 <br />
                 <p>Declaracion Jurada</p>
@@ -82,47 +64,31 @@
                     comprometo a responder con la verdad
                 </p>
                 <br />
-                Entidad Publica:
-                <label for="" v-text="entidad" class="mr-5"><b></b></label>
-                Ruc:
-                <label for="" v-text="ruc"><b></b></label>
-                <br /><br />Organo:
-                <label for="" v-text="data.organo.organo"><b></b></label>
-                <br /><br />Unidad Organica:
-                <label for="" v-text="data.unidad.unidad"><b></b></label>
-                <br /><br />
-                Nombres y Apellidos:<label for="" v-text="persona" class="mr-5"
-                    ><b></b
-                ></label>
-                DNI:<label for="" v-text="dni"><b></b></label>
-                <br /><br />Direccion :<label
-                    for=""
-                    v-text="direccion"
-                    class="mr-5"
-                ></label
-                >Celular :<label for="" v-text="celular"><b></b></label>
-                <br /><br />
-                <p>
-                    En los últimos 14 dias calendario he tenido alguno de los
-                    síntomas siguentes
-                </p>
+                <p><b>Entidad Publica:</b><label v-text="entidad" class="mr-5"></label> <b>Ruc:</b><label v-text="ruc"></label></p>
+                <p><b>Organo:</b><label v-text="data.organo.organo"></label></p>
+                <p><b>Unidad Organica:</b><label v-text="data.unidad.unidad"></label></p>
+                <p><b>Nombres y Apellidos:</b><label v-text="persona" class="mr-5"></label><b>DNI:</b><label for="" v-text="dni"></label></p>
+                <p><b>Direccion :</b><label v-text="direccion" class="mr-5"></label> <b>Celular :</b><label v-text="celular"></label></p>
+                 <br><br>
+                <p>En los últimos 14 dias calendario he tenido alguno de los síntomas siguentes</p>
                 <br />
-                <div class="card card-body">
-                    <table class="table table-hover text-nowrap">
+                <br>
+                <div >
+                <b>SI / NO</b>
+                
+                    <table class="table">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Sintoma</th>
                                 <th>Respuesta</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="item in arraySintomas" :key="item.id">
+                            <tr v-for="(item, index) in arraySintomas" :key="item.id" class="w-25">
+                                <td v-text="index+1"></td>
                                 <td v-text="item.sintoma"></td>
-                                <td class="text-lg">
-                                    <span class="badge badge-info">{{
-                                        item.respuesta ? "SI" : "NO"
-                                    }}</span>
-                                </td>
+                                <td>{{item.respuesta ? "( Si )" : "( No )"}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -155,13 +121,14 @@
             <div class="card-footer">
                 <button
                     class="btn btn-success btn-block"
-                    @click="registrarDocumento()"
+                    @click="downloadPDF()"
                     v-show="button"
                 >
                     DESCARGAR DOCUMENTO
                 </button>
             </div>
         </div>
+
         <div class="card card-primary card-outline mt-3" v-else>
             <div class="card-header">
                 <div class="card-title"><b>DOCUMENTO DE JURAMENTACION</b></div>
@@ -419,6 +386,8 @@
 </template>
 
 <script>
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 import Swal from "sweetalert2";
 export default {
     data() {
@@ -577,7 +546,16 @@ export default {
 
             return this.errorJuramentacion;
         },
-        pdf() {}
+        downloadPDF() {
+            const doc = new jsPDF();
+            const html = this.$refs.content.innerHTML;
+
+            // doc.autoTable({html:"#my-table"}); 
+            doc.setFont("helvetica");  
+            doc.setFontSize(9); 
+            doc.fromHTML(html, 11, 11);
+            doc.save("covit.pdf");
+        }
     },
     mounted() {
         this.verifyDocumento();
@@ -591,3 +569,16 @@ export default {
     }
 };
 </script>
+
+<style scope>
+    table{
+        color: brown;
+        border: 1px solid black;
+    }
+    table th{
+        height: 20px;
+    }
+    table tr td{
+        border: 1px solid black;
+    }
+</style>

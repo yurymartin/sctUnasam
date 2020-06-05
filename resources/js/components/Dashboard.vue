@@ -30,9 +30,14 @@
         </nav>
         <!-- /.navbar -->
 
-        <aside class="main-sidebar sidebar-light-primary elevation-4" v-if="key == arraykey[2].key">
+        <aside
+            class="main-sidebar sidebar-light-primary elevation-4"
+            v-if="key == arraykey[2].key"
+        >
             <router-link to="/perfil" class="brand-link text-center">
-                <span class="brand-text font-weight-light"><b>SCT || UNASAM</b></span>
+                <span class="brand-text font-weight-light"
+                    ><b>SCT || UNASAM</b></span
+                >
             </router-link>
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -48,10 +53,22 @@
                         data-accordion="false"
                     >
                         <li class="nav-item">
-                            <router-link to="/perfil" class="nav-link">
-                                <i class="nav-icon fas fa-id-badge"></i>
+                            <router-link to="/home" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
                                 <p>
-                                    Perfil<span class="right badge badge-danger"
+                                    Home<span class="right badge badge-danger"
+                                        >New</span
+                                    >
+                                </p>
+                            </router-link>
+                        </li>
+
+                        <li class="nav-item">
+                            <router-link to="/perfil" class="nav-link">
+                                <i class="nav-icon far fa-chart-bar"></i>
+                                <p>
+                                    Mis Temperaturas<span
+                                        class="right badge badge-danger"
                                         >New</span
                                     >
                                 </p>
@@ -61,7 +78,7 @@
                             <router-link to="/juramentacion" class="nav-link">
                                 <i class="nav-icon far fa-file-alt"></i>
                                 <p>
-                                    Documento<span
+                                    Declaración Jurada<span
                                         class="right badge badge-danger"
                                         >New</span
                                     >
@@ -76,9 +93,14 @@
         </aside>
 
         <!-- -------------------------------------------SIDER BAR ---------------------------------------------- -->
-        <aside class="main-sidebar sidebar-light-primary elevation-4" v-else>
+        <aside
+            class="main-sidebar sidebar-light-primary elevation-4"
+            v-if="key == arraykey[1].key"
+        >
             <router-link to="/perfil" class="brand-link text-center">
-                <span class="brand-text font-weight-light"><b>SCT || UNASAM</b></span>
+                <span class="brand-text font-weight-light"
+                    ><b>SCT || UNASAM</b></span
+                >
             </router-link>
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -93,7 +115,57 @@
                         role="menu"
                         data-accordion="false"
                     >
-                        <li class="nav-item" v-if="key == arraykey[0].key">
+                        <li class="nav-item">
+                            <router-link to="/home" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    Home<span class="right badge badge-danger"
+                                        >New</span
+                                    >
+                                </p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/temperaturas" class="nav-link">
+                                <i class="nav-icon fas fa-temperature-high"></i>
+                                <p>
+                                    Temperaturas<span
+                                        class="right badge badge-danger"
+                                        >New</span
+                                    >
+                                </p>
+                            </router-link>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <aside
+            class="main-sidebar sidebar-light-primary elevation-4"
+            v-if="key == arraykey[0].key"
+        >
+            <router-link to="/perfil" class="brand-link text-center">
+                <span class="brand-text font-weight-light"
+                    ><b>SCT || UNASAM</b></span
+                >
+            </router-link>
+            <div class="sidebar">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="info text-center">
+                        <h5 v-text="nombres + ' ' + apellidos"><b></b></h5>
+                    </div>
+                </div>
+                <nav class="mt-2">
+                    <ul
+                        class="nav nav-pills nav-sidebar flex-column"
+                        data-widget="treeview"
+                        role="menu"
+                        data-accordion="false"
+                    >
+                        <li class="nav-item">
                             <router-link to="/home" class="nav-link">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
@@ -104,7 +176,7 @@
                             </router-link>
                         </li>
 
-                        <li class="nav-item" v-if="key == arraykey[0].key">
+                        <li class="nav-item">
                             <router-link to="/empleados" class="nav-link">
                                 <i class="nav-icon far fa-address-card"></i>
                                 <p>
@@ -115,7 +187,7 @@
                                 </p>
                             </router-link>
                         </li>
-                        <li class="nav-item" v-if="key == arraykey[0].key || key == arraykey[1].key">
+                        <li class="nav-item">
                             <router-link to="/temperaturas" class="nav-link">
                                 <i class="nav-icon fas fa-temperature-high"></i>
                                 <p>
@@ -127,9 +199,9 @@
                             </router-link>
                         </li>
 
-                        <li class="nav-item" v-if="key == arraykey[0].key">
+                        <li class="nav-item">
                             <router-link to="/condiciones" class="nav-link">
-                                <i class="nav-icon fas fa-head-side-cough"></i>
+                                <i class="nav-icon fas fa-first-aid"></i>
                                 <p>
                                     Condicion<span
                                         class="right badge badge-danger"
@@ -139,9 +211,9 @@
                             </router-link>
                         </li>
 
-                        <li class="nav-item" v-if="key == arraykey[0].key">
+                        <li class="nav-item">
                             <router-link to="/sintomas" class="nav-link">
-                                <i class="nav-icon fas fa-head-side-cough"></i>
+                                <i class="nav-icon fas fa-procedures"></i>
                                 <p>
                                     Sintomas<span
                                         class="right badge badge-danger"
@@ -151,9 +223,9 @@
                             </router-link>
                         </li>
 
-                        <li class="nav-item" v-if="key == arraykey[0].key">
+                        <li class="nav-item">
                             <router-link to="/Organos" class="nav-link">
-                                <i class="nav-icon fas fa-head-side-cough"></i>
+                                <i class="nav-icon far fa-building"></i>
                                 <p>
                                     Organo<span class="right badge badge-danger"
                                         >New</span
@@ -162,9 +234,12 @@
                             </router-link>
                         </li>
 
-                        <li class="nav-item" v-if="key == arraykey[0].key">
-                            <router-link to="/unidades_organicas" class="nav-link" >
-                                <i class="nav-icon fas fa-head-side-cough"></i>
+                        <li class="nav-item">
+                            <router-link
+                                to="/unidades_organicas"
+                                class="nav-link"
+                            >
+                                <i class="nav-icon fas fa-laptop-house"></i>
                                 <p>
                                     Unidades Organicas<span
                                         class="right badge badge-danger"
@@ -174,8 +249,8 @@
                             </router-link>
                         </li>
 
-                        <li class="nav-item" v-if="key == arraykey[0].key ">
-                            <router-link to="/tipo_usuarios" class="nav-link" >
+                        <li class="nav-item">
+                            <router-link to="/tipo_usuarios" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Tipo de Usuarios<span
@@ -186,9 +261,9 @@
                             </router-link>
                         </li>
 
-                        <li class="nav-item" v-if="key == arraykey[0].key ">
+                        <li class="nav-item">
                             <router-link to="/usuarios" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
+                                <i class="nav-icon fas fa-users-cog"></i>
                                 <p>
                                     Usuarios<span
                                         class="right badge badge-danger"

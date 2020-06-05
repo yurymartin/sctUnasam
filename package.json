@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "jspdf": "^1.5.3",
         "sweetalert2": "^9.14.0",
         "vue-router": "^3.3.2",
         "vue-select": "^3.10.3",

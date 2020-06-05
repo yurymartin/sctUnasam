@@ -101,7 +101,7 @@
                                             type="button"
                                             class="btn btn-primary w-25"
                                             @click="registrarTemperatura()"
-                                            v-if="tipoAccion == 1"
+                                            v-if="tipoAccion == 1 && button"
                                         >
                                             <i class="far fa-save"></i> Guardar
                                         </button>
@@ -346,7 +346,8 @@ export default {
             },
             offset: 3,
             buscar: "",
-            date: ""
+            date: "",
+            button: true
         };
     },
     computed: {
@@ -423,6 +424,7 @@ export default {
             if (this.validarTemperatura()) {
                 return;
             }
+            this.button = false;
             axios
                 .post(`/api/temperaturas`, {
                     persona_id: this.persona_id,
@@ -537,6 +539,7 @@ export default {
             this.errorTemperatura = 0;
             this.errorMostrarMsjTemperatura = [];
             this.select = "";
+            this.button = true;
             $("#modal").modal("hide");
         },
         abrirModal(modelo, accion, data = []) {
