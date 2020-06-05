@@ -1,5 +1,5 @@
 <template>
-    <div class="login-page">
+    <div class="login-page" v-if="arrayTipoUsers.length">
         <div class="login-box">
             <div class="login-logo">
                 <p>SCT | UNASAM</p>
@@ -104,7 +104,7 @@ export default {
             celular: "",
             dni: "",
             email: "",
-            tipo_usuario_id: "3",
+            tipo_usuario_id: 3,
             password: "",
             arrayTipoUsers: [],
             errorEmail: false,

@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="card-body text-justify" ref="content">
-                <h5><b>FORMATO PARA LEVANTAMIENTO DE INFORMACÍÓN DE SERVIDORES EN EL GRUPO DE RIESGO - COVID 19</b></h5>
+                <h4><b>FORMATO PARA LEVANTAMIENTO DE INFORMACÍÓN DE SERVIDORES EN EL GRUPO DE RIESGO - COVID 19</b></h4>
                 <p>Declaracion Jurada</p>
                 <p>Yo,<label v-text="persona"><b></b></label> identificado(a) con el DNI/CE N°<label v-text="dni"><b></b></label>, </p>
                 <p>declaro los siguente respecto a mis condiciones de salud</p>
@@ -569,16 +569,3 @@ export default {
     }
 };
 </script>
-
-<style scope>
-    table{
-        color: brown;
-        border: 1px solid black;
-    }
-    table th{
-        height: 20px;
-    }
-    table tr td{
-        border: 1px solid black;
-    }
-</style>

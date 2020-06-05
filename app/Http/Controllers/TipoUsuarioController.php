@@ -21,9 +21,7 @@ class TipoUsuarioController extends Controller
 
     public function getTipo_usuario()
     {
-        $tipo_usuarios = Tipo_Usuario::activo()
-            ->orderBy('id', 'desc')
-            ->get();
+        $tipo_usuarios = Tipo_Usuario::activo()->get();
         return response()->json(['tipo_usuarios' => $tipo_usuarios, 'code' => 200]);
     }
 

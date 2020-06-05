@@ -121,6 +121,14 @@ const router = new VueRouter({
             }
         },
         {
+            path: '/',
+            name: 'login',
+            component: Login,
+            meta: {
+                login: true
+            }
+        },
+        {
             path: '*',
             component: Error404,
         }
