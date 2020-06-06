@@ -3094,7 +3094,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3113,7 +3112,6 @@ __webpack_require__.r(__webpack_exports__);
       newArrayCondiciones: [],
       arrayCondiciones: [],
       persona: [],
-      button: true,
       documento: false,
       error: 0,
       arrayError: [],
@@ -3137,10 +3135,9 @@ __webpack_require__.r(__webpack_exports__);
       this.confir_password = "";
       this.newArrayCondiciones = "";
       this.persona = "";
-      this.button = true;
       this.documento = false;
       this.error = 0;
-      arrayError = [];
+      this.arrayError = [];
       this.count = 0;
     },
     getCondicion: function getCondicion() {
@@ -3210,7 +3207,6 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      this.button = false;
       this.agregarCondicion();
       axios.post("/api/declaracion", {
         dni: this.dni,
@@ -49805,14 +49801,6 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.button,
-                              expression: "button"
-                            }
-                          ],
                           staticClass:
                             "btn cabecera rounded-0 w-25 pt-2 pb-2 button",
                           on: {

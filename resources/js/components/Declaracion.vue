@@ -293,7 +293,6 @@
                                 v-if="existe"
                             >
                                 <button
-                                    v-show="button"
                                     class="btn cabecera rounded-0 w-25 pt-2 pb-2 button"
                                     @click="registrarDocumento()"
                                 >
@@ -356,7 +355,6 @@ export default {
             newArrayCondiciones: [],
             arrayCondiciones: [],
             persona: [],
-            button: true,
             documento: false,
             error: 0,
             arrayError: [],
@@ -380,10 +378,9 @@ export default {
             this.confir_password = "";
             this.newArrayCondiciones = "";
             this.persona = "";
-            this.button = true;
             this.documento = false;
             this.error = 0;
-            arrayError = [];
+            this.arrayError = [];
             this.count = 0;
         },
         getCondicion() {
@@ -452,7 +449,6 @@ export default {
                 });
                 return;
             }
-            this.button = false;
             this.agregarCondicion();
             axios
                 .post("/api/declaracion", {

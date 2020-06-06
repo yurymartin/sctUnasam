@@ -19,16 +19,15 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::post('login', 'UserController@login');
-
 Route::get('getTipo_usuario', 'TipoUsuarioController@getTipo_usuario');
 Route::get('getCondiciones', 'CondicionController@getCondiciones');
-Route::apiResource('condiciones', 'CondicionController');
 Route::post('declaracion', 'JuramentacionController@declaracion');
 Route::get('verificar', 'PersonaController@verificar');
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('logout', 'UserController@logout');
 
+    Route::apiResource('condiciones', 'CondicionController');
     Route::put('condicionesAD/{id}/{activo}', 'CondicionController@condicionesAD');
 
     Route::apiResource('sintomas', 'SintomaController');
