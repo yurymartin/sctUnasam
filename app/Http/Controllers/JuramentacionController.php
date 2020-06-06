@@ -53,9 +53,8 @@ class JuramentacionController extends Controller
     public function declaracion(Request $request)
     {
         $dataCondiciones = $request->dataCondiciones;
-        $persona = new Persona();
-        $user = new User();
 
+        $persona = new Persona();
         $persona->dni = $request->dni;
         $persona->nombres = $request->nombres;
         $persona->apellidos = $request->apellidos;
@@ -74,15 +73,13 @@ class JuramentacionController extends Controller
             $detalle_condiciones->save();
         }
 
-        // $user->persona_id = $persona->id;
-        // $user->tipo_usuario_id = "3";
-        // $user->name = 'empleado';
-        // $user->email = $request->email;
-        // $user->password = bcrypt($request->password);
-        // $user->activo = "1";
-        // $user->save();
-
-
+        $newUser = new User();
+        $newUser->persona_id = $persona->id;
+        $newUser->tipo_usuario_id = 3;
+        $newUser->name = "EMPLEADO";
+        $newUser->email = $request->email;
+        $newUser->password = bcrypt($request->password);
+        $newUser->save();
 
         return response()->json([
             "res" => true,
