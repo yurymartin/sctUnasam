@@ -6,7 +6,9 @@ use App\Detalle_Condicion;
 use App\Detalle_Ficha;
 use App\Detalle_Sintoma;
 use App\Organo;
+use App\Persona;
 use App\Unida_Organica;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -48,6 +50,42 @@ class JuramentacionController extends Controller
         ]);
     }
 
+    public function declaracion(Request $request)
+    {
+        $dataCondiciones = $request->dataCondiciones;
+
+        $persona = new Persona();
+        $persona->dni = $request->dni;
+        $persona->nombres = $request->nombres;
+        $persona->apellidos = $request->apellidos;
+        $persona->direccion = $request->direccion;
+        $persona->celular = $request->celular;
+        $persona->email = $request->email;
+        $persona->organo = $request->organo;
+        $persona->unidad = $request->unidad;
+        $persona->save();
+
+        $user = new User();
+        $user->persona_id = $persona->id;
+        $user->tipo_usuario_id = 3;
+        $user->name = $request->nombres;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        foreach ($dataCondiciones as $data) {
+            $detalle_condiciones = new Detalle_Condicion();
+            $detalle_condiciones->persona_id = $persona->id;
+            $detalle_condiciones->condicion_id = $data['id'];
+            $detalle_condiciones->respuesta = $data['respuesta'];
+            $detalle_condiciones->save();
+        }
+
+        return response()->json([
+            "res" => true,
+        ]);
+    }
+
     public function verifyDocumento($id)
     {
         $detalle_condiciones = Detalle_Condicion::where('persona_id', '=', $id)->get();
@@ -56,7 +94,7 @@ class JuramentacionController extends Controller
         $unidad = Unida_Organica::findOrfail($detalle_ficha->unidades_organica_id);
         $organo = Organo::findOrfail($unidad->organo_id);
 
-        if ($detalle_condiciones && $detalle_sintomas && $detalle_ficha) {
+        if ($detalle_condiciones || $detalle_sintomas || $detalle_ficha) {
             return response()->json([
                 'detalle_condiciones' => $detalle_condiciones,
                 'detalle_sintomas' => $detalle_sintomas,

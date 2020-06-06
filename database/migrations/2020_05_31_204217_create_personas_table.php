@@ -20,6 +20,9 @@ class CreatePersonasTable extends Migration
             $table->string('apellidos', 45)->nullable();
             $table->string('direccion')->nullable();
             $table->string('celular', 45)->nullable();
+            $table->string('email')->nullable();
+            $table->string('organo')->nullable();
+            $table->string('unidad')->nullable();
             $table->boolean('activo')->default(1);
             $table->softDeletes();
             $table->timestamps();

@@ -14,6 +14,7 @@ import Login from './components/Login'
 import Error404 from './components/404'
 import Juramentacion from './components/Juramentacion'
 import Perfil from './components/Perfil'
+import Declaracion from './components/Declaracion'
 
 Vue.use(VueRouter)
 
@@ -122,11 +123,8 @@ const router = new VueRouter({
         },
         {
             path: '/',
-            name: 'login',
-            component: Login,
-            meta: {
-                login: true
-            }
+            name: 'declaracion',
+            component: Declaracion
         },
         {
             path: '*',

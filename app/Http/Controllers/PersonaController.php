@@ -29,6 +29,26 @@ class PersonaController extends Controller
         ]);
     }
 
+    public function verificar(Request $request)
+    {
+
+        $personas = DB::table('personas')->where('dni', '=', $request->dni)->count();
+        // $count = $personas->count();
+        if ($personas) {
+            return response()->json([
+                'res' => true,
+                'persona' => $personas,
+                // 'count' => $count
+            ]);
+        } else {
+            return response()->json([
+                'res' => false,
+                'persona' => $personas,
+                // 'count' => $count
+            ]);
+        }
+    }
+
     public function getPersonas(Request $request)
     {
         $filtro = $request->filtro;

@@ -1,6 +1,15 @@
 <template>
-    <div>
-        <div class="card card-primary card-outline mt-3" v-if="documento">
+    <div class="d-flex justify-content-center">
+        <img
+            src="https://media.giphy.com/media/14uQ3cOFteDaU/giphy.gif"
+            alt=""
+            class="w-50 h-50 mt-5 pt-5"
+        />
+        <div
+            class="card card-primary card-outline mt-3"
+            v-if="documento"
+            v-show="false"
+        >
             <div class="card-header">
                 <div class="card-title"><b>DOCUMENTO DE JURAMENTACION</b></div>
             </div>
@@ -18,12 +27,22 @@
                 </div>
             </div>
             <div class="card-body text-justify" ref="content">
-                <h4><b>FORMATO PARA LEVANTAMIENTO DE INFORMACÍÓN DE SERVIDORES EN EL GRUPO DE RIESGO - COVID 19</b></h4>
+                <h4>
+                    <b
+                        >FORMATO PARA LEVANTAMIENTO DE INFORMACÍÓN DE SERVIDORES
+                        EN EL GRUPO DE RIESGO - COVID 19</b
+                    >
+                </h4>
                 <p>Declaracion Jurada</p>
-                <p>Yo,<label v-text="persona"><b></b></label> identificado(a) con el DNI/CE N°<label v-text="dni"><b></b></label>, </p>
+                <p>
+                    Yo,<label v-text="persona"><b></b></label> identificado(a)
+                    con el DNI/CE N°<label v-text="dni"><b></b></label>,
+                </p>
                 <p>declaro los siguente respecto a mis condiciones de salud</p>
                 <br />
-                <h5>PRESENTO ALGUNA DE LAS SIGUENTES CONDICIONES DE SALUD* SI NO</h5>
+                <h5>
+                    PRESENTO ALGUNA DE LAS SIGUENTES CONDICIONES DE SALUD* SI NO
+                </h5>
                 <table class="table">
                     <thead>
                         <tr>
@@ -55,7 +74,10 @@
                 <hr />
                 <hr />
                 <h5>
-                    <b>FICHA DE SINTOMATOLOGIA COVIT-19 PAR AEL REGRESO AL TRABAJO</b>
+                    <b
+                        >FICHA DE SINTOMATOLOGIA COVIT-19 PAR AEL REGRESO AL
+                        TRABAJO</b
+                    >
                 </h5>
                 <br />
                 <p>Declaracion Jurada</p>
@@ -64,18 +86,36 @@
                     comprometo a responder con la verdad
                 </p>
                 <br />
-                <p><b>Entidad Publica:</b><label v-text="entidad" class="mr-5"></label> <b>Ruc:</b><label v-text="ruc"></label></p>
+                <p>
+                    <b>Entidad Publica:</b
+                    ><label v-text="entidad" class="mr-5"></label> <b>Ruc:</b
+                    ><label v-text="ruc"></label>
+                </p>
                 <p><b>Organo:</b><label v-text="data.organo.organo"></label></p>
-                <p><b>Unidad Organica:</b><label v-text="data.unidad.unidad"></label></p>
-                <p><b>Nombres y Apellidos:</b><label v-text="persona" class="mr-5"></label><b>DNI:</b><label for="" v-text="dni"></label></p>
-                <p><b>Direccion :</b><label v-text="direccion" class="mr-5"></label> <b>Celular :</b><label v-text="celular"></label></p>
-                 <br><br>
-                <p>En los últimos 14 dias calendario he tenido alguno de los síntomas siguentes</p>
+                <p>
+                    <b>Unidad Organica:</b
+                    ><label v-text="data.unidad.unidad"></label>
+                </p>
+                <p>
+                    <b>Nombres y Apellidos:</b
+                    ><label v-text="persona" class="mr-5"></label><b>DNI:</b
+                    ><label for="" v-text="dni"></label>
+                </p>
+                <p>
+                    <b>Direccion :</b
+                    ><label v-text="direccion" class="mr-5"></label>
+                    <b>Celular :</b><label v-text="celular"></label>
+                </p>
+                <br /><br />
+                <p>
+                    En los últimos 14 dias calendario he tenido alguno de los
+                    síntomas siguentes
+                </p>
                 <br />
-                <br>
-                <div >
-                <b>SI / NO</b>
-                
+                <br />
+                <div>
+                    <b>SI / NO</b>
+
                     <table class="table">
                         <thead>
                             <tr>
@@ -85,10 +125,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(item, index) in arraySintomas" :key="item.id" class="w-25">
-                                <td v-text="index+1"></td>
+                            <tr
+                                v-for="(item, index) in arraySintomas"
+                                :key="item.id"
+                                class="w-25"
+                            >
+                                <td v-text="index + 1"></td>
                                 <td v-text="item.sintoma"></td>
-                                <td>{{item.respuesta ? "( Si )" : "( No )"}}</td>
+                                <td>
+                                    {{ item.respuesta ? "( Si )" : "( No )" }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -129,7 +175,7 @@
             </div>
         </div>
 
-        <div class="card card-primary card-outline mt-3" v-else>
+        <div class="card card-primary card-outline mt-3" v-else v-show="false">
             <div class="card-header">
                 <div class="card-title"><b>DOCUMENTO DE JURAMENTACION</b></div>
             </div>
@@ -387,7 +433,6 @@
 
 <script>
 import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
 import Swal from "sweetalert2";
 export default {
     data() {
@@ -550,9 +595,9 @@ export default {
             const doc = new jsPDF();
             const html = this.$refs.content.innerHTML;
 
-            // doc.autoTable({html:"#my-table"}); 
-            doc.setFont("helvetica");  
-            doc.setFontSize(9); 
+            // doc.autoTable({html:"#my-table"});
+            doc.setFont("helvetica");
+            doc.setFontSize(9);
             doc.fromHTML(html, 11, 11);
             doc.save("covit.pdf");
         }
