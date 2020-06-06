@@ -310,14 +310,26 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <p class="mt-4 mb-4">
-                            Este contenido a sido creado por La Oficina General
-                            de Tecnologias de Informacion, Sistemas y
-                            Estadistica(OGTISE)
-                            <a href="http://ogtise.unasam.edu.pe/">OGTISE </a
-                            ><a href="#">||</a>
-                            <a href="#">COVIT-19</a>
-                        </p>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <p class="mt-4 mb-4">
+                                    Este contenido a sido creado por
+                                    <a href="http://ogtise.unasam.edu.pe/"
+                                        >La Oficina General de Tecnologias de
+                                        Informacion, Sistemas y
+                                        Estadistica(OGTISE)</a
+                                    >
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <router-link
+                                    to="/login"
+                                    class="btn btn-primary btn-block mt-3 mb-4 rounded-0"
+                                    ><i class="fas fa-unlock-alt"></i> INICIAR
+                                    SESSION</router-link
+                                >
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -348,12 +360,32 @@ export default {
             documento: false,
             error: 0,
             arrayError: [],
-            button: true,
             existe: false,
             count: 0
         };
     },
     methods: {
+        cerrar() {
+            this.existe = false;
+            this.nombres = "";
+            this.apellidos = "";
+            this.dni = "";
+            this.direccion = "";
+            this.email = "";
+            this.celular = "";
+            this.entidad = "";
+            this.organo = "";
+            this.unidad = "";
+            this.password = "";
+            this.confir_password = "";
+            this.newArrayCondiciones = "";
+            this.persona = "";
+            this.button = true;
+            this.documento = false;
+            this.error = 0;
+            arrayError = [];
+            this.count = 0;
+        },
         getCondicion() {
             axios
                 .get("/api/getCondiciones")
@@ -385,7 +417,6 @@ export default {
                 .get(`api/verificar?dni=${this.dni}`)
                 .then(response => {
                     this.count = response.data.persona;
-                    console.log(this.count);
                 })
                 .then(() => {
                     if (this.count > 0) {
@@ -451,6 +482,7 @@ export default {
                         `,
                         timer: 2000
                     });
+                    this.cerrar();
                 })
                 .catch(error => {
                     console.log(error);
@@ -467,7 +499,6 @@ export default {
                     respuesta: resp
                 });
             });
-            console.log(this.newArrayCondiciones);
         },
         validar() {
             this.error = 0;

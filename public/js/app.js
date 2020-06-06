@@ -2756,8 +2756,18 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3088,9 +3098,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    var _ref;
-
-    return _ref = {
+    return {
       nombres: "",
       apellidos: "",
       dni: "",
@@ -3108,10 +3116,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       button: true,
       documento: false,
       error: 0,
-      arrayError: []
-    }, _defineProperty(_ref, "button", true), _defineProperty(_ref, "existe", false), _defineProperty(_ref, "count", 0), _ref;
+      arrayError: [],
+      existe: false,
+      count: 0
+    };
   },
   methods: {
+    cerrar: function cerrar() {
+      this.existe = false;
+      this.nombres = "";
+      this.apellidos = "";
+      this.dni = "";
+      this.direccion = "";
+      this.email = "";
+      this.celular = "";
+      this.entidad = "";
+      this.organo = "";
+      this.unidad = "";
+      this.password = "";
+      this.confir_password = "";
+      this.newArrayCondiciones = "";
+      this.persona = "";
+      this.button = true;
+      this.documento = false;
+      this.error = 0;
+      arrayError = [];
+      this.count = 0;
+    },
     getCondicion: function getCondicion() {
       var _this = this;
 
@@ -3144,7 +3175,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       axios.get("api/verificar?dni=".concat(this.dni)).then(function (response) {
         _this2.count = response.data.persona;
-        console.log(_this2.count);
       }).then(function () {
         if (_this2.count > 0) {
           sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
@@ -3168,6 +3198,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       })["catch"](function (error) {});
     },
     registrarDocumento: function registrarDocumento() {
+      var _this3 = this;
+
       if (this.validar()) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
           icon: "error",
@@ -3201,24 +3233,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           backdrop: "\n                            rgba(0,0,123,0.4)\n                            url(\"/images/nyan-cat.gif\")\n                            left top\n                            no-repeat\n                        ",
           timer: 2000
         });
+
+        _this3.cerrar();
       })["catch"](function (error) {
         console.log(error);
       });
     },
     agregarCondicion: function agregarCondicion() {
-      var _this3 = this;
+      var _this4 = this;
 
       this.arrayCondiciones.map(function (el) {
         var id = "a" + el.id;
         var resp = document.querySelector("input[name=".concat(id, "]:checked")).value;
 
-        _this3.newArrayCondiciones.push({
+        _this4.newArrayCondiciones.push({
           id: el.id,
           condicion: el.condicion,
           respuesta: resp
         });
       });
-      console.log(this.newArrayCondiciones);
     },
     validar: function validar() {
       this.error = 0;
@@ -49803,7 +49836,33 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(15)
+          _c("div", { staticClass: "card-footer" }, [
+            _c("div", { staticClass: "row" }, [
+              _vm._m(15),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-md-3" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass:
+                        "btn btn-primary btn-block mt-3 mb-4 rounded-0",
+                      attrs: { to: "/login" }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-unlock-alt" }),
+                      _vm._v(
+                        " INICIAR\n                                SESSION"
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
         ])
       ])
     ])
@@ -49979,17 +50038,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-footer" }, [
+    return _c("div", { staticClass: "col-md-9" }, [
       _c("p", { staticClass: "mt-4 mb-4" }, [
         _vm._v(
-          "\n                        Este contenido a sido creado por La Oficina General\n                        de Tecnologias de Informacion, Sistemas y\n                        Estadistica(OGTISE)\n                        "
+          "\n                                Este contenido a sido creado por\n                                "
         ),
         _c("a", { attrs: { href: "http://ogtise.unasam.edu.pe/" } }, [
-          _vm._v("OGTISE ")
-        ]),
-        _c("a", { attrs: { href: "#" } }, [_vm._v("||")]),
-        _vm._v(" "),
-        _c("a", { attrs: { href: "#" } }, [_vm._v("COVIT-19")])
+          _vm._v(
+            "La Oficina General de Tecnologias de\n                                    Informacion, Sistemas y\n                                    Estadistica(OGTISE)"
+          )
+        ])
       ])
     ])
   }
