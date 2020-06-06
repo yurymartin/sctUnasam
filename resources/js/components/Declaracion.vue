@@ -295,6 +295,7 @@
                                 <button
                                     class="btn cabecera rounded-0 w-25 pt-2 pb-2 button"
                                     @click="registrarDocumento()"
+                                    v-if="buttom"
                                 >
                                     ENVIAR
                                 </button>
@@ -359,6 +360,7 @@ export default {
             error: 0,
             arrayError: [],
             existe: false,
+            buttom: true,
             count: 0
         };
     },
@@ -380,12 +382,13 @@ export default {
             this.persona = "";
             this.documento = false;
             this.error = 0;
+            this.buttom = true;
             this.arrayError = [];
             this.count = 0;
         },
         getCondicion() {
             axios
-                .get("/api/getCondiciones")
+                .get("/api/condiciones")
                 .then(resp => {
                     this.arrayCondiciones = resp.data.condiciones;
                 })
@@ -450,6 +453,7 @@ export default {
                 return;
             }
             this.agregarCondicion();
+            this.buttom = false;
             axios
                 .post("/api/declaracion", {
                     dni: this.dni,
@@ -464,6 +468,7 @@ export default {
                     dataCondiciones: this.newArrayCondiciones
                 })
                 .then(() => {
+                    this.cerrar();
                     Swal.fire({
                         title: "SE REGISTRO LA DECLARACION JURADA EXITOSAMENTE",
                         icon: "success",
@@ -478,7 +483,6 @@ export default {
                         `,
                         timer: 2000
                     });
-                    this.cerrar();
                 })
                 .catch(error => {
                     console.log(error);

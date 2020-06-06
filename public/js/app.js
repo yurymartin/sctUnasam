@@ -3094,6 +3094,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3116,6 +3117,7 @@ __webpack_require__.r(__webpack_exports__);
       error: 0,
       arrayError: [],
       existe: false,
+      buttom: true,
       count: 0
     };
   },
@@ -3137,13 +3139,14 @@ __webpack_require__.r(__webpack_exports__);
       this.persona = "";
       this.documento = false;
       this.error = 0;
+      this.buttom = true;
       this.arrayError = [];
       this.count = 0;
     },
     getCondicion: function getCondicion() {
       var _this = this;
 
-      axios.get("/api/getCondiciones").then(function (resp) {
+      axios.get("/api/condiciones").then(function (resp) {
         _this.arrayCondiciones = resp.data.condiciones;
       })["catch"](function (error) {
         console.log(error);
@@ -3208,6 +3211,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.agregarCondicion();
+      this.buttom = false;
       axios.post("/api/declaracion", {
         dni: this.dni,
         nombres: this.nombres,
@@ -3220,6 +3224,8 @@ __webpack_require__.r(__webpack_exports__);
         password: this.password,
         dataCondiciones: this.newArrayCondiciones
       }).then(function () {
+        _this3.cerrar();
+
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
           title: "SE REGISTRO LA DECLARACION JURADA EXITOSAMENTE",
           icon: "success",
@@ -3229,8 +3235,6 @@ __webpack_require__.r(__webpack_exports__);
           backdrop: "\n                            rgba(0,0,123,0.4)\n                            url(\"/images/nyan-cat.gif\")\n                            left top\n                            no-repeat\n                        ",
           timer: 2000
         });
-
-        _this3.cerrar();
       })["catch"](function (error) {
         console.log(error);
       });
@@ -49798,23 +49802,25 @@ var render = function() {
                 _vm._v(" "),
                 _vm.existe
                   ? _c("div", { staticClass: "col-md-12 form-group mt-4" }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass:
-                            "btn cabecera rounded-0 w-25 pt-2 pb-2 button",
-                          on: {
-                            click: function($event) {
-                              return _vm.registrarDocumento()
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                ENVIAR\n                            "
+                      _vm.buttom
+                        ? _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn cabecera rounded-0 w-25 pt-2 pb-2 button",
+                              on: {
+                                click: function($event) {
+                                  return _vm.registrarDocumento()
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                ENVIAR\n                            "
+                              )
+                            ]
                           )
-                        ]
-                      )
+                        : _vm._e()
                     ])
                   : _vm._e(),
                 _vm._v(" "),

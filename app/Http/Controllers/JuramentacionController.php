@@ -53,8 +53,9 @@ class JuramentacionController extends Controller
     public function declaracion(Request $request)
     {
         $dataCondiciones = $request->dataCondiciones;
-
         $persona = new Persona();
+        $user = new User();
+
         $persona->dni = $request->dni;
         $persona->nombres = $request->nombres;
         $persona->apellidos = $request->apellidos;
@@ -65,7 +66,15 @@ class JuramentacionController extends Controller
         $persona->unidad = $request->unidad;
         $persona->save();
 
-        $user = new User();
+        foreach ($dataCondiciones as $data) {
+            $detalle_condiciones = new Detalle_Condicion();
+            $detalle_condiciones->persona_id = $persona->id;
+            $detalle_condiciones->condicion_id = $data['id'];
+            $detalle_condiciones->respuesta = $data['respuesta'];
+            $detalle_condiciones->save();
+        }
+
+
         $user->persona_id = $persona->id;
         $user->tipo_usuario_id = "3";
         $user->name = $request->nombres;
@@ -74,13 +83,7 @@ class JuramentacionController extends Controller
         $user->activo = "1";
         $user->save();
 
-        foreach ($dataCondiciones as $data) {
-            $detalle_condiciones = new Detalle_Condicion();
-            $detalle_condiciones->persona_id = $persona->id;
-            $detalle_condiciones->condicion_id = $data['id'];
-            $detalle_condiciones->respuesta = $data['respuesta'];
-            $detalle_condiciones->save();
-        }
+
 
         return response()->json([
             "res" => true,
