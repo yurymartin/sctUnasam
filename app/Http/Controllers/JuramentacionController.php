@@ -67,10 +67,11 @@ class JuramentacionController extends Controller
 
         $user = new User();
         $user->persona_id = $persona->id;
-        $user->tipo_usuario_id = 3;
+        $user->tipo_usuario_id = "3";
         $user->name = $request->nombres;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
+        $user->activo = "1";
         $user->save();
 
         foreach ($dataCondiciones as $data) {
