@@ -3146,7 +3146,7 @@ __webpack_require__.r(__webpack_exports__);
     getCondicion: function getCondicion() {
       var _this = this;
 
-      axios.get("/api/condiciones").then(function (resp) {
+      axios.get("/api/getCondiciones").then(function (resp) {
         _this.arrayCondiciones = resp.data.condiciones;
       })["catch"](function (error) {
         console.log(error);

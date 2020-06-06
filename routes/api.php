@@ -23,11 +23,12 @@ Route::get('getTipo_usuario', 'TipoUsuarioController@getTipo_usuario');
 Route::get('getCondiciones', 'CondicionController@getCondiciones');
 Route::post('declaracion', 'JuramentacionController@declaracion');
 Route::get('verificar', 'PersonaController@verificar');
-Route::apiResource('condiciones', 'CondicionController');
 
 Route::group(['middleware' => 'auth:api'], function () {
+
     Route::post('logout', 'UserController@logout');
 
+    Route::apiResource('condiciones', 'CondicionController');
     Route::put('condicionesAD/{id}/{activo}', 'CondicionController@condicionesAD');
 
     Route::apiResource('sintomas', 'SintomaController');

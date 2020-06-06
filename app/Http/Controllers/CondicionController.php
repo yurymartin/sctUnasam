@@ -16,9 +16,10 @@ class CondicionController extends Controller
     }
 
 
-    public function getCondiciones()
+    public function getCondiciones(Request $request)
     {
-        $condiciones = Condicion::activo()->get();
+        $buscar = $request->buscar;
+        $condiciones = Condicion::buscar($buscar)->get();
         return response()->json(['condiciones' => $condiciones, 'status' => 200]);
     }
 

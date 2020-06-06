@@ -74,14 +74,13 @@ class JuramentacionController extends Controller
             $detalle_condiciones->save();
         }
 
-
-        $user->persona_id = $persona->id;
-        $user->tipo_usuario_id = "3";
-        $user->name = $request->nombres;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->activo = "1";
-        $user->save();
+        // $user->persona_id = $persona->id;
+        // $user->tipo_usuario_id = "3";
+        // $user->name = 'empleado';
+        // $user->email = $request->email;
+        // $user->password = bcrypt($request->password);
+        // $user->activo = "1";
+        // $user->save();
 
 
 

@@ -388,7 +388,7 @@ export default {
         },
         getCondicion() {
             axios
-                .get("/api/condiciones")
+                .get("/api/getCondiciones")
                 .then(resp => {
                     this.arrayCondiciones = resp.data.condiciones;
                 })
