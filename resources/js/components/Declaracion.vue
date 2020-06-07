@@ -461,28 +461,42 @@ export default {
                     apellidos: this.apellidos,
                     direccion: this.direccion,
                     celular: this.celular,
-                    email: this.email,
+                    // email: this.email,
                     organo: this.organo,
                     unidad: this.unidad,
-                    password: this.password,
+                    // password: this.password,
                     dataCondiciones: this.newArrayCondiciones
                 })
-                .then(() => {
-                    this.cerrar();
-                    Swal.fire({
-                        title: "SE REGISTRO LA DECLARACION JURADA EXITOSAMENTE",
-                        icon: "success",
-                        width: 800,
-                        padding: "3em",
-                        background: "#fff url(/images/trees.png)",
-                        backdrop: `
+                .then(response => {
+                    axios
+                        .post(`/api/register`, {
+                            persona_id: response.data.persona_id,
+                            tipo_usuario_id: 3,
+                            name: this.nombres,
+                            email: this.email,
+                            password: this.password
+                        })
+                        .then(response => {
+                            this.cerrar();
+                            Swal.fire({
+                                title:
+                                    "SE REGISTRO LA DECLARACION JURADA EXITOSAMENTE",
+                                icon: "success",
+                                width: 800,
+                                padding: "3em",
+                                background: "#fff url(/images/trees.png)",
+                                backdrop: `
                             rgba(0,0,123,0.4)
                             url("/images/nyan-cat.gif")
                             left top
                             no-repeat
                         `,
-                        timer: 2000
-                    });
+                                timer: 2000
+                            });
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
                 })
                 .catch(error => {
                     console.log(error);

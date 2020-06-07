@@ -183,7 +183,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <b>LISTADO DE REGISTROS DE TEMPERATURAS</b>
+                            <b>LISTADO DE USUARIOS</b>
                         </h3>
 
                         <div class="card-tools">

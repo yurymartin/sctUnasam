@@ -23,6 +23,7 @@ Route::get('getTipo_usuario', 'TipoUsuarioController@getTipo_usuario');
 Route::get('getCondiciones', 'CondicionController@getCondiciones');
 Route::post('declaracion', 'JuramentacionController@declaracion');
 Route::get('verificar', 'PersonaController@verificar');
+Route::post('register', 'UserController@store');
 
 Route::group(['middleware' => 'auth:api'], function () {
 
