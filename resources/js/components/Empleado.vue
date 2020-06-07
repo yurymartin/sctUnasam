@@ -15,7 +15,7 @@
                         </button>
                         <!-- MODAL -->
                         <div class="modal fade text-sm" id="modal">
-                            <div class="modal-dialog modal-lg">
+                            <div class="modal-dialog modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h4
@@ -60,7 +60,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4 form-group">
+                                            <div class="col-md-2 form-group">
                                                 <label for="persona"
                                                     >DNI
                                                     <span class="text-danger"
@@ -80,7 +80,7 @@
                                                     >maximo 8 digitios</span
                                                 >
                                             </div>
-                                            <div class="col-md-12 form-group">
+                                            <div class="col-md-5 form-group">
                                                 <label for="nombres"
                                                     >Nombres
                                                     <span class="text-danger"
@@ -95,7 +95,7 @@
                                                     autocomplete="off"
                                                 />
                                             </div>
-                                            <div class="col-md-12 form-group">
+                                            <div class="col-md-5 form-group">
                                                 <label for="apellidos"
                                                     >Apellidos
                                                     <span class="text-danger"
@@ -110,7 +110,18 @@
                                                     autocomplete="off"
                                                 />
                                             </div>
-                                            <div class="col-md-6 form-group">
+                                            <div class="col-md-2 form-group">
+                                                <label for="edad"
+                                                    >Celular</label
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    v-model="celular"
+                                                    placeholder="escriba el celular"
+                                                />
+                                            </div>
+                                            <div class="col-md-5 form-group">
                                                 <label for="edad"
                                                     >Direccion</label
                                                 >
@@ -121,15 +132,44 @@
                                                     placeholder="edad"
                                                 />
                                             </div>
-                                            <div class="col-md-6 form-group">
+                                            
+                                            <div class="col-md-5 form-group">
                                                 <label for="edad"
-                                                    >Celular</label
+                                                    >Correo Institucional <span class="text-danger"
+                                                        >(*)</span
+                                                    ></label
+                                                >
+                                                <input
+                                                    type="email"
+                                                    class="form-control"
+                                                    v-model="email"
+                                                    placeholder="escriba su correo"
+                                                />
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label for="organo"
+                                                    >Organo <span class="text-danger"
+                                                        >(*)</span
+                                                    ></label
                                                 >
                                                 <input
                                                     type="text"
                                                     class="form-control"
-                                                    v-model="celular"
-                                                    placeholder="edad"
+                                                    v-model="organo"
+                                                    placeholder="escriba al dependencia que pertenece"
+                                                />
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label for="unidad"
+                                                    >Unidad Organica <span class="text-danger"
+                                                        >(*)</span
+                                                    ></label
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    v-model="unidad"
+                                                    placeholder="escriba la unidad organica"
                                                 />
                                             </div>
                                         </div>
@@ -218,6 +258,9 @@
                                     <th>Apellidos</th>
                                     <th>Direccion</th>
                                     <th>Celular</th>
+                                    <th>Email</th>
+                                    <th>Organo</th>
+                                    <th>Unidad</th>
                                     <th>Activo</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -233,6 +276,9 @@
                                     <td v-text="item.apellidos"></td>
                                     <td v-text="item.direccion"></td>
                                     <td v-text="item.celular"></td>
+                                    <td v-text="item.email"></td>
+                                    <td v-text="item.organo"></td>
+                                    <td v-text="item.unidad"></td>
                                     <td>
                                         <span
                                             class="badge badge-success"
@@ -392,8 +438,10 @@ export default {
             apellidos: "",
             direccion: 0,
             celular: "",
+            email: "",
+            organo: "",
+            unidad: "",
             activo: 0,
-            edad: "",
             arrayPersonas: [],
             modal: 0,
             tituloModal: "",
@@ -475,7 +523,10 @@ export default {
                     nombres: this.nombres,
                     apellidos: this.apellidos,
                     direccion: this.direccion,
-                    celular: this.celular
+                    celular: this.celular,
+                    email: this.email,
+                    organo: this.organo,
+                    unidad: this.unidad
                 })
                 .then(response => {
                     this.cerrarModal();
@@ -504,6 +555,9 @@ export default {
                     apellidos: this.apellidos,
                     direccion: this.direccion,
                     celular: this.celular,
+                    email: this.email,
+                    organo: this.organo,
+                    unidad: this.unidad,
                     activo: this.activo
                 })
                 .then(response => {
@@ -584,6 +638,20 @@ export default {
                 this.errorMostrarMsjPersona.push(
                     "Los apellidos no pueden estar vacio"
                 );
+            if (!this.email)
+                this.errorMostrarMsjPersona.push(
+                    "el correo institucional no pueden estar vacio"
+                );
+            
+            if (!this.organo)
+                this.errorMostrarMsjPersona.push(
+                    "el organo no pueden estar vacio"
+                );
+
+            if (!this.unidad)
+                this.errorMostrarMsjPersona.push(
+                    "la unidad organica no pueden estar vacio"
+                );
 
             if (this.errorMostrarMsjPersona.length) this.errorPersona = 1;
 
@@ -618,6 +686,9 @@ export default {
                             this.apellidos = "";
                             this.direccion = "";
                             this.celular = "";
+                            this.email = "";
+                            this.organo = "";
+                            this.unidad = "";
                             this.activo = 0;
                             this.tipoAccion = 1;
                             break;
@@ -631,6 +702,9 @@ export default {
                             this.apellidos = data["apellidos"];
                             this.direccion = data["direccion"];
                             this.celular = data["celular"];
+                            this.email = data["email"];
+                            this.organo = data["organo"];
+                            this.unidad = data["unidad"];
                             this.activo = data["activo"];
                             break;
                         }

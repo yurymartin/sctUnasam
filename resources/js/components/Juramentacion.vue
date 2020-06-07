@@ -1,181 +1,28 @@
 <template>
-    <div class="d-flex justify-content-center">
-        <img
-            src="https://media.giphy.com/media/14uQ3cOFteDaU/giphy.gif"
-            alt=""
-            class="w-50 h-50 mt-5 pt-5"
-        />
-        <div
-            class="card card-primary card-outline mt-3"
-            v-if="documento"
-            v-show="false"
-        >
-            <div class="card-header">
-                <div class="card-title"><b>DOCUMENTO DE JURAMENTACION</b></div>
-            </div>
-            <div v-show="errorJuramentacion">
-                <div class="alert alert-danger" role="alert">
-                    <div
-                        v-for="error in errorMostrarMsjJuramentacion"
-                        :key="error"
-                    >
-                        <b
-                            ><i class="fas fa-exclamation-triangle"></i
-                            >{{ error }}</b
-                        >
-                    </div>
-                </div>
-            </div>
-            <div class="card-body text-justify" ref="content">
-                <h4>
-                    <b
-                        >FORMATO PARA LEVANTAMIENTO DE INFORMACÍÓN DE SERVIDORES
-                        EN EL GRUPO DE RIESGO - COVID 19</b
-                    >
-                </h4>
-                <p>Declaracion Jurada</p>
-                <p>
-                    Yo,<label v-text="persona"><b></b></label> identificado(a)
-                    con el DNI/CE N°<label v-text="dni"><b></b></label>,
-                </p>
-                <p>declaro los siguente respecto a mis condiciones de salud</p>
-                <br />
-                <h5>
-                    PRESENTO ALGUNA DE LAS SIGUENTES CONDICIONES DE SALUD* SI NO
-                </h5>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>condicion</th>
-                            <th>Respuesta</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="item in arrayCondiciones" :key="item.id">
-                            <td v-text="item.condicion"></td>
-                            <td>
-                                <span class="badge badge-info">{{
-                                    item.respuesta ? "SI" : "NO"
-                                }}</span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <br /><br />
-                <p>
-                    *Factores de riesgo de acuerdo a Documento técnico aprobado
-                    mediante RM 193-2020-MINSA
-                </p>
-                <p>
-                    Asimismo, declaro que dentro de mi vivienda residen los
-                    siguentes familiares que cuenta con las siguentes
-                    condiciones que los ubican dentro del grupo de riesgo
-                </p>
-                <hr />
-                <hr />
-                <h5>
-                    <b
-                        >FICHA DE SINTOMATOLOGIA COVIT-19 PAR AEL REGRESO AL
-                        TRABAJO</b
-                    >
-                </h5>
-                <br />
-                <p>Declaracion Jurada</p>
-                <p>
-                    He recibido explicacion del objetivo de esta evaluacion y me
-                    comprometo a responder con la verdad
-                </p>
-                <br />
-                <p>
-                    <b>Entidad Publica:</b
-                    ><label v-text="entidad" class="mr-5"></label> <b>Ruc:</b
-                    ><label v-text="ruc"></label>
-                </p>
-                <p><b>Organo:</b><label v-text="data.organo.organo"></label></p>
-                <p>
-                    <b>Unidad Organica:</b
-                    ><label v-text="data.unidad.unidad"></label>
-                </p>
-                <p>
-                    <b>Nombres y Apellidos:</b
-                    ><label v-text="persona" class="mr-5"></label><b>DNI:</b
-                    ><label for="" v-text="dni"></label>
-                </p>
-                <p>
-                    <b>Direccion :</b
-                    ><label v-text="direccion" class="mr-5"></label>
-                    <b>Celular :</b><label v-text="celular"></label>
-                </p>
-                <br /><br />
-                <p>
-                    En los últimos 14 dias calendario he tenido alguno de los
-                    síntomas siguentes
-                </p>
-                <br />
-                <br />
-                <div>
-                    <b>SI / NO</b>
+    <section class="mt-5">
+        <div class="error-page">
+            <h1 class="headline text-danger">500</h1>
+            <div class="error-content">
+                <h3>
+                    <i class="fas fa-exclamation-triangle text-danger"></i>
+                    ¡Vaya! Algo salió mal.
+                </h3>
 
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Sintoma</th>
-                                <th>Respuesta</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr
-                                v-for="(item, index) in arraySintomas"
-                                :key="item.id"
-                                class="w-25"
-                            >
-                                <td v-text="index + 1"></td>
-                                <td v-text="item.sintoma"></td>
-                                <td>
-                                    {{ item.respuesta ? "( Si )" : "( No )" }}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <hr class="bg-dark " />
-                <p class="text-justify">
-                    Todos los datos expresados en esta ficha constituyen una
-                    declaración jurada de mi parte
-                </p>
                 <p>
-                    He sido informado que, de omitir o falsear información,
-                    puedo perjudiciar la salud de mis compañeros y la mia
-                    propia, lo cual constituye una falta grave ala salud
-                    pública, asumo sus consecuencias
+                    Trabajaremos en arreglar eso de inmediato. Mientras tanto,
+                    puede <router-link to="/home">volver al panel</router-link>
+                    o intentar usar el formulario de búsqueda.
                 </p>
-                <br />
-                <div class="row">
-                    <div class="col-md-8">
-                        <label for=""
-                            >Fecha: {{ data.detalle_ficha.fecha }}</label
-                        >
-                    </div>
-                    <div class="col-md-4">
-                        <label for=""
-                            >Firma: ___________________________________</label
-                        >
-                    </div>
-                </div>
             </div>
-            <div class="card-footer">
-                <button
-                    class="btn btn-success btn-block"
-                    @click="downloadPDF()"
-                    v-show="button"
-                >
-                    DESCARGAR DOCUMENTO
-                </button>
-            </div>
+            <img
+                src="https://image.flaticon.com/icons/svg/2910/2910692.svg"
+                alt="error 500"
+                class="w-50 h-50 mt-5"
+            />
         </div>
+    </section>
 
-        <div class="card card-primary card-outline mt-3" v-else v-show="false">
+    <!-- <div class="card card-primary card-outline mt-3" v-show="false">
             <div class="card-header">
                 <div class="card-title"><b>DOCUMENTO DE JURAMENTACION</b></div>
             </div>
@@ -427,8 +274,7 @@
                     GUARDAR DOCUMENTO
                 </button>
             </div>
-        </div>
-    </div>
+        </div> -->
 </template>
 
 <script>
@@ -603,13 +449,13 @@ export default {
         }
     },
     mounted() {
-        this.verifyDocumento();
-        this.persona = this.nombres + " " + this.apellidos;
-        this.getCondicion();
-        this.getOrgano();
-        // this.getUnidadOrganica();
-        this.getSintomas();
-        this.fechaActual();
+        // this.verifyDocumento();
+        // this.persona = this.nombres + " " + this.apellidos;
+        // this.getCondicion();
+        // this.getOrgano();
+        // // this.getUnidadOrganica();
+        // this.getSintomas();
+        // this.fechaActual();
         // this.agregarCondicion();
     }
 };

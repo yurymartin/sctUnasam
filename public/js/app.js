@@ -3224,7 +3224,7 @@ __webpack_require__.r(__webpack_exports__);
         unidad: this.unidad,
         password: this.password,
         dataCondiciones: this.newArrayCondiciones
-      }).then(function () {
+      }).then(function (response) {
         _this3.cerrar();
 
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
@@ -3676,6 +3676,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3688,8 +3734,10 @@ __webpack_require__.r(__webpack_exports__);
       apellidos: "",
       direccion: 0,
       celular: "",
+      email: "",
+      organo: "",
+      unidad: "",
       activo: 0,
-      edad: "",
       arrayPersonas: [],
       modal: 0,
       tituloModal: "",
@@ -3778,7 +3826,10 @@ __webpack_require__.r(__webpack_exports__);
         nombres: this.nombres,
         apellidos: this.apellidos,
         direccion: this.direccion,
-        celular: this.celular
+        celular: this.celular,
+        email: this.email,
+        organo: this.organo,
+        unidad: this.unidad
       }).then(function (response) {
         _this2.cerrarModal();
 
@@ -3809,6 +3860,9 @@ __webpack_require__.r(__webpack_exports__);
         apellidos: this.apellidos,
         direccion: this.direccion,
         celular: this.celular,
+        email: this.email,
+        organo: this.organo,
+        unidad: this.unidad,
         activo: this.activo
       }).then(function (response) {
         _this3.cerrarModal();
@@ -3873,6 +3927,9 @@ __webpack_require__.r(__webpack_exports__);
       if (this.dni.length > 8) this.errorMostrarMsjPersona.push("El dni supero los 8 digitos");
       if (!this.nombres) this.errorMostrarMsjPersona.push("Los nombres no pueden estar vacio");
       if (!this.apellidos) this.errorMostrarMsjPersona.push("Los apellidos no pueden estar vacio");
+      if (!this.email) this.errorMostrarMsjPersona.push("el correo institucional no pueden estar vacio");
+      if (!this.organo) this.errorMostrarMsjPersona.push("el organo no pueden estar vacio");
+      if (!this.unidad) this.errorMostrarMsjPersona.push("la unidad organica no pueden estar vacio");
       if (this.errorMostrarMsjPersona.length) this.errorPersona = 1;
       return this.errorPersona;
     },
@@ -3909,6 +3966,9 @@ __webpack_require__.r(__webpack_exports__);
                   this.apellidos = "";
                   this.direccion = "";
                   this.celular = "";
+                  this.email = "";
+                  this.organo = "";
+                  this.unidad = "";
                   this.activo = 0;
                   this.tipoAccion = 1;
                   break;
@@ -3924,6 +3984,9 @@ __webpack_require__.r(__webpack_exports__);
                   this.apellidos = data["apellidos"];
                   this.direccion = data["direccion"];
                   this.celular = data["celular"];
+                  this.email = data["email"];
+                  this.organo = data["organo"];
+                  this.unidad = data["unidad"];
                   this.activo = data["activo"];
                   break;
                 }
@@ -4512,160 +4575,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4828,14 +4737,14 @@ __webpack_require__.r(__webpack_exports__);
       doc.save("covit.pdf");
     }
   },
-  mounted: function mounted() {
-    this.verifyDocumento();
-    this.persona = this.nombres + " " + this.apellidos;
-    this.getCondicion();
-    this.getOrgano(); // this.getUnidadOrganica();
-
-    this.getSintomas();
-    this.fechaActual(); // this.agregarCondicion();
+  mounted: function mounted() {// this.verifyDocumento();
+    // this.persona = this.nombres + " " + this.apellidos;
+    // this.getCondicion();
+    // this.getOrgano();
+    // // this.getUnidadOrganica();
+    // this.getSintomas();
+    // this.fechaActual();
+    // this.agregarCondicion();
   }
 });
 
@@ -8252,7 +8161,7 @@ __webpack_require__.r(__webpack_exports__);
             switch (accion) {
               case "registrar":
                 {
-                  this.tituloModal = "REGISTRAR NUEVO EMPLEADO";
+                  this.tituloModal = "REGISTRAR NUEVO USUARIO";
                   this.persona_id = 0;
                   this.tipo_usuario_id = 0;
                   this.name = "";
@@ -8265,7 +8174,7 @@ __webpack_require__.r(__webpack_exports__);
 
               case "actualizar":
                 {
-                  this.tituloModal = "ACTUALIZAR UNA CONDICON";
+                  this.tituloModal = "ACTUALIZAR UN USUARIO";
                   this.tipoAccion = 2;
                   this.id = data["id"];
                   this.persona_id = data["persona_id"];
@@ -50095,7 +50004,7 @@ var render = function() {
               "div",
               { staticClass: "modal fade text-sm", attrs: { id: "modal" } },
               [
-                _c("div", { staticClass: "modal-dialog modal-lg" }, [
+                _c("div", { staticClass: "modal-dialog modal-xl" }, [
                   _c("div", { staticClass: "modal-content" }, [
                     _c("div", { staticClass: "modal-header" }, [
                       _c("h4", {
@@ -50172,7 +50081,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col-md-4 form-group" }, [
+                        _c("div", { staticClass: "col-md-2 form-group" }, [
                           _vm._m(0),
                           _vm._v(" "),
                           _c("input", {
@@ -50208,7 +50117,7 @@ var render = function() {
                             : _vm._e()
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-md-12 form-group" }, [
+                        _c("div", { staticClass: "col-md-5 form-group" }, [
                           _vm._m(1),
                           _vm._v(" "),
                           _c("input", {
@@ -50238,7 +50147,7 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-md-12 form-group" }, [
+                        _c("div", { staticClass: "col-md-5 form-group" }, [
                           _vm._m(2),
                           _vm._v(" "),
                           _c("input", {
@@ -50268,7 +50177,38 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-md-6 form-group" }, [
+                        _c("div", { staticClass: "col-md-2 form-group" }, [
+                          _c("label", { attrs: { for: "edad" } }, [
+                            _vm._v("Celular")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.celular,
+                                expression: "celular"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "escriba el celular"
+                            },
+                            domProps: { value: _vm.celular },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.celular = $event.target.value
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-5 form-group" }, [
                           _c("label", { attrs: { for: "edad" } }, [
                             _vm._v("Direccion")
                           ]),
@@ -50296,29 +50236,89 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-md-6 form-group" }, [
-                          _c("label", { attrs: { for: "edad" } }, [
-                            _vm._v("Celular")
-                          ]),
+                        _c("div", { staticClass: "col-md-5 form-group" }, [
+                          _vm._m(3),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.celular,
-                                expression: "celular"
+                                value: _vm.email,
+                                expression: "email"
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: { type: "text", placeholder: "edad" },
-                            domProps: { value: _vm.celular },
+                            attrs: {
+                              type: "email",
+                              placeholder: "escriba su correo"
+                            },
+                            domProps: { value: _vm.email },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
                                   return
                                 }
-                                _vm.celular = $event.target.value
+                                _vm.email = $event.target.value
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6 form-group" }, [
+                          _vm._m(4),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.organo,
+                                expression: "organo"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder:
+                                "escriba al dependencia que pertenece"
+                            },
+                            domProps: { value: _vm.organo },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.organo = $event.target.value
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6 form-group" }, [
+                          _vm._m(5),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.unidad,
+                                expression: "unidad"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "escriba la unidad organica"
+                            },
+                            domProps: { value: _vm.unidad },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.unidad = $event.target.value
                               }
                             }
                           })
@@ -50405,7 +50405,7 @@ var render = function() {
       _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
-            _vm._m(3),
+            _vm._m(6),
             _vm._v(" "),
             _c("div", { staticClass: "card-tools" }, [
               _c(
@@ -50466,7 +50466,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "card-body table-responsive p-0" }, [
             _c("table", { staticClass: "table table-hover text-nowrap" }, [
-              _vm._m(4),
+              _vm._m(7),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -50490,6 +50490,16 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", {
                       domProps: { textContent: _vm._s(item.celular) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", { domProps: { textContent: _vm._s(item.email) } }),
+                    _vm._v(" "),
+                    _c("td", {
+                      domProps: { textContent: _vm._s(item.organo) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      domProps: { textContent: _vm._s(item.unidad) }
                     }),
                     _vm._v(" "),
                     _c("td", [
@@ -50595,7 +50605,7 @@ var render = function() {
               ? _c(
                   "div",
                   { staticClass: "d-flex justify-content-center mt-5 mr-5" },
-                  [_vm._m(5)]
+                  [_vm._m(8)]
                 )
               : _vm._e(),
             _vm._v(" "),
@@ -50728,6 +50738,33 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "edad" } }, [
+      _vm._v("Correo Institucional "),
+      _c("span", { staticClass: "text-danger" }, [_vm._v("(*)")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "organo" } }, [
+      _vm._v("Organo "),
+      _c("span", { staticClass: "text-danger" }, [_vm._v("(*)")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "unidad" } }, [
+      _vm._v("Unidad Organica "),
+      _c("span", { staticClass: "text-danger" }, [_vm._v("(*)")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("h3", { staticClass: "card-title" }, [
       _c("b", [_vm._v("LISTADO DE EMPLEADOS")])
     ])
@@ -50749,6 +50786,12 @@ var staticRenderFns = [
         _c("th", [_vm._v("Direccion")]),
         _vm._v(" "),
         _c("th", [_vm._v("Celular")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Organo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Unidad")]),
         _vm._v(" "),
         _c("th", [_vm._v("Activo")]),
         _vm._v(" "),
@@ -51331,869 +51374,38 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "d-flex justify-content-center" }, [
-    _c("img", {
-      staticClass: "w-50 h-50 mt-5 pt-5",
-      attrs: {
-        src: "https://media.giphy.com/media/14uQ3cOFteDaU/giphy.gif",
-        alt: ""
-      }
-    }),
-    _vm._v(" "),
-    _vm.documento
-      ? _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: false,
-                expression: "false"
-              }
-            ],
-            staticClass: "card card-primary card-outline mt-3"
-          },
+  return _c("section", { staticClass: "mt-5" }, [
+    _c("div", { staticClass: "error-page" }, [
+      _c("h1", { staticClass: "headline text-danger" }, [_vm._v("500")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "error-content" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "p",
           [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.errorJuramentacion,
-                    expression: "errorJuramentacion"
-                  }
-                ]
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "alert alert-danger",
-                    attrs: { role: "alert" }
-                  },
-                  _vm._l(_vm.errorMostrarMsjJuramentacion, function(error) {
-                    return _c("div", { key: error }, [
-                      _c("b", [
-                        _c("i", { staticClass: "fas fa-exclamation-triangle" }),
-                        _vm._v(_vm._s(error))
-                      ])
-                    ])
-                  }),
-                  0
-                )
-              ]
+            _vm._v(
+              "\n                Trabajaremos en arreglar eso de inmediato. Mientras tanto,\n                puede "
             ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { ref: "content", staticClass: "card-body text-justify" },
-              [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("p", [_vm._v("Declaracion Jurada")]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v("\n                Yo,"),
-                  _c(
-                    "label",
-                    { domProps: { textContent: _vm._s(_vm.persona) } },
-                    [_c("b")]
-                  ),
-                  _vm._v(" identificado(a)\n                con el DNI/CE N°"),
-                  _c("label", { domProps: { textContent: _vm._s(_vm.dni) } }, [
-                    _c("b")
-                  ]),
-                  _vm._v(",\n            ")
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "declaro los siguente respecto a mis condiciones de salud"
-                  )
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("h5", [
-                  _vm._v(
-                    "\n                PRESENTO ALGUNA DE LAS SIGUENTES CONDICIONES DE SALUD* SI NO\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("table", { staticClass: "table" }, [
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c(
-                    "tbody",
-                    _vm._l(_vm.arrayCondiciones, function(item) {
-                      return _c("tr", { key: item.id }, [
-                        _c("td", {
-                          domProps: { textContent: _vm._s(item.condicion) }
-                        }),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c("span", { staticClass: "badge badge-info" }, [
-                            _vm._v(_vm._s(item.respuesta ? "SI" : "NO"))
-                          ])
-                        ])
-                      ])
-                    }),
-                    0
-                  )
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _c("br"),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n                *Factores de riesgo de acuerdo a Documento técnico aprobado\n                mediante RM 193-2020-MINSA\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n                Asimismo, declaro que dentro de mi vivienda residen los\n                siguentes familiares que cuenta con las siguentes\n                condiciones que los ubican dentro del grupo de riesgo\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("hr"),
-                _vm._v(" "),
-                _c("hr"),
-                _vm._v(" "),
-                _vm._m(3),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("p", [_vm._v("Declaracion Jurada")]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n                He recibido explicacion del objetivo de esta evaluacion y me\n                comprometo a responder con la verdad\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Entidad Publica:")]),
-                  _c("label", {
-                    staticClass: "mr-5",
-                    domProps: { textContent: _vm._s(_vm.entidad) }
-                  }),
-                  _vm._v(" "),
-                  _c("b", [_vm._v("Ruc:")]),
-                  _c("label", { domProps: { textContent: _vm._s(_vm.ruc) } })
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Organo:")]),
-                  _c("label", {
-                    domProps: { textContent: _vm._s(_vm.data.organo.organo) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Unidad Organica:")]),
-                  _c("label", {
-                    domProps: { textContent: _vm._s(_vm.data.unidad.unidad) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Nombres y Apellidos:")]),
-                  _c("label", {
-                    staticClass: "mr-5",
-                    domProps: { textContent: _vm._s(_vm.persona) }
-                  }),
-                  _c("b", [_vm._v("DNI:")]),
-                  _c("label", {
-                    attrs: { for: "" },
-                    domProps: { textContent: _vm._s(_vm.dni) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Direccion :")]),
-                  _c("label", {
-                    staticClass: "mr-5",
-                    domProps: { textContent: _vm._s(_vm.direccion) }
-                  }),
-                  _vm._v(" "),
-                  _c("b", [_vm._v("Celular :")]),
-                  _c("label", {
-                    domProps: { textContent: _vm._s(_vm.celular) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _c("br"),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n                En los últimos 14 dias calendario he tenido alguno de los\n                síntomas siguentes\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", [
-                  _c("b", [_vm._v("SI / NO")]),
-                  _vm._v(" "),
-                  _c("table", { staticClass: "table" }, [
-                    _vm._m(4),
-                    _vm._v(" "),
-                    _c(
-                      "tbody",
-                      _vm._l(_vm.arraySintomas, function(item, index) {
-                        return _c("tr", { key: item.id, staticClass: "w-25" }, [
-                          _c("td", {
-                            domProps: { textContent: _vm._s(index + 1) }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: { textContent: _vm._s(item.sintoma) }
-                          }),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              "\n                                " +
-                                _vm._s(item.respuesta ? "( Si )" : "( No )") +
-                                "\n                            "
-                            )
-                          ])
-                        ])
-                      }),
-                      0
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("hr", { staticClass: "bg-dark " }),
-                _vm._v(" "),
-                _c("p", { staticClass: "text-justify" }, [
-                  _vm._v(
-                    "\n                Todos los datos expresados en esta ficha constituyen una\n                declaración jurada de mi parte\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n                He sido informado que, de omitir o falsear información,\n                puedo perjudiciar la salud de mis compañeros y la mia\n                propia, lo cual constituye una falta grave ala salud\n                pública, asumo sus consecuencias\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-md-8" }, [
-                    _c("label", { attrs: { for: "" } }, [
-                      _vm._v("Fecha: " + _vm._s(_vm.data.detalle_ficha.fecha))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(5)
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-footer" }, [
-              _c(
-                "button",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.button,
-                      expression: "button"
-                    }
-                  ],
-                  staticClass: "btn btn-success btn-block",
-                  on: {
-                    click: function($event) {
-                      return _vm.downloadPDF()
-                    }
-                  }
-                },
-                [_vm._v("\n                DESCARGAR DOCUMENTO\n            ")]
-              )
-            ])
-          ]
+            _c("router-link", { attrs: { to: "/home" } }, [
+              _vm._v("volver al panel")
+            ]),
+            _vm._v(
+              "\n                o intentar usar el formulario de búsqueda.\n            "
+            )
+          ],
+          1
         )
-      : _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: false,
-                expression: "false"
-              }
-            ],
-            staticClass: "card card-primary card-outline mt-3"
-          },
-          [
-            _vm._m(6),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.errorJuramentacion,
-                    expression: "errorJuramentacion"
-                  }
-                ]
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "alert alert-danger",
-                    attrs: { role: "alert" }
-                  },
-                  _vm._l(_vm.errorMostrarMsjJuramentacion, function(error) {
-                    return _c("div", { key: error }, [
-                      _c("b", [
-                        _c("i", { staticClass: "fas fa-exclamation-triangle" }),
-                        _vm._v("\n                        " + _vm._s(error))
-                      ]),
-                      _vm._v(" "),
-                      _c("br")
-                    ])
-                  }),
-                  0
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "card-body" },
-              [
-                _c("p", [_vm._v("Declaracion Jurada")]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._m(7),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.persona,
-                        expression: "persona"
-                      }
-                    ],
-                    staticClass: "text-danger w-50 mr-5",
-                    attrs: { type: "text", readonly: "" },
-                    domProps: { value: _vm.persona },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.persona = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(
-                    "\n                identificado(a) con el\n                "
-                  ),
-                  _vm._m(8),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.dni,
-                        expression: "dni"
-                      }
-                    ],
-                    staticClass: "text-danger w-25",
-                    attrs: { type: "number", readonly: "" },
-                    domProps: { value: _vm.dni },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.dni = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(
-                    ", declaro lo siguente respecto a mis condiciones de\n                salud\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _vm._m(9),
-                _vm._v(" "),
-                _c("div", { staticClass: "card card-body" }, [
-                  _c("form", { staticClass: "formCondiciones" }, [
-                    _c(
-                      "table",
-                      { staticClass: "table table-hover text-nowrap" },
-                      [
-                        _vm._m(10),
-                        _vm._v(" "),
-                        _c(
-                          "tbody",
-                          _vm._l(_vm.arrayCondiciones, function(item) {
-                            return _c("tr", { key: item.id }, [
-                              _c("td", {
-                                domProps: {
-                                  textContent: _vm._s(item.condicion)
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c("input", {
-                                  attrs: {
-                                    type: "radio",
-                                    name: "a" + item.id,
-                                    value: "1"
-                                  }
-                                })
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c("input", {
-                                  attrs: {
-                                    type: "radio",
-                                    name: "a" + item.id,
-                                    value: "0",
-                                    checked: ""
-                                  }
-                                })
-                              ])
-                            ])
-                          }),
-                          0
-                        )
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _c("br"),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n                *Factores de riesgo de acuerdo a Documento técnico aprobado\n                mediante RM 193-2020-MINSA\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n                Asimismo, declaro que dentro de mi vivienda residen los\n                siguentes familiares que cuenta con las siguentes\n                condiciones que los ubican dentro del grupo de riesgo\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("hr"),
-                _vm._v(" "),
-                _c("hr"),
-                _vm._v(" "),
-                _vm._m(11),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("p", [_vm._v("Declaracion Jurada")]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n                He recibido explicacion del objetivo de esta evaluacion y me\n                comprometo a responder con la verdad\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._m(12),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.entidad,
-                      expression: "entidad"
-                    }
-                  ],
-                  staticClass: "w-50 text-danger mr-5",
-                  attrs: { type: "text", readonly: "" },
-                  domProps: { value: _vm.entidad },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.entidad = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v("."),
-                _vm._m(13),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.ruc,
-                      expression: "ruc"
-                    }
-                  ],
-                  staticClass: "w-25 text-danger",
-                  attrs: { type: "text", readonly: "" },
-                  domProps: { value: _vm.ruc },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.ruc = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("br"),
-                _c("br"),
-                _vm._m(14),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.organo_id,
-                        expression: "organo_id"
-                      }
-                    ],
-                    staticClass: "w-75 text-danger",
-                    on: {
-                      change: [
-                        function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.organo_id = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        },
-                        function($event) {
-                          return _vm.getUnidadOrganica()
-                        }
-                      ]
-                    }
-                  },
-                  [
-                    _c("option", { attrs: { value: "0" } }, [
-                      _vm._v(
-                        "------------ Seleccionar el Organo a que pertence\n                    ----------------"
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _vm._l(_vm.arrayOrganos, function(item) {
-                      return _c("option", {
-                        key: item.id,
-                        domProps: {
-                          value: item.id,
-                          textContent: _vm._s(item.organo)
-                        }
-                      })
-                    })
-                  ],
-                  2
-                ),
-                _vm._v(" "),
-                _c("br"),
-                _c("br"),
-                _vm._v(" "),
-                _vm.arrayUnidades.length
-                  ? [
-                      _vm._m(15),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.unidad_id,
-                              expression: "unidad_id"
-                            }
-                          ],
-                          staticClass: "w-75 text-danger",
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.unidad_id = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "0" } }, [
-                            _vm._v(
-                              "------------ Seleccionar el Organo a que pertence\n                        ----------------"
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.arrayUnidades, function(item) {
-                            return _c("option", {
-                              key: item.id,
-                              domProps: {
-                                value: item.id,
-                                textContent: _vm._s(item.unidad)
-                              }
-                            })
-                          })
-                        ],
-                        2
-                      )
-                    ]
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("br"),
-                _c("br"),
-                _c("br"),
-                _c("br"),
-                _vm._m(16),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.persona,
-                      expression: "persona"
-                    }
-                  ],
-                  staticClass: "text-danger w-50 mr-5",
-                  attrs: { type: "text", readonly: "" },
-                  domProps: { value: _vm.persona },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.persona = $event.target.value
-                    }
-                  }
-                }),
-                _vm._m(17),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.dni,
-                      expression: "dni"
-                    }
-                  ],
-                  staticClass: "text-danger",
-                  attrs: { type: "number", readonly: "" },
-                  domProps: { value: _vm.dni },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.dni = $event.target.value
-                    }
-                  }
-                }),
-                _c("br"),
-                _c("br"),
-                _vm._v(" "),
-                _vm._m(18),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.direccion,
-                      expression: "direccion"
-                    }
-                  ],
-                  staticClass: "text-danger w-50 mr-5",
-                  attrs: { type: "text", readonly: "" },
-                  domProps: { value: _vm.direccion },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.direccion = $event.target.value
-                    }
-                  }
-                }),
-                _vm._m(19),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.celular,
-                      expression: "celular"
-                    }
-                  ],
-                  staticClass: "text-danger",
-                  attrs: { type: "text", readonly: "" },
-                  domProps: { value: _vm.celular },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.celular = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("br"),
-                _c("br"),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n                En los últimos 14 dias calendario he tenido alguno de los\n                síntomas siguentes\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _vm._m(20),
-                _vm._v(" "),
-                _c("div", { staticClass: "card card-body" }, [
-                  _c(
-                    "table",
-                    { staticClass: "table table-hover text-nowrap" },
-                    [
-                      _vm._m(21),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.arraySintomas, function(item) {
-                          return _c("tr", { key: item.id }, [
-                            _c("td", {
-                              domProps: { textContent: _vm._s(item.sintoma) }
-                            }),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c("input", {
-                                attrs: {
-                                  type: "radio",
-                                  name: "b" + item.id,
-                                  value: "1"
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c("input", {
-                                attrs: {
-                                  type: "radio",
-                                  name: "b" + item.id,
-                                  value: "0",
-                                  checked: ""
-                                }
-                              })
-                            ])
-                          ])
-                        }),
-                        0
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("hr", { staticClass: "bg-dark " }),
-                _vm._v(" "),
-                _c("p", { staticClass: "text-justify" }, [
-                  _vm._v(
-                    "\n                Todos los datos expresados en esta ficha constituyen una\n                declaración jurada de mi parte\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n                He sido informado que, de omitir o falsear información,\n                puedo perjudiciar la salud de mis compañeros y la mia\n                propia, lo cual constituye una falta grave ala salud\n                pública, asumo sus consecuencias\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-md-8" }, [
-                    _c("label", { attrs: { for: "" } }, [
-                      _vm._v("Fecha: " + _vm._s(_vm.date))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(22)
-                ])
-              ],
-              2
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-footer" }, [
-              _c(
-                "button",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.button,
-                      expression: "button"
-                    }
-                  ],
-                  staticClass: "btn btn-primary btn-block",
-                  on: {
-                    click: function($event) {
-                      return _vm.registrarDocumento()
-                    }
-                  }
-                },
-                [_vm._v("\n                GUARDAR DOCUMENTO\n            ")]
-              )
-            ])
-          ]
-        )
+      ]),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "w-50 h-50 mt-5",
+        attrs: {
+          src: "https://image.flaticon.com/icons/svg/2910/2910692.svg",
+          alt: "error 500"
+        }
+      })
+    ])
   ])
 }
 var staticRenderFns = [
@@ -52201,229 +51413,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("div", { staticClass: "card-title" }, [
-        _c("b", [_vm._v("DOCUMENTO DE JURAMENTACION")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h4", [
-      _c("b", [
-        _vm._v(
-          "FORMATO PARA LEVANTAMIENTO DE INFORMACÍÓN DE SERVIDORES\n                    EN EL GRUPO DE RIESGO - COVID 19"
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("condicion")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Respuesta")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h5", [
-      _c("b", [
-        _vm._v(
-          "FICHA DE SINTOMATOLOGIA COVIT-19 PAR AEL REGRESO AL\n                    TRABAJO"
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Sintoma")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Respuesta")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c("label", { attrs: { for: "" } }, [
-        _vm._v("Firma: ___________________________________")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("div", { staticClass: "card-title" }, [
-        _c("b", [_vm._v("DOCUMENTO DE JURAMENTACION")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-danger" }, [
-      _c("b", [_vm._v("Yo, (*)")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-danger" }, [
-      _c("b", [_vm._v("DNI/CE N° (*)")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h5", [
-      _vm._v(
-        "\n                PRESENTO ALGUNA DE LAS SIGUENTES CONDICIONES DE SALUD* SI NO\n                "
-      ),
-      _c("span", { staticClass: "text-danger" }, [_c("b", [_vm._v("(*)")])])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("condicion")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("SI")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("NO")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h5", [
-      _c("b", [
-        _vm._v(
-          "FICHA DE SINTOMATOLOGIA COVIT-19 PAR AEL REGRESO AL\n                    TRABAJO"
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-danger" }, [
-      _c("b", [_vm._v("Entidad Publica: (*)")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-danger" }, [
-      _c("b", [_vm._v("Ruc: (*)")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-danger" }, [
-      _c("b", [_vm._v(" Organo: (*)")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-danger" }, [
-      _c("b", [_vm._v(" Unidad orgánica: (*)")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-danger" }, [
-      _c("b", [_vm._v("Nombres y Apellidos: (*)")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-danger" }, [
-      _c("b", [_vm._v("DNI: (*)")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-danger" }, [
-      _c("b", [_vm._v("Direccion: (*)")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-danger" }, [
-      _c("b", [_vm._v("Celular: (*)")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-danger" }, [
-      _c("b", [_vm._v("(*)")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Sintoma")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("SI")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("NO")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c("label", { attrs: { for: "" } }, [
-        _vm._v("Firma: ___________________________________")
-      ])
+    return _c("h3", [
+      _c("i", { staticClass: "fas fa-exclamation-triangle text-danger" }),
+      _vm._v("\n                ¡Vaya! Algo salió mal.\n            ")
     ])
   }
 ]
@@ -52590,7 +51582,7 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-primary btn-block",
+                      staticClass: "btn btn-primary btn-block rounded-0",
                       attrs: { type: "submit" },
                       on: {
                         click: function($event) {

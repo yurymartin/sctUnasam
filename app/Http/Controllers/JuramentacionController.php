@@ -11,6 +11,7 @@ use App\Unida_Organica;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JuramentacionController extends Controller
 {
@@ -49,6 +50,13 @@ class JuramentacionController extends Controller
             "res" => true,
         ]);
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
 
     public function declaracion(Request $request)
     {

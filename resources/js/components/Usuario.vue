@@ -683,7 +683,7 @@ export default {
                 case "users": {
                     switch (accion) {
                         case "registrar": {
-                            this.tituloModal = "REGISTRAR NUEVO EMPLEADO";
+                            this.tituloModal = "REGISTRAR NUEVO USUARIO";
                             this.persona_id = 0;
                             this.tipo_usuario_id = 0;
                             this.name = "";
@@ -694,7 +694,7 @@ export default {
                             break;
                         }
                         case "actualizar": {
-                            this.tituloModal = "ACTUALIZAR UNA CONDICON";
+                            this.tituloModal = "ACTUALIZAR UN USUARIO";
                             this.tipoAccion = 2;
                             this.id = data["id"];
                             this.persona_id = data["persona_id"];

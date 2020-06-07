@@ -468,7 +468,7 @@ export default {
                     password: this.password,
                     dataCondiciones: this.newArrayCondiciones
                 })
-                .then(() => {
+                .then(response => {
                     this.cerrar();
                     Swal.fire({
                         title: "SE REGISTRO LA DECLARACION JURADA EXITOSAMENTE",

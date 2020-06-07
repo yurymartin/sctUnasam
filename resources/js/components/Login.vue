@@ -77,7 +77,7 @@
                         <div class="col-12">
                             <button
                                 type="submit"
-                                class="btn btn-primary btn-block"
+                                class="btn btn-primary btn-block rounded-0"
                                 @click="login()"
                             >
                                 <i class="fas fa-unlock-alt"></i> INGRESAR
