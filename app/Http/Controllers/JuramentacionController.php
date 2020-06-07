@@ -73,17 +73,16 @@ class JuramentacionController extends Controller
             $detalle_condiciones->save();
         }
 
-        // $newUser = new User();
-        // $newUser->persona_id = $persona->id;
-        // $newUser->tipo_usuario_id = 3;
-        // $newUser->name = "EMPLEADO";
-        // $newUser->email = $request->email;
-        // $newUser->password = bcrypt($request->password);
-        // $newUser->save();
+        $newUser = new User();
+        $newUser->persona_id = $persona->id;
+        $newUser->tipo_usuario_id = 3;
+        $newUser->name = $request->nombres;
+        $newUser->email = $request->email;
+        $newUser->password = bcrypt($request->password);
+        $newUser->save();
 
         return response()->json([
             "res" => true,
-            "persona_id" => $persona->id
         ]);
     }
 

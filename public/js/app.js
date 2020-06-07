@@ -3185,6 +3185,7 @@ __webpack_require__.r(__webpack_exports__);
             timer: 3000
           });
           _this2.existe = false;
+          _this2.dni = "";
         } else {
           sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
             position: "center",
@@ -3218,32 +3219,21 @@ __webpack_require__.r(__webpack_exports__);
         apellidos: this.apellidos,
         direccion: this.direccion,
         celular: this.celular,
-        // email: this.email,
+        email: this.email,
         organo: this.organo,
         unidad: this.unidad,
-        // password: this.password,
+        password: this.password,
         dataCondiciones: this.newArrayCondiciones
-      }).then(function (response) {
-        axios.post("/api/register", {
-          persona_id: response.data.persona_id,
-          tipo_usuario_id: 3,
-          name: _this3.nombres,
-          email: _this3.email,
-          password: _this3.password
-        }).then(function (response) {
-          _this3.cerrar();
+      }).then(function () {
+        _this3.cerrar();
 
-          sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
-            title: "SE REGISTRO LA DECLARACION JURADA EXITOSAMENTE",
-            icon: "success",
-            width: 800,
-            padding: "3em",
-            background: "#fff url(/images/trees.png)",
-            backdrop: "\n                            rgba(0,0,123,0.4)\n                            url(\"/images/nyan-cat.gif\")\n                            left top\n                            no-repeat\n                        ",
-            timer: 2000
-          });
-        })["catch"](function (error) {
-          console.log(error);
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+          title: "SE REGISTRO LA DECLARACION JURADA EXITOSAMENTE",
+          icon: "success",
+          width: 800,
+          padding: "3em",
+          background: "#fff url(/images/trees.png)",
+          timer: 2000
         });
       })["catch"](function (error) {
         console.log(error);
