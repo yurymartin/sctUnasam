@@ -52,10 +52,13 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://sctunasam.herokuapp.com'),
+    // 'url' => env('APP_URL', 'http://sctunasam.herokuapp.com'),
 
-    'asset_url' => env('ASSET_URL', 'https://sctunasam.herokuapp.com'),
+    // 'asset_url' => env('ASSET_URL', 'http://sctunasam.herokuapp.com'),
+    // 
+    'url' => env('APP_URL', 'http://127.0.0.1:8000'),
 
+    'asset_url' => env('ASSET_URL', 'http://127.0.0.1:8000'),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

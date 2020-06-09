@@ -110,6 +110,51 @@
                                                     autocomplete="off"
                                                 />
                                             </div>
+                                            <div class="col-md-4 form-group">
+                                                <label
+                                                    >3.Peso
+                                                    <span class="text-danger"
+                                                        >*</span
+                                                    ></label
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="peso corporal"
+                                                    v-model="peso"
+                                                    @keyup="calcularIMC()"
+                                                />
+                                            </div>
+                                            <div class="col-md-4 form-group">
+                                                <label
+                                                    >3.Talla
+                                                    <span class="text-danger"
+                                                        >*</span
+                                                    ></label
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="talla"
+                                                    v-model="talla"
+                                                    @keyup="calcularIMC()"
+                                                />
+                                            </div>
+                                            <div class="col-md-4 form-group">
+                                                <label
+                                                    >3.IMC
+                                                    <span class="text-danger"
+                                                        >*</span
+                                                    ></label
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="auto calculable"
+                                                    v-model="imc"
+                                                    readonly
+                                                />
+                                            </div>
                                             <div class="col-md-2 form-group">
                                                 <label for="edad"
                                                     >Celular</label
@@ -132,10 +177,11 @@
                                                     placeholder="edad"
                                                 />
                                             </div>
-                                            
+
                                             <div class="col-md-5 form-group">
                                                 <label for="edad"
-                                                    >Correo Institucional <span class="text-danger"
+                                                    >Correo Institucional
+                                                    <span class="text-danger"
                                                         >(*)</span
                                                     ></label
                                                 >
@@ -148,7 +194,8 @@
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <label for="organo"
-                                                    >Organo <span class="text-danger"
+                                                    >Organo
+                                                    <span class="text-danger"
                                                         >(*)</span
                                                     ></label
                                                 >
@@ -161,7 +208,8 @@
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <label for="unidad"
-                                                    >Unidad Organica <span class="text-danger"
+                                                    >Unidad Organica
+                                                    <span class="text-danger"
                                                         >(*)</span
                                                     ></label
                                                 >
@@ -256,6 +304,9 @@
                                     <th>DNI</th>
                                     <th>Nombres</th>
                                     <th>Apellidos</th>
+                                    <th>Peso</th>
+                                    <th>Talla</th>
+                                    <th>IMC</th>
                                     <th>Direccion</th>
                                     <th>Celular</th>
                                     <th>Email</th>
@@ -274,6 +325,9 @@
                                     <td v-text="item.dni"></td>
                                     <td v-text="item.nombres"></td>
                                     <td v-text="item.apellidos"></td>
+                                    <td v-text="item.peso"></td>
+                                    <td v-text="item.talla"></td>
+                                    <td v-text="item.imc"></td>
                                     <td v-text="item.direccion"></td>
                                     <td v-text="item.celular"></td>
                                     <td v-text="item.email"></td>
@@ -436,6 +490,9 @@ export default {
             dni: "",
             nombres: "",
             apellidos: "",
+            peso: 0,
+            talla: 0,
+            imc: 0,
             direccion: 0,
             celular: "",
             email: "",
@@ -522,6 +579,9 @@ export default {
                     dni: this.dni,
                     nombres: this.nombres,
                     apellidos: this.apellidos,
+                    peso: this.peso,
+                    talla: this.talla,
+                    imc: this.imc,
                     direccion: this.direccion,
                     celular: this.celular,
                     email: this.email,
@@ -553,6 +613,9 @@ export default {
                     dni: this.dni,
                     nombres: this.nombres,
                     apellidos: this.apellidos,
+                    peso: this.peso,
+                    talla: this.talla,
+                    imc: this.imc,
                     direccion: this.direccion,
                     celular: this.celular,
                     email: this.email,
@@ -638,11 +701,22 @@ export default {
                 this.errorMostrarMsjPersona.push(
                     "Los apellidos no pueden estar vacio"
                 );
+
+            if (!this.peso || this.peso <= 0)
+                this.errorMostrarMsjPersona.push(
+                    "el campo peso es obligatorio de llenar"
+                );
+
+            if (!this.talla || this.talla <= 0)
+                this.errorMostrarMsjPersona.push(
+                    "el campo talla es obligatorio de llenar"
+                );
+
             if (!this.email)
                 this.errorMostrarMsjPersona.push(
                     "el correo institucional no pueden estar vacio"
                 );
-            
+
             if (!this.organo)
                 this.errorMostrarMsjPersona.push(
                     "el organo no pueden estar vacio"
@@ -664,6 +738,9 @@ export default {
             this.dni = "";
             this.nombres = "";
             this.apellidos = "";
+            this.peso = 0;
+            this.talla = 0;
+            this.imc = 0;
             this.edad = "";
             this.genero = "MASCULINO";
             this.activo = 0;
@@ -684,6 +761,9 @@ export default {
                             this.dni = "";
                             this.nombres = "";
                             this.apellidos = "";
+                            this.peso = 0;
+                            this.talla = 0;
+                            this.imc = 0;
                             this.direccion = "";
                             this.celular = "";
                             this.email = "";
@@ -700,6 +780,9 @@ export default {
                             this.dni = data["dni"];
                             this.nombres = data["nombres"];
                             this.apellidos = data["apellidos"];
+                            this.peso = data["peso"];
+                            this.talla = data["talla"];
+                            this.imc = data["imc"];
                             this.direccion = data["direccion"];
                             this.celular = data["celular"];
                             this.email = data["email"];
@@ -711,6 +794,10 @@ export default {
                     }
                 }
             }
+        },
+        calcularIMC() {
+            this.imc = this.peso / Math.pow(this.talla, 2);
+            this.imc = this.imc.toFixed(2);
         }
     },
     mounted() {

@@ -66,6 +66,9 @@ class JuramentacionController extends Controller
         $persona->dni = $request->dni;
         $persona->nombres = $request->nombres;
         $persona->apellidos = $request->apellidos;
+        $persona->peso = $request->peso;
+        $persona->talla = $request->talla;
+        $persona->imc = $request->imc;
         $persona->direccion = $request->direccion;
         $persona->celular = $request->celular;
         $persona->email = $request->email;
@@ -97,26 +100,11 @@ class JuramentacionController extends Controller
     public function verifyDocumento($id)
     {
         $detalle_condiciones = Detalle_Condicion::where('persona_id', '=', $id)->get();
-        $detalle_sintomas = Detalle_Sintoma::where('persona_id', '=', $id)->get();
-        $detalle_ficha = Detalle_Ficha::where('persona_id', '=', $id)->first();
-        $unidad = Unida_Organica::findOrfail($detalle_ficha->unidades_organica_id);
-        $organo = Organo::findOrfail($unidad->organo_id);
 
-        if ($detalle_condiciones || $detalle_sintomas || $detalle_ficha) {
-            return response()->json([
-                'detalle_condiciones' => $detalle_condiciones,
-                'detalle_sintomas' => $detalle_sintomas,
-                'detalle_ficha' => $detalle_ficha,
-                'unidad' => $unidad,
-                'organo' => $organo,
-                'res' => true,
-                'status' => 200
-            ]);
-        } else {
-            return response()->json([
-                'res' => false,
-                'status' => 200
-            ]);
-        }
+        return response()->json([
+            'detalle_condiciones' => $detalle_condiciones,
+            'res' => true,
+            'status' => 200
+        ]);
     }
 }

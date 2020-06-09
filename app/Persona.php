@@ -9,7 +9,7 @@ class Persona extends Model
 {
     use SoftDeletes;
     protected $table = 'personas';
-    protected $fillable = ['dni', 'nombres', 'apellidos', 'direccion', 'celular','email','organo','unidad', 'activo'];
+    protected $fillable = ['dni', 'nombres', 'apellidos', 'direccion', 'celular', 'email', 'peso', 'talla', 'imc', 'organo', 'unidad', 'activo'];
     protected $hidden = ['created_at', 'updated_at'];
 
     public function detalle_condiciones()

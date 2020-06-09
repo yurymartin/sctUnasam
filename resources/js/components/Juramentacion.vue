@@ -21,7 +21,6 @@
             />
         </div>
     </section>
-
     <!-- <div class="card card-primary card-outline mt-3" v-show="false">
             <div class="card-header">
                 <div class="card-title"><b>DOCUMENTO DE JURAMENTACION</b></div>

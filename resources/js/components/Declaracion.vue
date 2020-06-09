@@ -6,22 +6,18 @@
                     <div
                         class="card-header text-left cabecera rounded-0 pt-3 pb-3"
                     >
-                        <h1 class="texto">INFORMACIÓN ADICIONAL DE SALUD</h1>
-                        <br />
-                        <p class="text-justify">
-                            Ante la emisión del Decreto Supremo que declara
-                            Estado de Emergencia Nacional por las graves
-                            circunstancias que afectan la vida de la Nación a
-                            consecuencia del brote del COVID-19, el cual dispone
-                            el aislamiento social obligatorio (cuarentena), Bajo
-                            esta premisa es de suma importancia el recojo de
-                            información adicional de salud de nuestros
-                            colaboradores de nuestra universidad Santiago
-                            Antúnez de Mayolo, información que nos servirá para
-                            las siguientes decisiones en la prevención y
-                            mitigación del COVID-19. Por favor brinde datos
-                            verdaderos y no llene 2 veces el formulario.
-                        </p>
+                        <div class="form-row">
+                            <div class="col-lg-9">
+                                <h1 class="texto">INFORMACIÓN ADICIONAL DE SALUD</h1>
+                                <br />
+                                <p class="text-justify">
+                                    Ante la emisión del Decreto Supremo que declara Estado de Emergencia Nacional por las graves circunstancias que afectan la vida de la Nación a consecuencia del brote del COVID-19, el cual dispone el aislamiento social obligatorio (cuarentena), bajo esta premisa es de suma importancia el recojo de información adicional de salud de nuestros colaboradores de nuestra Universidad Nacional "Santiago Antúnez de Mayolo", información que nos servirá para las siguientes decisiones en la prevención y mitigación del COVID-19. Por favor brinde datos verdaderos y no llene 2 veces el formulario, la OGTISE no se responsabiliza de datos falsos.
+                                </p>  
+                            </div>
+                            <div class="col-lg-3 text-center">
+                                <img src="logo-unasam.png" class="img-fluid" alt="UNASAM" width="120px">
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="col-md-12 form-group">
@@ -52,21 +48,22 @@
                                 <div class="row">
                                     <div class="col-md-9" v-if="!existe">
                                         <label
-                                            >3.DNI
+                                            >1.DNI
                                             <span class="text-danger"
                                                 >*</span
                                             ></label
                                         >
                                         <input
-                                            type="text"
+                                            type="number"
                                             class="form-control rounded-0"
                                             :class="
                                                 dni.length > 8
                                                     ? 'form-control rounded-0 border border-danger'
                                                     : 'form-control rounded-0'
                                             "
-                                            placeholder="Escriba su respuesta"
+                                            placeholder="Escriba su dni a consultar"
                                             v-model="dni"
+                                            maxlength="8"
                                         />
                                         <span
                                             v-if="dni.length > 8"
@@ -75,6 +72,12 @@
                                         >
                                     </div>
                                     <div class="col-md-12" v-else>
+                                        <label
+                                            >1.DNI
+                                            <span class="text-danger"
+                                                >*</span
+                                            ></label
+                                        >
                                         <input
                                             type="text"
                                             class="form-control rounded-0"
@@ -105,7 +108,7 @@
                             <template v-if="existe">
                                 <div class="col-md-12 form-group mt-2">
                                     <label
-                                        >1.NOMBRES
+                                        >2.NOMBRES
                                         <span class="text-danger"
                                             >*</span
                                         ></label
@@ -113,13 +116,13 @@
                                     <input
                                         type="text"
                                         class="form-control rounded-0"
-                                        placeholder="Escriba su respuesta"
+                                        placeholder="Escriba sus nombres"
                                         v-model="nombres"
                                     />
                                 </div>
                                 <div class="col-md-12 form-group mt-2">
                                     <label
-                                        >2.APELLIDOS
+                                        >3.APELLIDOS
                                         <span class="text-danger"
                                             >*</span
                                         ></label
@@ -127,8 +130,55 @@
                                     <input
                                         type="text"
                                         class="form-control rounded-0"
-                                        placeholder="Escriba su respuesta"
+                                        placeholder="Escriba sus apellidos"
                                         v-model="apellidos"
+                                    />
+                                </div>
+                                <div class="col-md-4 form-group mt-2">
+                                    <label
+                                        >3.Peso (kg)
+                                        <span class="text-danger"
+                                            >* En números y con decimal (de ser necesario): Ejemplo 60.2</span
+                                        ></label
+                                    >
+                                    <input
+                                        type="number"
+                                        step="0.01"
+                                        class="form-control rounded-0"
+                                        placeholder="Escriba su peso corporal"
+                                        v-model="peso"
+                                        @keyup="calcularIMC()"
+                                    />
+                                </div>
+                                <div class="col-md-4 form-group mt-2">
+                                    <label
+                                        >3.Talla (m)
+                                        <span class="text-danger"
+                                            >* En números y con decimal: Ejemplo 1.60</span
+                                        ></label
+                                    >
+                                    <input
+                                        type="number"
+                                        step="0.01"
+                                        class="form-control rounded-0"
+                                        placeholder="Escriba su talla"
+                                        v-model="talla"
+                                        @keyup="calcularIMC()"
+                                    />
+                                </div>
+                                <div class="col-md-4 form-group mt-2">
+                                    <label
+                                        >3.IMC
+                                        <span class="text-danger"
+                                            >*</span
+                                        ></label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="form-control rounded-0"
+                                        placeholder="auto calculable"
+                                        v-model="imc"
+                                        readonly
                                     />
                                 </div>
                                 <div class="col-md-12 form-group mt-4">
@@ -139,10 +189,11 @@
                                         ></label
                                     >
                                     <input
-                                        type="text"
+                                        type="number"
                                         class="form-control rounded-0"
-                                        placeholder="Escriba su respuesta"
+                                        placeholder="Escriba su numero de celular(maximo 9 digitos)"
                                         v-model="celular"
+                                        maxlength="9"
                                     />
                                 </div>
                                 <div class="col-md-12 form-group mt-4">
@@ -152,12 +203,14 @@
                                             >*</span
                                         ></label
                                     >
-                                    <input
-                                        type="text"
-                                        class="form-control rounded-0"
-                                        placeholder="Escriba su respuesta"
-                                        v-model="email"
-                                    />
+                                    <div class="input-group mb-3">
+                                        <input
+                                            type="text"
+                                            class="form-control rounded-0"
+                                            placeholder="Ingrese su Correo Institucional"
+                                            v-model="email"
+                                        />
+                                    </div>
                                 </div>
                                 <div class="col-md-12 form-group mt-4">
                                     <label
@@ -169,7 +222,7 @@
                                     <input
                                         type="text"
                                         class="form-control rounded-0"
-                                        placeholder="Escriba su respuesta"
+                                        placeholder="Escriba su direeción domiciliaria"
                                         v-model="direccion"
                                     />
                                 </div>
@@ -184,7 +237,7 @@
                                     <input
                                         type="text"
                                         class="form-control rounded-0"
-                                        placeholder="Escriba su respuesta"
+                                        placeholder="Escriba su dependencia academica"
                                         v-model="organo"
                                     />
                                 </div>
@@ -195,7 +248,7 @@
                                     <input
                                         type="text"
                                         class="form-control rounded-0"
-                                        placeholder="Escriba su respuesta"
+                                        placeholder="Escriba su unidad organica donde labora"
                                         v-model="unidad"
                                     />
                                 </div>
@@ -247,8 +300,7 @@
                                     <div class="card">
                                         <div class="card-header cabecera">
                                             <div class="card-title">
-                                                DATOS PARA REGISTRARSE EN EL
-                                                SISTEMA
+                                                DATOS PARA USAR EL SISTEMA DE MONITOREO
                                             </div>
                                         </div>
                                         <div class="card-body">
@@ -256,15 +308,15 @@
                                                 class="col-md-12 form-group mt-4"
                                             >
                                                 <label
-                                                    >PASSWORD
+                                                    >CONTRASEÑA
                                                     <span class="text-danger"
-                                                        >*</span
+                                                        >* Crear contraseña, no olvidarlo que será muy útil para usted</span
                                                     ></label
                                                 >
                                                 <input
                                                     type="password"
                                                     class="form-control rounded-0"
-                                                    placeholder="Escriba su password"
+                                                    placeholder="Escriba su contraseña"
                                                     v-model="password"
                                                 />
                                             </div>
@@ -272,7 +324,7 @@
                                                 class="col-md-12 form-group mt-4"
                                             >
                                                 <label
-                                                    >PASSWORD CONFIRMACION
+                                                    >CONFIRMACIÓN DE CONTRASEÑA
                                                     <span class="text-danger"
                                                         >*</span
                                                     ></label
@@ -280,7 +332,7 @@
                                                 <input
                                                     type="password"
                                                     class="form-control rounded-0"
-                                                    placeholder="vuelva a escribir su password"
+                                                    placeholder="vuelva a escribir su contraseña"
                                                     v-model="confir_password"
                                                 />
                                             </div>
@@ -342,9 +394,12 @@ import Swal from "sweetalert2";
 export default {
     data() {
         return {
+            dni: "",
             nombres: "",
             apellidos: "",
-            dni: "",
+            peso: 0,
+            talla: 0,
+            imc: 0,
             direccion: "",
             email: "",
             celular: "",
@@ -369,6 +424,9 @@ export default {
             this.existe = false;
             this.nombres = "";
             this.apellidos = "";
+            this.peso = 0;
+            this.talla = 0;
+            this.imc = 0;
             this.dni = "";
             this.direccion = "";
             this.email = "";
@@ -455,11 +513,15 @@ export default {
             }
             this.agregarCondicion();
             this.buttom = false;
+            this.email = this.email + "@unasam.edu.pe";
             axios
                 .post("/api/declaracion", {
                     dni: this.dni,
                     nombres: this.nombres,
                     apellidos: this.apellidos,
+                    peso: this.peso,
+                    talla: this.talla,
+                    imc: this.imc,
                     direccion: this.direccion,
                     celular: this.celular,
                     email: this.email,
@@ -495,6 +557,10 @@ export default {
                 });
             });
         },
+        calcularIMC() {
+            this.imc = this.peso / Math.pow(this.talla, 2);
+            this.imc = this.imc.toFixed(2);
+        },
         validar() {
             this.error = 0;
             this.arrayError = [];
@@ -509,6 +575,12 @@ export default {
                     "el campo apellidos es obligatorio de llenar"
                 );
 
+            if (!this.peso || this.peso <= 0)
+                this.arrayError.push("el campo peso es obligatorio de llenar");
+
+            if (!this.talla || this.talla <= 0)
+                this.arrayError.push("el campo talla es obligatorio de llenar");
+
             if (!this.dni)
                 this.arrayError.push("el campo dni es obligatorio de llenar");
 
@@ -519,6 +591,9 @@ export default {
                 this.arrayError.push(
                     "el campo celular es obligatorio de llenar"
                 );
+
+            if (this.celular.length != 9)
+                this.arrayError.push("el numero del celular no es valido");
 
             if (!this.email)
                 this.arrayError.push("el campo email es obligatorio de llenar");
@@ -540,6 +615,11 @@ export default {
 
             if (!this.password)
                 this.arrayError.push("el password es obligatorio de llenar");
+
+            if (!this.confir_password)
+                this.arrayError.push(
+                    "el password de confirmacion es obligatorio de llenar"
+                );
 
             if (!this.confir_password)
                 this.arrayError.push(
@@ -593,5 +673,11 @@ export default {
     margin-top: 28px;
     padding-top: 8px;
     padding-bottom: 8px;
+}
+.email {
+    margin-left: -15px;
+    border: none;
+}
+.example {
 }
 </style>

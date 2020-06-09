@@ -148,7 +148,6 @@ export default {
                         this.dni = response.data.persona.dni;
                         this.direccion = response.data.persona.direccion;
                         this.celular = response.data.persona.celular;
-                        console.log(response.data.persona);
                         localStorage.setItem(
                             "token",
                             this.type + " " + this.token
