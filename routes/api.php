@@ -47,4 +47,10 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::apiResource('users', 'UserController');
     Route::put('usersAD/{id}/{activo}', 'UserController@usersAD');
+
+    Route::apiResource('fichassintomaticas', 'FichaSintomaticaController');
+    Route::get('getFichas', 'FichaSintomaticaController@getFichas');
 });
+
+Route::get('allEmpleados', 'ReporteController@allEmpleados');
+Route::get('allEmpleadosCondicion', 'ReporteController@allEmpleadosCondicion');

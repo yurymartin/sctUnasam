@@ -21,6 +21,7 @@ class CreatePersonasTable extends Migration
             $table->string('direccion')->nullable();
             $table->string('celular', 45)->nullable();
             $table->string('email')->nullable();
+            $table->date('fecha_nacimineto')->nullable();
             $table->double('peso', 9, 2)->nullable();
             $table->double('talla', 9, 2)->nullable();
             $table->double('imc', 9, 2)->nullable();

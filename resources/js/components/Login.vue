@@ -1,8 +1,18 @@
 <template>
     <div class="login-page" v-if="arrayTipoUsers.length">
         <div class="login-box">
-            <div class="login-logo">
-                <p>SCT | UNASAM</p>
+            <div class="bg-light p-1 text-center">
+                <div class="login-logo">
+                    <router-link to="/">
+                        <p>
+                            <b>SISTEMA DE CONTROL DE COVIT 19 - UNASAM</b>
+                        </p>
+                    </router-link>
+                </div>
+                <p>
+                    La Oficina General de Tecnologias de Informacion, Sistemas y
+                    Estadistica(OGTISE)
+                </p>
             </div>
             <div class="card">
                 <div class="card-body login-card-body">

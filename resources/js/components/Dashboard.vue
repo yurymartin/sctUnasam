@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" v-if="arraykey.length">
+    <div class="wrapper">
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -14,298 +14,321 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <!-- <a
-                        class="nav-link"
-                        data-widget="control-sidebar"
-                        data-slide="true"
-                        href="#"
-                        role="button"
-                        ><i class="fas fa-th-large"></i
-                    ></a> -->
                     <button class="btn btn-danger btn-sm" @click="logout">
                         Cerrar Session
                     </button>
                 </li>
             </ul>
         </nav>
-        <!-- /.navbar -->
 
-        <aside
-            class="main-sidebar sidebar-light-primary elevation-4"
-            v-if="key == arraykey[2].key"
-        >
-            <router-link to="/perfil" class="brand-link text-center">
-                <span class="brand-text font-weight-light"
-                    ><b>SCT || UNASAM</b></span
-                >
-            </router-link>
-            <div class="sidebar">
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="info text-center">
-                        <h5 v-text="nombres + ' ' + apellidos"><b></b></h5>
-                    </div>
-                </div>
-                <nav class="mt-2">
-                    <ul
-                        class="nav nav-pills nav-sidebar flex-column"
-                        data-widget="treeview"
-                        role="menu"
-                        data-accordion="false"
+        <div v-if="Object.entries(arraykey).length > 0">
+            <!-- DIRECTIVO -->
+            <aside class="main-sidebar sidebar-light-primary elevation-4" v-if="key == arraykey[3].key">
+                <router-link to="/perfil" class="brand-link text-center">
+                    <span class="brand-text font-weight-light"
+                        ><b>SCT || UNASAM</b></span
                     >
-                        <li class="nav-item">
-                            <router-link to="/home" class="nav-link">
-                                <i class="nav-icon fas fa-home"></i>
-                                <p>
-                                    Home<span class="right badge badge-danger"
-                                        >New</span
-                                    >
-                                </p>
-                            </router-link>
-                        </li>
-
-                        <li class="nav-item">
-                            <router-link to="/perfil" class="nav-link">
-                                <i class="nav-icon far fa-chart-bar"></i>
-                                <p>
-                                    Mis Temperaturas<span
-                                        class="right badge badge-danger"
-                                        >New</span
-                                    >
-                                </p>
-                            </router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link to="/juramentacion" class="nav-link">
-                                <i class="nav-icon far fa-file-alt"></i>
-                                <p>
-                                    Declaración Jurada<span
-                                        class="right badge badge-danger"
-                                        >New</span
-                                    >
-                                </p>
-                            </router-link>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
-
-        <!-- -------------------------------------------SIDER BAR ---------------------------------------------- -->
-        <aside
-            class="main-sidebar sidebar-light-primary elevation-4"
-            v-if="key == arraykey[1].key"
-        >
-            <router-link to="/perfil" class="brand-link text-center">
-                <span class="brand-text font-weight-light"
-                    ><b>SCT || UNASAM</b></span
-                >
-            </router-link>
-            <div class="sidebar">
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="info text-center">
-                        <h5 v-text="nombres + ' ' + apellidos"><b></b></h5>
+                </router-link>
+                <div class="sidebar">
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                        <div class="info text-center">
+                            <h5 v-text="nombres + ' ' + apellidos"><b></b></h5>
+                        </div>
                     </div>
-                </div>
-                <nav class="mt-2">
-                    <ul
-                        class="nav nav-pills nav-sidebar flex-column"
-                        data-widget="treeview"
-                        role="menu"
-                        data-accordion="false"
-                    >
-                        <li class="nav-item">
-                            <router-link to="/home" class="nav-link">
-                                <i class="nav-icon fas fa-home"></i>
-                                <p>
-                                    Home<span class="right badge badge-danger"
-                                        >New</span
-                                    >
-                                </p>
-                            </router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link to="/temperaturas" class="nav-link">
-                                <i class="nav-icon fas fa-temperature-high"></i>
-                                <p>
-                                    Temperaturas<span
-                                        class="right badge badge-danger"
-                                        >New</span
-                                    >
-                                </p>
-                            </router-link>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
+                    <nav class="mt-2">
+                        <ul
+                            class="nav nav-pills nav-sidebar flex-column"
+                            data-widget="treeview"
+                            role="menu"
+                            data-accordion="false"
+                        >
+                            <li class="nav-item">
+                                <router-link to="/home" class="nav-link">
+                                    <i class="nav-icon fas fa-home"></i>
+                                    <p>
+                                        Home<span class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
 
-        <aside
-            class="main-sidebar sidebar-light-primary elevation-4"
-            v-if="key == arraykey[0].key"
-        >
-            <router-link to="/perfil" class="brand-link text-center">
-                <span class="brand-text font-weight-light"
-                    ><b>SCT || UNASAM</b></span
-                >
-            </router-link>
-            <div class="sidebar">
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="info text-center">
-                        <h5 v-text="nombres + ' ' + apellidos"><b></b></h5>
+                            <li class="nav-item">
+                                <router-link to="/reportes" class="nav-link">
+                                    <i class="nav-icon far fa-folder-open"></i>
+                                    <p>
+                                        Reportes<span class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- /.sidebar-menu -->
+                </div>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- EMPLEADO -->
+            <aside class="main-sidebar sidebar-light-primary elevation-4" v-if="key == arraykey[2].key">
+                <router-link to="/perfil" class="brand-link text-center">
+                    <span class="brand-text font-weight-light"
+                        ><b>SCT || UNASAM</b></span
+                    >
+                </router-link>
+                <div class="sidebar">
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                        <div class="info text-center">
+                            <h5 v-text="nombres + ' ' + apellidos"><b></b></h5>
+                        </div>
                     </div>
+                    <nav class="mt-2">
+                        <ul
+                            class="nav nav-pills nav-sidebar flex-column"
+                            data-widget="treeview"
+                            role="menu"
+                            data-accordion="false"
+                        >
+                            <li class="nav-item">
+                                <router-link to="/home" class="nav-link">
+                                    <i class="nav-icon fas fa-home"></i>
+                                    <p>
+                                        Home<span class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
+
+                            <li class="nav-item">
+                                <router-link to="/perfil" class="nav-link">
+                                    <i class="nav-icon far fa-chart-bar"></i>
+                                    <p>
+                                        Mis Temperaturas<span
+                                            class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link to="/fichassintomaticas" class="nav-link">
+                                    <i class="nav-icon far fa-file-alt"></i>
+                                    <p>
+                                        Mis Fichas Sintomaticas<span
+                                            class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- /.sidebar-menu -->
                 </div>
-                <nav class="mt-2">
-                    <ul
-                        class="nav nav-pills nav-sidebar flex-column"
-                        data-widget="treeview"
-                        role="menu"
-                        data-accordion="false"
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- MEDICO  -->
+            <aside class="main-sidebar sidebar-light-primary elevation-4" v-if="key == arraykey[1].key" >
+                <router-link to="/perfil" class="brand-link text-center">
+                    <span class="brand-text font-weight-light"
+                        ><b>SCT || UNASAM</b></span
                     >
-                        <li class="nav-item">
-                            <router-link to="/home" class="nav-link">
-                                <i class="nav-icon fas fa-home"></i>
-                                <p>
-                                    Home<span class="right badge badge-danger"
-                                        >New</span
-                                    >
-                                </p>
-                            </router-link>
-                        </li>
+                </router-link>
+                <div class="sidebar">
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                        <div class="info text-center">
+                            <h5 v-text="nombres + ' ' + apellidos"><b></b></h5>
+                        </div>
+                    </div>
+                    <nav class="mt-2">
+                        <ul
+                            class="nav nav-pills nav-sidebar flex-column"
+                            data-widget="treeview"
+                            role="menu"
+                            data-accordion="false"
+                        >
+                            <li class="nav-item">
+                                <router-link to="/home" class="nav-link">
+                                    <i class="nav-icon fas fa-home"></i>
+                                    <p>
+                                        Home<span class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
 
-                        <li class="nav-item">
-                            <router-link to="/empleados" class="nav-link">
-                                <i class="nav-icon far fa-address-card"></i>
-                                <p>
-                                    Empleados<span
-                                        class="right badge badge-danger"
-                                        >New</span
-                                    >
-                                </p>
-                            </router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link to="/temperaturas" class="nav-link">
-                                <i class="nav-icon fas fa-temperature-high"></i>
-                                <p>
-                                    Temperaturas<span
-                                        class="right badge badge-danger"
-                                        >New</span
-                                    >
-                                </p>
-                            </router-link>
-                        </li>
+                            <li class="nav-item">
+                                <router-link to="/temperaturas" class="nav-link">
+                                    <i class="nav-icon fas fa-temperature-high"></i>
+                                    <p>
+                                        Temperaturas<span
+                                            class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
 
-                        <li class="nav-item">
-                            <router-link to="/condiciones" class="nav-link">
-                                <i class="nav-icon fas fa-first-aid"></i>
-                                <p>
-                                    Condicion<span
-                                        class="right badge badge-danger"
-                                        >New</span
-                                    >
-                                </p>
-                            </router-link>
-                        </li>
+                            <li class="nav-item">
+                                <router-link to="/fichas" class="nav-link">
+                                    <i class="nav-icon far fa-file-alt"></i>
+                                    <p>
+                                        Fichas Sintomaticas<span
+                                            class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
 
-                        <li class="nav-item">
-                            <router-link to="/sintomas" class="nav-link">
-                                <i class="nav-icon fas fa-procedures"></i>
-                                <p>
-                                    Sintomas<span
-                                        class="right badge badge-danger"
-                                        >New</span
-                                    >
-                                </p>
-                            </router-link>
-                        </li>
+                        </ul>
+                    </nav>
+                    <!-- /.sidebar-menu -->
+                </div>
+                <!-- /.sidebar -->
+            </aside>
 
-                        <li class="nav-item">
-                            <router-link to="/Organos" class="nav-link">
-                                <i class="nav-icon far fa-building"></i>
-                                <p>
-                                    Organo<span class="right badge badge-danger"
-                                        >New</span
-                                    >
-                                </p>
-                            </router-link>
-                        </li>
+            <!-- ADMINISTRADOR -->
+            <aside class="main-sidebar sidebar-light-primary elevation-4" v-if="key == arraykey[0].key">
+                <router-link to="/perfil" class="brand-link text-center">
+                    <span class="brand-text font-weight-light"
+                        ><b>SCT || UNASAM</b></span
+                    >
+                </router-link>
+                <div class="sidebar">
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                        <div class="info text-center">
+                            <h5 v-text="nombres + ' ' + apellidos"><b></b></h5>
+                        </div>
+                    </div>
+                    <nav class="mt-2">
+                        <ul
+                            class="nav nav-pills nav-sidebar flex-column"
+                            data-widget="treeview"
+                            role="menu"
+                            data-accordion="false"
+                        >
+                            <li class="nav-item">
+                                <router-link to="/home" class="nav-link">
+                                    <i class="nav-icon fas fa-home"></i>
+                                    <p>
+                                        Home<span class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
 
-                        <li class="nav-item">
-                            <router-link
-                                to="/unidades_organicas"
-                                class="nav-link"
-                            >
-                                <i class="nav-icon fas fa-laptop-house"></i>
-                                <p>
-                                    Unidades Organicas<span
-                                        class="right badge badge-danger"
-                                        >New</span
-                                    >
-                                </p>
-                            </router-link>
-                        </li>
+                            <li class="nav-item">
+                                <router-link to="/empleados" class="nav-link">
+                                    <i class="nav-icon far fa-address-card"></i>
+                                    <p>
+                                        Empleados<span
+                                            class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link to="/temperaturas" class="nav-link">
+                                    <i class="nav-icon fas fa-temperature-high"></i>
+                                    <p>
+                                        Temperaturas<span
+                                            class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
 
-                        <li class="nav-item">
-                            <router-link to="/tipo_usuarios" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    Tipo de Usuarios<span
-                                        class="right badge badge-danger"
-                                        >New</span
-                                    >
-                                </p>
-                            </router-link>
-                        </li>
+                            <li class="nav-item">
+                                <router-link to="/condiciones" class="nav-link">
+                                    <i class="nav-icon fas fa-first-aid"></i>
+                                    <p>
+                                        Condicion<span
+                                            class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
 
-                        <li class="nav-item">
-                            <router-link to="/usuarios" class="nav-link">
-                                <i class="nav-icon fas fa-users-cog"></i>
-                                <p>
-                                    Usuarios<span
-                                        class="right badge badge-danger"
-                                        >New</span
-                                    >
-                                </p>
-                            </router-link>
-                        </li>
+                            <li class="nav-item">
+                                <router-link to="/sintomas" class="nav-link">
+                                    <i class="nav-icon fas fa-procedures"></i>
+                                    <p>
+                                        Sintomas<span
+                                            class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
 
-                        <!-- <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Starter Pages
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Active Page</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Inactive Page</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> -->
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
+                            <li class="nav-item">
+                                <router-link to="/Organos" class="nav-link">
+                                    <i class="nav-icon far fa-building"></i>
+                                    <p>
+                                        Organo<span class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
 
-        <!-- Content Wrapper. Contains page content -->
+                            <li class="nav-item">
+                                <router-link
+                                    to="/unidades_organicas"
+                                    class="nav-link"
+                                >
+                                    <i class="nav-icon fas fa-laptop-house"></i>
+                                    <p>
+                                        Unidades Organicas<span
+                                            class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
+
+                            <li class="nav-item">
+                                <router-link to="/tipo_usuarios" class="nav-link">
+                                    <i class="nav-icon fas fa-users"></i>
+                                    <p>
+                                        Tipo de Usuarios<span
+                                            class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
+
+                            <li class="nav-item">
+                                <router-link to="/usuarios" class="nav-link">
+                                    <i class="nav-icon fas fa-users-cog"></i>
+                                    <p>
+                                        Usuarios<span
+                                            class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- /.sidebar-menu -->
+                </div>
+                <!-- /.sidebar -->
+            </aside>
+        </div>
+
+
         <div class="content-wrapper">
-            <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -319,15 +342,14 @@
 
         <footer class="main-footer">
             <div class="float-right d-none d-sm-inline">
-                sistema de control de temperatura v1.0
+                Sistema de Control de Covid 19 UNASAM
             </div>
-            <strong
-                >Copyright &copy; 2019 || developed by
-                <a href="https://www.facebook.com/yurizito.martin">
-                    Yury martin chauca</a
-                >.</strong
-            >
-            All rights reserved.
+            <strong>
+                Copyright &copy; 2020
+                || <a href="http://ogtise.unasam.edu.pe/">Oficina General de Tecnologias de Informacion, Sistemas y Estadistica (OGTISE)</a>
+                || developed by <a href="https://www.facebook.com/yurizito.martin">Yury martin</a>
+                && <a href="https://www.facebook.com/mdelcastillorobles">Max Del Castillo</a>.
+                </strong>
         </footer>
     </div>
 </template>
@@ -380,7 +402,6 @@ export default {
     },
     mounted() {
         this.listarTipo(this.buscar);
-        // console.log(this.arraykey);
     }
 };
 </script>

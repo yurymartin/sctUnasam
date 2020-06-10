@@ -244,7 +244,10 @@
                                 <span class="sr-only">Loading...</span>
                             </div>
                         </div>
-                        <nav aria-label="Page navigation example" class="mt-3">
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <nav aria-label="Page navigation example" class="mr-3">
                             <ul class="pagination justify-content-end">
                                 <li
                                     class="page-item"
@@ -306,7 +309,6 @@
                             </ul>
                         </nav>
                     </div>
-                    <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
             </div>

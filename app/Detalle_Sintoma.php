@@ -10,15 +10,23 @@ class Detalle_Sintoma extends Model
     use SoftDeletes;
     public $timestamps = false;
     protected $table = 'detalle_sintomas';
-    protected $fillable = ['persona_id', 'sintoma_id', 'respuesta'];
+    protected $fillable = ['ficha_sintoma_id', 'sintoma_id', 'respuesta'];
 
-    public function personas()
+    public function fichas_sintomaticas()
     {
-        return $this->belongsTo(Persona::class, 'persona_id');
+        return $this->belongsTo(FichaSintomatica::class, 'ficha_sintoma_id');
     }
 
     public function sintomas()
     {
         return $this->belongsTo(Sintoma::class, 'sintoma_id');
+    }
+
+    public function scopeBuscar($query, $buscar)
+    {
+        if ($buscar) {
+            $query = $query->where('organo', 'LIKE', "%$buscar%");
+        }
+        return $query;
     }
 }

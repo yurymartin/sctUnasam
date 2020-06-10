@@ -2,217 +2,224 @@
     <section class="content">
         <div class="container-fluid mt-3">
             <!-- Small boxes (Stat box) -->
-            <div class="row" v-if="key == arraykey[2].key">
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3>0</h3>
-                            <p>SEGUIMIENTO DE MIS TEMPERATURAS</p>
+            <div v-if="Object.entries(arraykey).length > 0">
+                <!-- EMPLEADO -->
+                <div class="row" v-if="key == arraykey[2].key">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>0</h3>
+                                <p>SEGUIMIENTO DE MIS TEMPERATURAS</p>
+                            </div>
+                            <div class="icon">
+                                <i class="far fa-chart-bar"></i>
+                            </div>
+                            <router-link to="/perfil" class="small-box-footer">
+                                Mas informacion...
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </router-link>
                         </div>
-                        <div class="icon">
-                            <i class="far fa-chart-bar"></i>
-                        </div>
-                        <router-link to="/perfil" class="small-box-footer">
-                            Mas informacion...
-                            <i class="fas fa-arrow-circle-right"></i>
-                        </router-link>
                     </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            <h3>0</h3>
-                            <p>DECLARACION JURADA</p>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>0</h3>
+                                <p>DECLARACION JURADA</p>
+                            </div>
+                            <div class="icon">
+                                <i class="far fa-file-alt"></i>
+                            </div>
+                            <router-link
+                                to="/juramentacion"
+                                class="small-box-footer"
+                            >
+                                Mas informacion...
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </router-link>
                         </div>
-                        <div class="icon">
-                            <i class="far fa-file-alt"></i>
-                        </div>
-                        <router-link
-                            to="/juramentacion"
-                            class="small-box-footer"
-                        >
-                            Mas informacion...
-                            <i class="fas fa-arrow-circle-right"></i>
-                        </router-link>
-                    </div>
-                </div>
-            </div>
-            <div class="row" v-if="key == arraykey[1].key">
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            <h3>0<sup style="font-size: 20px">%</sup></h3>
-
-                            <p>REGISTRO DE TEMPERATURAS</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-temperature-high"></i>
-                        </div>
-                        <router-link
-                            to="/temperaturas"
-                            class="small-box-footer"
-                        >
-                            Mas informacion...
-                            <i class="fas fa-arrow-circle-right"></i>
-                        </router-link>
-                    </div>
-                </div>
-            </div>
-            <div class="row" v-if="key == arraykey[0].key">
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3>0</h3>
-                            <p>EMPLEADOS</p>
-                        </div>
-                        <div class="icon">
-                            <i class="far fa-address-card"></i>
-                        </div>
-                        <router-link to="/empleados" class="small-box-footer">
-                            Mas informacion...
-                            <i class="fas fa-arrow-circle-right"></i>
-                        </router-link>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            <h3>0<sup style="font-size: 20px">%</sup></h3>
-
-                            <p>REGISTRO DE TEMPERATURAS</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-temperature-high"></i>
-                        </div>
-                        <router-link
-                            to="/temperaturas"
-                            class="small-box-footer"
-                        >
-                            Mas informacion...
-                            <i class="fas fa-arrow-circle-right"></i>
-                        </router-link>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>0</h3>
-
-                            <p>CONDICIONES MEDICAS</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-first-aid"></i>
-                        </div>
-                        <router-link to="/condiciones" class="small-box-footer">
-                            Mas informacion...
-                            <i class="fas fa-arrow-circle-right"></i>
-                        </router-link>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-danger">
-                        <div class="inner">
-                            <h3>0</h3>
-
-                            <p>SINTOMAS</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-procedures"></i>
-                        </div>
-                        <router-link to="/sintomas" class="small-box-footer">
-                            Mas informacion...
-                            <i class="fas fa-arrow-circle-right"></i>
-                        </router-link>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-danger">
-                        <div class="inner">
-                            <h3>0</h3>
+                <!-- MEDICO -->
+                <div class="row" v-if="key == arraykey[1].key">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>0<sup style="font-size: 20px">%</sup></h3>
 
-                            <p>ORGANOS</p>
+                                <p>REGISTRO DE TEMPERATURAS</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-temperature-high"></i>
+                            </div>
+                            <router-link
+                                to="/temperaturas"
+                                class="small-box-footer"
+                            >
+                                Mas informacion...
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </router-link>
                         </div>
-                        <div class="icon">
-                            <i class="far fa-building"></i>
-                        </div>
-                        <router-link to="/organos" class="small-box-footer">
-                            Mas informacion...
-                            <i class="fas fa-arrow-circle-right"></i>
-                        </router-link>
                     </div>
                 </div>
 
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>0</h3>
-
-                            <p>UNIDADES ORGANICAS</p>
+                <!-- ADMINISTRADOR -->
+                <div class="row" v-if="key == arraykey[0].key">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>0</h3>
+                                <p>EMPLEADOS</p>
+                            </div>
+                            <div class="icon">
+                                <i class="far fa-address-card"></i>
+                            </div>
+                            <router-link to="/empleados" class="small-box-footer">
+                                Mas informacion...
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </router-link>
                         </div>
-                        <div class="icon">
-                            <i class="fas fa-laptop-house"></i>
-                        </div>
-                        <router-link
-                            to="/unidades_organicas"
-                            class="small-box-footer"
-                        >
-                            Mas informacion...
-                            <i class="fas fa-arrow-circle-right"></i>
-                        </router-link>
                     </div>
-                </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>0<sup style="font-size: 20px">%</sup></h3>
 
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            <h3>0<sup style="font-size: 20px">%</sup></h3>
-
-                            <p>TIPOS DE USUARIOS</p>
+                                <p>REGISTRO DE TEMPERATURAS</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-temperature-high"></i>
+                            </div>
+                            <router-link
+                                to="/temperaturas"
+                                class="small-box-footer"
+                            >
+                                Mas informacion...
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </router-link>
                         </div>
-                        <div class="icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <router-link
-                            to="/tipo_usuarios"
-                            class="small-box-footer"
-                        >
-                            Mas informacion...
-                            <i class="fas fa-arrow-circle-right"></i>
-                        </router-link>
                     </div>
-                </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>0</h3>
 
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3>0</h3>
-                            <p>USUARIOS</p>
+                                <p>CONDICIONES MEDICAS</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-first-aid"></i>
+                            </div>
+                            <router-link to="/condiciones" class="small-box-footer">
+                                Mas informacion...
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </router-link>
                         </div>
-                        <div class="icon">
-                            <i class="fas fa-users-cog"></i>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>0</h3>
+
+                                <p>SINTOMAS</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-procedures"></i>
+                            </div>
+                            <router-link to="/sintomas" class="small-box-footer">
+                                Mas informacion...
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </router-link>
                         </div>
-                        <router-link to="/users" class="small-box-footer">
-                            Mas informacion...
-                            <i class="fas fa-arrow-circle-right"></i>
-                        </router-link>
+                    </div>
+
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>0</h3>
+
+                                <p>ORGANOS</p>
+                            </div>
+                            <div class="icon">
+                                <i class="far fa-building"></i>
+                            </div>
+                            <router-link to="/organos" class="small-box-footer">
+                                Mas informacion...
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </router-link>
+                        </div>
+                    </div>
+
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>0</h3>
+
+                                <p>UNIDADES ORGANICAS</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-laptop-house"></i>
+                            </div>
+                            <router-link
+                                to="/unidades_organicas"
+                                class="small-box-footer"
+                            >
+                                Mas informacion...
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </router-link>
+                        </div>
+                    </div>
+
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>0<sup style="font-size: 20px">%</sup></h3>
+
+                                <p>TIPOS DE USUARIOS</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <router-link
+                                to="/tipo_usuarios"
+                                class="small-box-footer"
+                            >
+                                Mas informacion...
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </router-link>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>0</h3>
+                                <p>USUARIOS</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <router-link to="/users" class="small-box-footer">
+                                Mas informacion...
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </router-link>
+                        </div>
                     </div>
                 </div>
             </div>

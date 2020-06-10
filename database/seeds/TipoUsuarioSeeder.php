@@ -29,5 +29,12 @@ class TipoUsuarioSeeder extends Seeder
             'key' => bcrypt('empleado'),
             'descripcion' => 'tipo de usuaro que tiene solo acceso a su perfil',
         ]);
+
+        DB::table('tipo_usuarios')->insert([
+            'tipo' => 'DIRECTIVO',
+            'key' => bcrypt('directivo'),
+            'descripcion' => 'tipo de usuario tiene permisos de ver de reportes',
+        ]);
+
     }
 }

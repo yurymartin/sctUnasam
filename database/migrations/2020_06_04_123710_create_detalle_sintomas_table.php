@@ -15,8 +15,8 @@ class CreateDetalleSintomasTable extends Migration
     {
         Schema::create('detalle_sintomas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('persona_id')->unsigned();
-            $table->foreign('persona_id')->references('id')->on('personas');
+            $table->integer('ficha_sintoma_id')->unsigned();
+            $table->foreign('ficha_sintoma_id')->references('id')->on('fichas_sintomaticas');
             $table->integer('sintoma_id')->unsigned();
             $table->foreign('sintoma_id')->references('id')->on('sintomas');
             $table->boolean('respuesta')->default(0);

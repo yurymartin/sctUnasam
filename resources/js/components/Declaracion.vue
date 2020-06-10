@@ -8,14 +8,36 @@
                     >
                         <div class="form-row">
                             <div class="col-lg-9">
-                                <h1 class="texto">INFORMACIÓN ADICIONAL DE SALUD</h1>
+                                <h1 class="texto">
+                                    INFORMACIÓN ADICIONAL DE SALUD
+                                </h1>
                                 <br />
                                 <p class="text-justify">
-                                    Ante la emisión del Decreto Supremo que declara Estado de Emergencia Nacional por las graves circunstancias que afectan la vida de la Nación a consecuencia del brote del COVID-19, el cual dispone el aislamiento social obligatorio (cuarentena), bajo esta premisa es de suma importancia el recojo de información adicional de salud de nuestros colaboradores de nuestra Universidad Nacional "Santiago Antúnez de Mayolo", información que nos servirá para las siguientes decisiones en la prevención y mitigación del COVID-19. Por favor brinde datos verdaderos y no llene 2 veces el formulario, la OGTISE no se responsabiliza de datos falsos.
-                                </p>  
+                                    Ante la emisión del Decreto Supremo que
+                                    declara Estado de Emergencia Nacional por
+                                    las graves circunstancias que afectan la
+                                    vida de la Nación a consecuencia del brote
+                                    del COVID-19, el cual dispone el aislamiento
+                                    social obligatorio (cuarentena), bajo esta
+                                    premisa es de suma importancia el recojo de
+                                    información adicional de salud de nuestros
+                                    colaboradores de nuestra Universidad
+                                    Nacional "Santiago Antúnez de Mayolo",
+                                    información que nos servirá para las
+                                    siguientes decisiones en la prevención y
+                                    mitigación del COVID-19. Por favor brinde
+                                    datos verdaderos y no llene 2 veces el
+                                    formulario, la OGTISE no se responsabiliza
+                                    de datos falsos.
+                                </p>
                             </div>
                             <div class="col-lg-3 text-center">
-                                <img src="logo-unasam.png" class="img-fluid" alt="UNASAM" width="120px">
+                                <img
+                                    src="logo-unasam.png"
+                                    class="img-fluid"
+                                    alt="UNASAM"
+                                    width="120px"
+                                />
                             </div>
                         </div>
                     </div>
@@ -138,7 +160,8 @@
                                     <label
                                         >3.Peso (kg)
                                         <span class="text-danger"
-                                            >* En números y con decimal (de ser necesario): Ejemplo 60.2</span
+                                            >* En números y con decimal (de ser
+                                            necesario): Ejemplo 60.2</span
                                         ></label
                                     >
                                     <input
@@ -154,7 +177,8 @@
                                     <label
                                         >3.Talla (m)
                                         <span class="text-danger"
-                                            >* En números y con decimal: Ejemplo 1.60</span
+                                            >* En números y con decimal: Ejemplo
+                                            1.60</span
                                         ></label
                                     >
                                     <input
@@ -300,7 +324,8 @@
                                     <div class="card">
                                         <div class="card-header cabecera">
                                             <div class="card-title">
-                                                DATOS PARA USAR EL SISTEMA DE MONITOREO
+                                                DATOS PARA USAR EL SISTEMA DE
+                                                MONITOREO
                                             </div>
                                         </div>
                                         <div class="card-body">
@@ -310,7 +335,9 @@
                                                 <label
                                                     >CONTRASEÑA
                                                     <span class="text-danger"
-                                                        >* Crear contraseña, no olvidarlo que será muy útil para usted</span
+                                                        >* Crear contraseña, no
+                                                        olvidarlo que será muy
+                                                        útil para usted</span
                                                     ></label
                                                 >
                                                 <input
@@ -340,16 +367,25 @@
                                     </div>
                                 </div>
                             </template>
-                            <div
-                                class="col-md-12 form-group mt-4"
-                                v-if="existe"
-                            >
+                            <div class="col-md-4 form-group mt-4" v-if="existe">
                                 <button
-                                    class="btn cabecera rounded-0 w-25 pt-2 pb-2 button"
+                                    class="btn btn-block cabecera rounded-0 pt-2 pb-2 button"
                                     @click="registrarDocumento()"
                                     v-if="buttom"
                                 >
-                                    ENVIAR
+                                    <i class="fas fa-paper-plane"></i> ENVIAR
+                                </button>
+                            </div>
+                            <div class="col-md-4"></div>
+                            <div
+                                class="col-md-4 form-group mt-4 text-left"
+                                v-if="existe"
+                            >
+                                <button
+                                    class="btn btn-danger btn-block rounded-0 pt-2 pb-2 button"
+                                    @click="cerrar()"
+                                >
+                                    <i class="far fa-window-close"></i> CANCELAR
                                 </button>
                             </div>
                             <div class="col-md-12 form-group mt-5 mb-5">
@@ -436,8 +472,7 @@ export default {
             this.unidad = "";
             this.password = "";
             this.confir_password = "";
-            this.newArrayCondiciones = "";
-            this.persona = "";
+            (this.newArrayCondiciones = []), (this.persona = "");
             this.documento = false;
             this.error = 0;
             this.buttom = true;
@@ -513,7 +548,7 @@ export default {
             }
             this.agregarCondicion();
             this.buttom = false;
-            this.email = this.email + "@unasam.edu.pe";
+            // this.email = this.email + "@unasam.edu.pe";
             axios
                 .post("/api/declaracion", {
                     dni: this.dni,

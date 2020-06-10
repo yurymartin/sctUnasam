@@ -15,6 +15,9 @@ import Error404 from './components/404'
 import Juramentacion from './components/Juramentacion'
 import Perfil from './components/Perfil'
 import Declaracion from './components/Declaracion'
+import FichaSintomaticas from './components/FichaSintomaticas'
+import Fichas_Medico from './components/Fichas_Medico'
+import Reportes from './components/Reportes'
 
 Vue.use(VueRouter)
 
@@ -96,9 +99,9 @@ const router = new VueRouter({
                     }
                 },
                 {
-                    path: '/juramentacion',
-                    name: 'juramentacion',
-                    component: Juramentacion,
+                    path: '/fichassintomaticas',
+                    name: 'fichassintomaticas',
+                    component: FichaSintomaticas,
                     meta: {
                         Auth: true
                     }
@@ -107,6 +110,22 @@ const router = new VueRouter({
                     path: '/perfil',
                     name: 'perfil',
                     component: Perfil,
+                    meta: {
+                        Auth: true
+                    }
+                },
+                {
+                    path: '/fichas',
+                    name: 'fichas',
+                    component: Fichas_Medico,
+                    meta: {
+                        Auth: true
+                    }
+                },
+                {
+                    path: '/reportes',
+                    name: 'reportes',
+                    component: Reportes,
                     meta: {
                         Auth: true
                     }
