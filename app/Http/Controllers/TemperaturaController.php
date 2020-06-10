@@ -14,7 +14,7 @@ class TemperaturaController extends Controller
         // if (!$request->ajax()) return redirect('/');
         $buscar = $request->buscar;
         $date = $request->date;
-        $temperaturas = Temperatura::with('personas')->buscar($buscar, $date)->orderBy('id', 'desc')->paginate(10);
+        $temperaturas = Temperatura::with('personas')->buscar($buscar, $date)->orderBy('id', 'desc')->paginate(15);
         return [
             'pagination' => [
                 'total'         => $temperaturas->total(),

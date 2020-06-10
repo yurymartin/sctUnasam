@@ -21,7 +21,7 @@
             </ul>
         </nav>
 
-        <div v-if="Object.entries(arraykey).length > 0">
+        <div  v-if="Object.entries(arraykey).length > 0">
             <!-- DIRECTIVO -->
             <aside class="main-sidebar sidebar-light-primary elevation-4" v-if="key == arraykey[3].key">
                 <router-link to="/perfil" class="brand-link text-center">
@@ -340,7 +340,7 @@
             </div>
         </div>
 
-        <footer class="main-footer">
+        <footer class="main-footer h-25">
             <div class="float-right d-none d-sm-inline">
                 Sistema de Control de Covid 19 UNASAM
             </div>

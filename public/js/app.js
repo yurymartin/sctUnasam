@@ -5425,6 +5425,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -51843,7 +51890,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("footer", { staticClass: "main-footer" }, [
+    return _c("footer", { staticClass: "main-footer h-25" }, [
       _c("div", { staticClass: "float-right d-none d-sm-inline" }, [
         _vm._v("\n            Sistema de Control de Covid 19 UNASAM\n        ")
       ]),
@@ -54957,20 +55004,53 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "content" }, [
-    _c("div", { staticClass: "container-fluid mt-3" }, [
-      Object.entries(_vm.arraykey).length > 0
-        ? _c("div", [
+  return Object.entries(_vm.arraykey).length > 0
+    ? _c("section", { staticClass: "content" }, [
+        _c("div", { staticClass: "container-fluid mt-3" }, [
+          _c("div", [
+            _vm.key == _vm.arraykey[3].key
+              ? _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-lg-3 col-6" }, [
+                    _c(
+                      "div",
+                      { staticClass: "small-box bg-primary" },
+                      [
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "small-box-footer",
+                            attrs: { to: "/reportes" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Mas informacion...\n                            "
+                            ),
+                            _c("i", {
+                              staticClass: "fas fa-arrow-circle-right"
+                            })
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
             _vm.key == _vm.arraykey[2].key
               ? _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-lg-3 col-6" }, [
                     _c(
                       "div",
-                      { staticClass: "small-box bg-info" },
+                      { staticClass: "small-box bg-primary" },
                       [
-                        _vm._m(0),
+                        _vm._m(2),
                         _vm._v(" "),
-                        _vm._m(1),
+                        _vm._m(3),
                         _vm._v(" "),
                         _c(
                           "router-link",
@@ -54995,17 +55075,17 @@ var render = function() {
                   _c("div", { staticClass: "col-lg-3 col-6" }, [
                     _c(
                       "div",
-                      { staticClass: "small-box bg-success" },
+                      { staticClass: "small-box bg-primary" },
                       [
-                        _vm._m(2),
+                        _vm._m(4),
                         _vm._v(" "),
-                        _vm._m(3),
+                        _vm._m(5),
                         _vm._v(" "),
                         _c(
                           "router-link",
                           {
                             staticClass: "small-box-footer",
-                            attrs: { to: "/juramentacion" }
+                            attrs: { to: "/fichassintomaticas" }
                           },
                           [
                             _vm._v(
@@ -55028,17 +55108,46 @@ var render = function() {
                   _c("div", { staticClass: "col-lg-3 col-6" }, [
                     _c(
                       "div",
-                      { staticClass: "small-box bg-success" },
+                      { staticClass: "small-box bg-primary" },
                       [
-                        _vm._m(4),
+                        _vm._m(6),
                         _vm._v(" "),
-                        _vm._m(5),
+                        _vm._m(7),
                         _vm._v(" "),
                         _c(
                           "router-link",
                           {
                             staticClass: "small-box-footer",
                             attrs: { to: "/temperaturas" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Mas informacion...\n                            "
+                            ),
+                            _c("i", {
+                              staticClass: "fas fa-arrow-circle-right"
+                            })
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-3 col-6" }, [
+                    _c(
+                      "div",
+                      { staticClass: "small-box bg-primary" },
+                      [
+                        _vm._m(8),
+                        _vm._v(" "),
+                        _vm._m(9),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "small-box-footer",
+                            attrs: { to: "/fichas" }
                           },
                           [
                             _vm._v(
@@ -55061,11 +55170,11 @@ var render = function() {
                   _c("div", { staticClass: "col-lg-3 col-6" }, [
                     _c(
                       "div",
-                      { staticClass: "small-box bg-info" },
+                      { staticClass: "small-box bg-primary" },
                       [
-                        _vm._m(6),
+                        _vm._m(10),
                         _vm._v(" "),
-                        _vm._m(7),
+                        _vm._m(11),
                         _vm._v(" "),
                         _c(
                           "router-link",
@@ -55090,11 +55199,11 @@ var render = function() {
                   _c("div", { staticClass: "col-lg-3 col-6" }, [
                     _c(
                       "div",
-                      { staticClass: "small-box bg-success" },
+                      { staticClass: "small-box bg-primary" },
                       [
-                        _vm._m(8),
+                        _vm._m(12),
                         _vm._v(" "),
-                        _vm._m(9),
+                        _vm._m(13),
                         _vm._v(" "),
                         _c(
                           "router-link",
@@ -55119,11 +55228,11 @@ var render = function() {
                   _c("div", { staticClass: "col-lg-3 col-6" }, [
                     _c(
                       "div",
-                      { staticClass: "small-box bg-warning" },
+                      { staticClass: "small-box bg-primary" },
                       [
-                        _vm._m(10),
+                        _vm._m(14),
                         _vm._v(" "),
-                        _vm._m(11),
+                        _vm._m(15),
                         _vm._v(" "),
                         _c(
                           "router-link",
@@ -55148,11 +55257,11 @@ var render = function() {
                   _c("div", { staticClass: "col-lg-3 col-6" }, [
                     _c(
                       "div",
-                      { staticClass: "small-box bg-danger" },
+                      { staticClass: "small-box bg-primary" },
                       [
-                        _vm._m(12),
+                        _vm._m(16),
                         _vm._v(" "),
-                        _vm._m(13),
+                        _vm._m(17),
                         _vm._v(" "),
                         _c(
                           "router-link",
@@ -55177,11 +55286,11 @@ var render = function() {
                   _c("div", { staticClass: "col-lg-3 col-6" }, [
                     _c(
                       "div",
-                      { staticClass: "small-box bg-danger" },
+                      { staticClass: "small-box bg-primary" },
                       [
-                        _vm._m(14),
+                        _vm._m(18),
                         _vm._v(" "),
-                        _vm._m(15),
+                        _vm._m(19),
                         _vm._v(" "),
                         _c(
                           "router-link",
@@ -55206,11 +55315,11 @@ var render = function() {
                   _c("div", { staticClass: "col-lg-3 col-6" }, [
                     _c(
                       "div",
-                      { staticClass: "small-box bg-warning" },
+                      { staticClass: "small-box bg-primary" },
                       [
-                        _vm._m(16),
+                        _vm._m(20),
                         _vm._v(" "),
-                        _vm._m(17),
+                        _vm._m(21),
                         _vm._v(" "),
                         _c(
                           "router-link",
@@ -55235,11 +55344,11 @@ var render = function() {
                   _c("div", { staticClass: "col-lg-3 col-6" }, [
                     _c(
                       "div",
-                      { staticClass: "small-box bg-success" },
+                      { staticClass: "small-box bg-primary" },
                       [
-                        _vm._m(18),
+                        _vm._m(22),
                         _vm._v(" "),
-                        _vm._m(19),
+                        _vm._m(23),
                         _vm._v(" "),
                         _c(
                           "router-link",
@@ -55264,11 +55373,11 @@ var render = function() {
                   _c("div", { staticClass: "col-lg-3 col-6" }, [
                     _c(
                       "div",
-                      { staticClass: "small-box bg-info" },
+                      { staticClass: "small-box bg-primary" },
                       [
-                        _vm._m(20),
+                        _vm._m(24),
                         _vm._v(" "),
-                        _vm._m(21),
+                        _vm._m(25),
                         _vm._v(" "),
                         _c(
                           "router-link",
@@ -55292,11 +55401,29 @@ var render = function() {
                 ])
               : _vm._e()
           ])
-        : _vm._e()
-    ])
-  ])
+        ])
+      ])
+    : _vm._e()
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "inner" }, [
+      _c("h3", [_vm._v("0")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("MIS FICHAS SINTOMATICAS")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "icon" }, [
+      _c("i", { staticClass: "far fa-file-alt" })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -55322,7 +55449,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "inner" }, [
       _c("h3", [_vm._v("0")]),
       _vm._v(" "),
-      _c("p", [_vm._v("DECLARACION JURADA")])
+      _c("p", [_vm._v("MIS FICHAS SINTOMATICAS")])
     ])
   },
   function() {
@@ -55352,6 +55479,27 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "icon" }, [
       _c("i", { staticClass: "fas fa-temperature-high" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "inner" }, [
+      _c("h3", [
+        _vm._v("0"),
+        _c("sup", { staticStyle: { "font-size": "20px" } }, [_vm._v("%")])
+      ]),
+      _vm._v(" "),
+      _c("p", [_vm._v("Fichas Sintomaticas")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "icon" }, [
+      _c("i", { staticClass: "far fa-file-alt" })
     ])
   },
   function() {

@@ -1,13 +1,38 @@
 <template>
-    <section class="content">
+    <section class="content" v-if="Object.entries(arraykey).length > 0">
         <div class="container-fluid mt-3">
             <!-- Small boxes (Stat box) -->
-            <div v-if="Object.entries(arraykey).length > 0">
+            <div>
+
+                <!-- EMPLEADO -->
+                <div class="row" v-if="key == arraykey[3].key">
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-primary">
+                            <div class="inner">
+                                <h3>0</h3>
+                                <p>MIS FICHAS SINTOMATICAS</p>
+                            </div>
+                            <div class="icon">
+                                <i class="far fa-file-alt"></i>
+                            </div>
+                            <router-link
+                                to="/reportes"
+                                class="small-box-footer"
+                            >
+                                Mas informacion...
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </router-link>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- EMPLEADO -->
                 <div class="row" v-if="key == arraykey[2].key">
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-info">
+                        <div class="small-box bg-primary">
                             <div class="inner">
                                 <h3>0</h3>
                                 <p>SEGUIMIENTO DE MIS TEMPERATURAS</p>
@@ -24,16 +49,16 @@
                     <!-- ./col -->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-success">
+                        <div class="small-box bg-primary">
                             <div class="inner">
                                 <h3>0</h3>
-                                <p>DECLARACION JURADA</p>
+                                <p>MIS FICHAS SINTOMATICAS</p>
                             </div>
                             <div class="icon">
                                 <i class="far fa-file-alt"></i>
                             </div>
                             <router-link
-                                to="/juramentacion"
+                                to="/fichassintomaticas"
                                 class="small-box-footer"
                             >
                                 Mas informacion...
@@ -47,7 +72,7 @@
                 <div class="row" v-if="key == arraykey[1].key">
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-success">
+                        <div class="small-box bg-primary">
                             <div class="inner">
                                 <h3>0<sup style="font-size: 20px">%</sup></h3>
 
@@ -65,13 +90,35 @@
                             </router-link>
                         </div>
                     </div>
+
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-primary">
+                            <div class="inner">
+                                <h3>0<sup style="font-size: 20px">%</sup></h3>
+
+                                <p>Fichas Sintomaticas</p>
+                            </div>
+                            <div class="icon">
+                                <i class="far fa-file-alt"></i>
+                            </div>
+                            <router-link
+                                to="/fichas"
+                                class="small-box-footer"
+                            >
+                                Mas informacion...
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </router-link>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- ADMINISTRADOR -->
                 <div class="row" v-if="key == arraykey[0].key">
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-info">
+                        <div class="small-box bg-primary">
                             <div class="inner">
                                 <h3>0</h3>
                                 <p>EMPLEADOS</p>
@@ -88,7 +135,7 @@
                     <!-- ./col -->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-success">
+                        <div class="small-box bg-primary">
                             <div class="inner">
                                 <h3>0<sup style="font-size: 20px">%</sup></h3>
 
@@ -109,7 +156,7 @@
                     <!-- ./col -->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-warning">
+                        <div class="small-box bg-primary">
                             <div class="inner">
                                 <h3>0</h3>
 
@@ -127,7 +174,7 @@
                     <!-- ./col -->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-danger">
+                        <div class="small-box bg-primary">
                             <div class="inner">
                                 <h3>0</h3>
 
@@ -145,7 +192,7 @@
 
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-danger">
+                        <div class="small-box bg-primary">
                             <div class="inner">
                                 <h3>0</h3>
 
@@ -164,7 +211,7 @@
                     <!-- ./col -->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-warning">
+                        <div class="small-box bg-primary">
                             <div class="inner">
                                 <h3>0</h3>
 
@@ -186,7 +233,7 @@
                     <!-- ./col -->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-success">
+                        <div class="small-box bg-primary">
                             <div class="inner">
                                 <h3>0<sup style="font-size: 20px">%</sup></h3>
 
@@ -207,7 +254,7 @@
 
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-info">
+                        <div class="small-box bg-primary">
                             <div class="inner">
                                 <h3>0</h3>
                                 <p>USUARIOS</p>
