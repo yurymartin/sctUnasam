@@ -25,7 +25,7 @@ class TipoUsuarioSeeder extends Seeder
         ]);
 
         DB::table('tipo_usuarios')->insert([
-            'tipo' => 'EMPLEADO',
+            'tipo' => 'PACIENTE',
             'key' => bcrypt('empleado'),
             'descripcion' => 'tipo de usuaro que tiene solo acceso a su perfil',
         ]);
@@ -35,6 +35,5 @@ class TipoUsuarioSeeder extends Seeder
             'key' => bcrypt('directivo'),
             'descripcion' => 'tipo de usuario tiene permisos de ver de reportes',
         ]);
-
     }
 }

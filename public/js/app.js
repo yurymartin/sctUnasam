@@ -2717,6 +2717,81 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -7340,6 +7415,604 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_excel_export__WEBPACK_IMPORTE
     this.Timestamp();
     this.allEmpleados();
     this.allEmpleadosCondicion();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReservaCitas.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ReservaCitas.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-select/dist/vue-select.css */ "./node_modules/vue-select/dist/vue-select.css");
+/* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_2__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      select: "",
+      id: 0,
+      persona_id: 0,
+      temperatura: 0,
+      estado: "",
+      activo: 0,
+      arrayTemperaturas: [],
+      arrayPersonas: [],
+      modal: 0,
+      tituloModal: "",
+      tipoAccion: 0,
+      message: "",
+      errorTemperatura: 0,
+      errorMostrarMsjTemperatura: [],
+      pagination: {
+        total: 0,
+        current_page: 0,
+        per_page: 0,
+        last_page: 0,
+        from: 0,
+        to: 0
+      },
+      offset: 3,
+      buscar: "",
+      date: "",
+      button: true
+    };
+  },
+  computed: {
+    isActived: function isActived() {
+      return this.pagination.current_page;
+    },
+    //Calcula los elementos de la paginación
+    pagesNumber: function pagesNumber() {
+      if (!this.pagination.to) {
+        return [];
+      }
+
+      var from = this.pagination.current_page - this.offset;
+
+      if (from < 1) {
+        from = 1;
+      }
+
+      var to = from + this.offset * 2;
+
+      if (to >= this.pagination.last_page) {
+        to = this.pagination.last_page;
+      }
+
+      var pagesArray = [];
+
+      while (from <= to) {
+        pagesArray.push(from);
+        from++;
+      }
+
+      return pagesArray;
+    }
+  },
+  components: {
+    vSelect: vue_select__WEBPACK_IMPORTED_MODULE_1___default.a
+  },
+  methods: {
+    listarTemperatura: function listarTemperatura(page, date, buscar) {
+      var _this = this;
+
+      axios.get("/api/temperaturas?page=".concat(page, "&date=").concat(date, "&buscar=").concat(buscar)).then(function (response) {
+        var respuesta = response.data;
+        _this.arrayTemperaturas = respuesta.temperaturas.data;
+        _this.pagination = respuesta.pagination;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    cambiarPagina: function cambiarPagina(page, date, buscar) {
+      var me = this; //acualizar la pagina Actual
+
+      me.pagination.current_page = page; //enviar la peticion para visaulizar la data de la pagina
+
+      me.listarTemperatura(page, date, buscar);
+    },
+    selectPersonas: function selectPersonas(search, loading) {
+      var me = this;
+      loading(true);
+      var url = "/api/getPersonas?filtro=" + search;
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayPersonas = respuesta.personas;
+        loading(false);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getPersonas: function getPersonas(val1) {
+      this.loading = true;
+      this.persona_id = val1.id;
+    },
+    registrarTemperatura: function registrarTemperatura() {
+      var _this2 = this;
+
+      if (this.validarTemperatura()) {
+        return;
+      }
+
+      this.button = false;
+      axios.post("/api/temperaturas", {
+        persona_id: this.persona_id,
+        temperatura: this.temperatura,
+        estado: this.estado
+      }).then(function (response) {
+        _this2.cerrarModal();
+
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+          position: "center",
+          icon: "success",
+          title: "Temperatura Registrado Exitosamente",
+          showConfirmButton: false,
+          timer: 10007
+        });
+        console.log(response);
+
+        _this2.listarTemperatura(1, _this2.date, _this2.buscar);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    analizarEstado: function analizarEstado() {
+      if (parseInt(this.temperatura) > 40) {
+        this.estado = "Enfermo";
+      } else {
+        this.estado = "Saludable";
+      }
+    },
+    actualizarTemperatura: function actualizarTemperatura() {
+      var _this3 = this;
+
+      if (this.validarTemperatura()) {
+        return;
+      }
+
+      var id = this.id;
+      axios.put("/api/temperaturas/".concat(id), {
+        persona_id: this.persona_id,
+        temperatura: this.temperatura,
+        estado: this.estado,
+        activo: this.activo
+      }).then(function (response) {
+        _this3.cerrarModal();
+
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+          position: "center",
+          icon: "success",
+          title: "Temperatura Actualizado Exitosamente",
+          showConfirmButton: false,
+          timer: 1000
+        });
+
+        _this3.listarTemperatura(1, _this3.date, _this3.buscar);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    eliminarTemperatura: function eliminarTemperatura(id) {
+      var _this4 = this;
+
+      sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+        title: "Estas seguro?",
+        text: "No podrás revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, eliminalo!"
+      }).then(function (result) {
+        if (result.value) {
+          axios["delete"]("/api/temperaturas/".concat(id)).then(function (res) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire("Eliminado!", "El empleado fue eliminada", "success");
+
+            _this4.listarTemperatura(1, _this4.date, _this4.buscar);
+          })["catch"](function (error) {
+            console.log(error);
+          });
+        }
+      });
+    },
+    validarTemperatura: function validarTemperatura() {
+      this.errorTemperatura = 0;
+      this.errorMostrarMsjTemperatura = [];
+      if (this.persona_id == 0) this.errorMostrarMsjTemperatura.push("Seleccione la nombres del empleado");
+      if (!this.temperatura) this.errorMostrarMsjTemperatura.push("El temperatura no puede estar vacio");
+      if (this.errorMostrarMsjTemperatura.length) this.errorTemperatura = 1;
+      return this.errorTemperatura;
+    },
+    cerrarModal: function cerrarModal() {
+      this.tipoAccion = 0;
+      this.tituloModal = "";
+      this.id = 0;
+      this.persona_id = 0;
+      this.temperatura = "";
+      this.estado = "";
+      this.activo = 0;
+      this.arrayPersonas = [];
+      this.errorTemperatura = 0;
+      this.errorMostrarMsjTemperatura = [];
+      this.select = "";
+      this.button = true;
+      $("#modal").modal("hide");
+    },
+    abrirModal: function abrirModal(modelo, accion) {
+      var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+      // this.getCondiciones();
+      $("#modal").modal({
+        backdrop: "static",
+        keyboard: false
+      });
+
+      switch (modelo) {
+        case "temperaturas":
+          {
+            switch (accion) {
+              case "registrar":
+                {
+                  this.tituloModal = "NUEVO REGISTO DE TEMPERATURA";
+                  this.persona_id = 0;
+                  this.temperatura = "";
+                  this.estado = "";
+                  this.activo = 0;
+                  this.tipoAccion = 1;
+                  break;
+                }
+
+              case "actualizar":
+                {
+                  this.tituloModal = "ACTUALIZAR REGISTO DE TEMPERATURA";
+                  this.tipoAccion = 2;
+                  this.id = data["id"];
+                  this.persona_id = data["persona_id"];
+                  this.temperatura = data["temperatura"];
+                  this.estado = data["estado"];
+                  this.activo = data["activo"];
+                  break;
+                }
+            }
+          }
+      }
+    },
+    fechaActual: function fechaActual() {
+      var fecha = new Date(); //Fecha actual
+
+      var mes = fecha.getMonth() + 1; //obteniendo mes
+
+      var dia = fecha.getDate(); //obteniendo dia
+
+      var ano = fecha.getFullYear(); //obteniendo año
+
+      if (dia < 10) dia = "0" + dia; //agrega cero si el menor de 10
+
+      if (mes < 10) mes = "0" + mes; //agrega cero si el menor de 10
+
+      this.date = ano + "-" + mes + "-" + dia;
+    }
+  },
+  mounted: function mounted() {
+    this.fechaActual();
+    this.listarTemperatura(1, this.date, this.buscar);
   }
 });
 
@@ -14690,7 +15363,26 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.image {\n    background: url(https://image.freepik.com/vector-gratis/vector-ilustracion-sala-juegos-concepto-moderno-esports_33099-1201.jpg)\n        no-repeat center center fixed;\n    background-size: cover;\n}\n.cabecera {\n    background-color: #562685;\n    color: white;\n}\n.texto {\n    font-weight: normal;\n}\n.radio {\n    height: 18px;\n    width: 18px;\n    vertical-align: middle;\n}\n.button:hover {\n    color: white;\n    opacity: 0.9;\n}\n.verificar {\n    margin-top: 28px;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n.email {\n    margin-left: -15px;\n    border: none;\n}\n.example {\n}\n", ""]);
+exports.push([module.i, "\n.image {\r\n    background: url(https://image.freepik.com/vector-gratis/vector-ilustracion-sala-juegos-concepto-moderno-esports_33099-1201.jpg)\r\n        no-repeat center center fixed;\r\n    background-size: cover;\n}\n.cabecera {\r\n    background-color: #562685;\r\n    color: white;\n}\n.texto {\r\n    font-weight: normal;\n}\n.radio {\r\n    height: 18px;\r\n    width: 18px;\r\n    vertical-align: middle;\n}\n.button:hover {\r\n    color: white;\r\n    opacity: 0.9;\n}\n.verificar {\r\n    margin-top: 28px;\r\n    padding-top: 8px;\r\n    padding-bottom: 8px;\n}\n.email {\r\n    margin-left: -15px;\r\n    border: none;\n}\n.example {\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReservaCitas.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ReservaCitas.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.style-chooser .vs__search::-moz-placeholder {\n    background: #dfe5fb;\n    border: none;\n    color: #394066;\n    text-transform: lowercase;\n    font-variant: small-caps;\n}\n.style-chooser .vs__search:-ms-input-placeholder {\n    background: #dfe5fb;\n    border: none;\n    color: #394066;\n    text-transform: lowercase;\n    font-variant: small-caps;\n}\n.style-chooser .vs__search::-ms-input-placeholder {\n    background: #dfe5fb;\n    border: none;\n    color: #394066;\n    text-transform: lowercase;\n    font-variant: small-caps;\n}\n.style-chooser .vs__search::placeholder,\n.style-chooser .vs__dropdown-toggle,\n.style-chooser .vs__dropdown-menu {\n    background: #dfe5fb;\n    border: none;\n    color: #394066;\n    text-transform: lowercase;\n    font-variant: small-caps;\n}\n.style-chooser .vs__clear,\n.style-chooser .vs__open-indicator {\n    fill: #394066;\n}\n.v-select .dropdown-toggle .clear {\n    display: none;\n}\n", ""]);
 
 // exports
 
@@ -14709,7 +15401,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.style-chooser .vs__search::-moz-placeholder {\n    background: #dfe5fb;\n    border: none;\n    color: #394066;\n    text-transform: lowercase;\n    font-variant: small-caps;\n}\n.style-chooser .vs__search:-ms-input-placeholder {\n    background: #dfe5fb;\n    border: none;\n    color: #394066;\n    text-transform: lowercase;\n    font-variant: small-caps;\n}\n.style-chooser .vs__search::-ms-input-placeholder {\n    background: #dfe5fb;\n    border: none;\n    color: #394066;\n    text-transform: lowercase;\n    font-variant: small-caps;\n}\n.style-chooser .vs__search::placeholder,\n.style-chooser .vs__dropdown-toggle,\n.style-chooser .vs__dropdown-menu {\n    background: #dfe5fb;\n    border: none;\n    color: #394066;\n    text-transform: lowercase;\n    font-variant: small-caps;\n}\n.style-chooser .vs__clear,\n.style-chooser .vs__open-indicator {\n    fill: #394066;\n}\n.v-select .dropdown-toggle .clear {\n    display: none;\n}\n", ""]);
+exports.push([module.i, "\n.style-chooser .vs__search::-moz-placeholder {\r\n    background: #dfe5fb;\r\n    border: none;\r\n    color: #394066;\r\n    text-transform: lowercase;\r\n    font-variant: small-caps;\n}\n.style-chooser .vs__search:-ms-input-placeholder {\r\n    background: #dfe5fb;\r\n    border: none;\r\n    color: #394066;\r\n    text-transform: lowercase;\r\n    font-variant: small-caps;\n}\n.style-chooser .vs__search::-ms-input-placeholder {\r\n    background: #dfe5fb;\r\n    border: none;\r\n    color: #394066;\r\n    text-transform: lowercase;\r\n    font-variant: small-caps;\n}\n.style-chooser .vs__search::placeholder,\r\n.style-chooser .vs__dropdown-toggle,\r\n.style-chooser .vs__dropdown-menu {\r\n    background: #dfe5fb;\r\n    border: none;\r\n    color: #394066;\r\n    text-transform: lowercase;\r\n    font-variant: small-caps;\n}\n.style-chooser .vs__clear,\r\n.style-chooser .vs__open-indicator {\r\n    fill: #394066;\n}\n.v-select .dropdown-toggle .clear {\r\n    display: none;\n}\r\n", ""]);
 
 // exports
 
@@ -46177,6 +46869,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReservaCitas.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ReservaCitas.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./ReservaCitas.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReservaCitas.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Temperatura.vue?vue&type=style&index=0&lang=css&":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Temperatura.vue?vue&type=style&index=0&lang=css& ***!
@@ -51263,6 +51985,40 @@ var render = function() {
                                 "router-link",
                                 {
                                   staticClass: "nav-link",
+                                  attrs: { to: "/reservas-citas" }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass:
+                                      "nav-icon fas fa-calendar-check"
+                                  }),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _vm._v(
+                                      "\n                                    Reserva de Citas"
+                                    ),
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass: "right badge badge-danger"
+                                      },
+                                      [_vm._v("New")]
+                                    )
+                                  ])
+                                ]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            { staticClass: "nav-item" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "nav-link",
                                   attrs: { to: "/perfil" }
                                 },
                                 [
@@ -51565,6 +52321,40 @@ var render = function() {
                                   _c("p", [
                                     _vm._v(
                                       "\n                                    Home"
+                                    ),
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass: "right badge badge-danger"
+                                      },
+                                      [_vm._v("New")]
+                                    )
+                                  ])
+                                ]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            { staticClass: "nav-item" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "nav-link",
+                                  attrs: { to: "/reservas-citas" }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass:
+                                      "nav-icon fas fa-calendar-check"
+                                  }),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _vm._v(
+                                      "\n                                    Reserva de Citas"
                                     ),
                                     _c(
                                       "span",
@@ -51896,25 +52686,25 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("strong", [
-        _vm._v("\n            Copyright © 2020\n            || "),
+        _vm._v("\n            Copyright © 2020 ||\n            "),
         _c("a", { attrs: { href: "http://ogtise.unasam.edu.pe/" } }, [
           _vm._v(
-            "Oficina General de Tecnologias de Informacion, Sistemas y Estadistica (OGTISE)"
+            "Oficina General de Tecnologias de Informacion, Sistemas y\n                Estadistica (OGTISE)"
           )
         ]),
-        _vm._v("\n            || developed by "),
+        _vm._v("\n            || developed by\n            "),
         _c(
           "a",
           { attrs: { href: "https://www.facebook.com/yurizito.martin" } },
           [_vm._v("Yury martin")]
         ),
-        _vm._v("\n            && "),
+        _vm._v("\n            &&\n            "),
         _c(
           "a",
           { attrs: { href: "https://www.facebook.com/mdelcastillorobles" } },
           [_vm._v("Max Del Castillo")]
         ),
-        _vm._v(".\n            ")
+        _vm._v(".\n        ")
       ])
     ])
   }
@@ -57074,6 +57864,556 @@ var staticRenderFns = [
         _vm._v("descargar en el icono")
       ])
     ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReservaCitas.vue?vue&type=template&id=e4cfb0da&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ReservaCitas.vue?vue&type=template&id=e4cfb0da& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "card card-primary card-outline mt-3" }, [
+      _c("div", { staticClass: "card-header" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-9" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-3" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary btn-block",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.abrirModal("temperaturas", "registrar")
+                  }
+                }
+              },
+              [
+                _c("i", { staticClass: "far fa-plus-square" }),
+                _c("b", [_vm._v(" AGENDAR UNA CITA")])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "modal fade text-sm", attrs: { id: "modal" } },
+              [
+                _c("div", { staticClass: "modal-dialog modal-xl" }, [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _c("div", { staticClass: "modal-header" }, [
+                      _c("h4", {
+                        staticClass: "modal-title",
+                        domProps: { textContent: _vm._s(_vm.tituloModal) }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "close",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.cerrarModal()
+                            }
+                          }
+                        },
+                        [
+                          _c("span", { attrs: { "aria-hidden": "true" } }, [
+                            _vm._v("×")
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-body" }, [
+                      _c("div", { staticClass: "col-md-12 form-group" }, [
+                        _c("span", { staticClass: "text-danger" }, [
+                          _vm._v(
+                            "Aquellos Campos que tengan el\n                                            simbolo (*) son\n                                            obligatorios"
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errorTemperatura,
+                                expression: "errorTemperatura"
+                              }
+                            ]
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "alert alert-danger",
+                                attrs: { role: "alert" }
+                              },
+                              _vm._l(_vm.errorMostrarMsjTemperatura, function(
+                                error,
+                                index
+                              ) {
+                                return _c("div", {
+                                  key: error,
+                                  domProps: {
+                                    textContent: _vm._s(
+                                      index + 1 + "- " + error
+                                    )
+                                  }
+                                })
+                              }),
+                              0
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(0)
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "modal-footer justify-content-between" },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger w-25",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                return _vm.cerrarModal()
+                              }
+                            }
+                          },
+                          [
+                            _c("i", { staticClass: "far fa-window-close" }),
+                            _vm._v(
+                              "\n                                        Cerrar\n                                    "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm.tipoAccion == 1 && _vm.button
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary w-25",
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.registrarTemperatura()
+                                  }
+                                }
+                              },
+                              [
+                                _c("i", { staticClass: "far fa-save" }),
+                                _vm._v(
+                                  " Guardar\n                                    "
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.tipoAccion == 2
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-success w-25",
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.actualizarTemperatura()
+                                  }
+                                }
+                              },
+                              [
+                                _c("i", { staticClass: "far fa-edit" }),
+                                _vm._v(
+                                  " Editar\n                                    "
+                                )
+                              ]
+                            )
+                          : _vm._e()
+                      ]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-tools" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "input-group input-group-sm",
+                  staticStyle: { width: "400px" }
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.buscar,
+                        expression: "buscar"
+                      }
+                    ],
+                    staticClass: "form-control float-right",
+                    attrs: {
+                      type: "text",
+                      name: "table_search",
+                      placeholder: "Buscar"
+                    },
+                    domProps: { value: _vm.buscar },
+                    on: {
+                      keyup: function($event) {
+                        return _vm.listarTemperatura(1, _vm.date, _vm.buscar)
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.buscar = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group-append" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-default",
+                        attrs: { type: "submit" },
+                        on: {
+                          click: function($event) {
+                            return _vm.listarTemperatura(
+                              1,
+                              _vm.date,
+                              _vm.buscar
+                            )
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fas fa-search" })]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.date,
+                        expression: "date"
+                      }
+                    ],
+                    staticClass: "form-control ml-3",
+                    attrs: { type: "date" },
+                    domProps: { value: _vm.date },
+                    on: {
+                      change: function($event) {
+                        return _vm.listarTemperatura(1, _vm.date, _vm.buscar)
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.date = $event.target.value
+                      }
+                    }
+                  })
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body table-responsive p-0" }, [
+            _c("table", { staticClass: "table table-hover text-nowrap" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.arrayTemperaturas, function(item, index) {
+                  return _c("tr", { key: item.id }, [
+                    _c("td", { domProps: { textContent: _vm._s(index) } }),
+                    _vm._v(" "),
+                    _c("td", {
+                      domProps: { textContent: _vm._s(item.personas.dni) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      domProps: {
+                        textContent: _vm._s(
+                          item.personas.nombres + " " + item.personas.apellidos
+                        )
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      domProps: { textContent: _vm._s(item.temperatura) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", { domProps: { textContent: _vm._s(item.fecha) } }),
+                    _vm._v(" "),
+                    _c("td", { domProps: { textContent: _vm._s(item.hora) } }),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("span", {
+                        class:
+                          item.estado == "Saludable"
+                            ? "badge badge-info"
+                            : "badge badge-danger",
+                        domProps: { textContent: _vm._s(item.estado) }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success btn-sm",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.abrirModal(
+                                "temperaturas",
+                                "actualizar",
+                                item
+                              )
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-edit" })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger btn-sm",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.eliminarTemperatura(item.id)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "far fa-trash-alt" })]
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            !_vm.arrayTemperaturas.length
+              ? _c(
+                  "div",
+                  { staticClass: "d-flex justify-content-center m-5" },
+                  [_vm._m(3)]
+                )
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-footer" }, [
+            _c(
+              "nav",
+              {
+                staticClass: "mr-3",
+                attrs: { "aria-label": "Page navigation example" }
+              },
+              [
+                _c(
+                  "ul",
+                  { staticClass: "pagination justify-content-end" },
+                  [
+                    _vm.pagination.current_page > 1
+                      ? _c("li", { staticClass: "page-item" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "page-link",
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.cambiarPagina(
+                                    _vm.pagination.current_page - 1,
+                                    _vm.date,
+                                    _vm.buscar
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c("i", {
+                                staticClass: "fas fa-angle-double-left"
+                              })
+                            ]
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm._l(_vm.pagesNumber, function(page) {
+                      return _c(
+                        "li",
+                        {
+                          key: page,
+                          staticClass: "page-item",
+                          class: [page == _vm.isActived ? "active" : ""]
+                        },
+                        [
+                          _c("a", {
+                            staticClass: "page-link",
+                            attrs: { href: "#" },
+                            domProps: { textContent: _vm._s(page) },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.cambiarPagina(
+                                  page,
+                                  _vm.date,
+                                  _vm.buscar
+                                )
+                              }
+                            }
+                          })
+                        ]
+                      )
+                    }),
+                    _vm._v(" "),
+                    _vm.pagination.current_page < _vm.pagination.last_page
+                      ? _c("li", { staticClass: "page-item" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "page-link",
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.cambiarPagina(
+                                    _vm.pagination.current_page + 1,
+                                    _vm.date,
+                                    _vm.buscar
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c("i", {
+                                staticClass: "fas fa-angle-double-right"
+                              })
+                            ]
+                          )
+                        ])
+                      : _vm._e()
+                  ],
+                  2
+                )
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-10 form-group" }, [
+        _c("label", { attrs: { for: "ficha" } }, [
+          _vm._v(
+            "Ficha asintomatica\n                                                (*)"
+          )
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "file", name: "ficha", id: "ficha" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "card-title" }, [
+      _c("b", [_vm._v("LISTADO DE REGISTROS DE TEMPERATURAS")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("DNI")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Empleado")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Temperatura")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Fecha")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Hora")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Estado")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Acciones")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "spinner-border", attrs: { role: "status" } },
+      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+    )
   }
 ]
 render._withStripped = true
@@ -77269,6 +78609,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/ReservaCitas.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/ReservaCitas.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReservaCitas_vue_vue_type_template_id_e4cfb0da___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReservaCitas.vue?vue&type=template&id=e4cfb0da& */ "./resources/js/components/ReservaCitas.vue?vue&type=template&id=e4cfb0da&");
+/* harmony import */ var _ReservaCitas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReservaCitas.vue?vue&type=script&lang=js& */ "./resources/js/components/ReservaCitas.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ReservaCitas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReservaCitas.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/ReservaCitas.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ReservaCitas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReservaCitas_vue_vue_type_template_id_e4cfb0da___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReservaCitas_vue_vue_type_template_id_e4cfb0da___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ReservaCitas.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ReservaCitas.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/ReservaCitas.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservaCitas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ReservaCitas.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReservaCitas.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservaCitas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ReservaCitas.vue?vue&type=style&index=0&lang=css&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/ReservaCitas.vue?vue&type=style&index=0&lang=css& ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservaCitas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./ReservaCitas.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReservaCitas.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservaCitas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservaCitas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservaCitas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservaCitas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservaCitas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ReservaCitas.vue?vue&type=template&id=e4cfb0da&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/ReservaCitas.vue?vue&type=template&id=e4cfb0da& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservaCitas_vue_vue_type_template_id_e4cfb0da___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ReservaCitas.vue?vue&type=template&id=e4cfb0da& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReservaCitas.vue?vue&type=template&id=e4cfb0da&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservaCitas_vue_vue_type_template_id_e4cfb0da___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservaCitas_vue_vue_type_template_id_e4cfb0da___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Sintoma.vue":
 /*!*********************************************!*\
   !*** ./resources/js/components/Sintoma.vue ***!
@@ -77680,6 +79107,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_FichaSintomaticas__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/FichaSintomaticas */ "./resources/js/components/FichaSintomaticas.vue");
 /* harmony import */ var _components_Fichas_Medico__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/Fichas_Medico */ "./resources/js/components/Fichas_Medico.vue");
 /* harmony import */ var _components_Reportes__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/Reportes */ "./resources/js/components/Reportes.vue");
+/* harmony import */ var _components_ReservaCitas__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/ReservaCitas */ "./resources/js/components/ReservaCitas.vue");
+
 
 
 
@@ -77703,137 +79132,144 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: [{
-    path: '/home',
-    name: '/dashboard',
+    path: "/home",
+    name: "/dashboard",
     component: _components_Dashboard__WEBPACK_IMPORTED_MODULE_2__["default"],
     children: [{
-      path: '/home',
-      name: 'home',
+      path: "/home",
+      name: "home",
       component: _components_Home__WEBPACK_IMPORTED_MODULE_3__["default"],
       meta: {
         Auth: true
       }
     }, {
-      path: '/empleados',
-      name: 'empleados',
+      path: "/reservas-citas",
+      name: "reservas-citas",
+      component: _components_ReservaCitas__WEBPACK_IMPORTED_MODULE_20__["default"],
+      meta: {
+        Auth: true
+      }
+    }, {
+      path: "/empleados",
+      name: "empleados",
       component: _components_Empleado__WEBPACK_IMPORTED_MODULE_4__["default"],
       meta: {
         Auth: true
       }
     }, {
-      path: '/temperaturas',
-      name: 'temperaturas',
+      path: "/temperaturas",
+      name: "temperaturas",
       component: _components_Temperatura__WEBPACK_IMPORTED_MODULE_5__["default"],
       meta: {
         Auth: true
       }
     }, {
-      path: '/condiciones',
-      name: 'condiciones',
+      path: "/condiciones",
+      name: "condiciones",
       component: _components_Condicion__WEBPACK_IMPORTED_MODULE_6__["default"],
       meta: {
         Auth: true
       }
     }, {
-      path: '/sintomas',
-      name: 'sintomas',
+      path: "/sintomas",
+      name: "sintomas",
       component: _components_Sintoma__WEBPACK_IMPORTED_MODULE_7__["default"],
       meta: {
         Auth: true
       }
     }, {
-      path: '/organos',
-      name: 'organos',
+      path: "/organos",
+      name: "organos",
       component: _components_Organo__WEBPACK_IMPORTED_MODULE_8__["default"],
       meta: {
         Auth: true
       }
     }, {
-      path: '/unidades_organicas',
-      name: 'unidades_organicas',
+      path: "/unidades_organicas",
+      name: "unidades_organicas",
       component: _components_Unidad_Organica__WEBPACK_IMPORTED_MODULE_9__["default"],
       meta: {
         Auth: true
       }
     }, {
-      path: '/tipo_usuarios',
-      name: 'tipo_usuarios',
+      path: "/tipo_usuarios",
+      name: "tipo_usuarios",
       component: _components_Tipo_Usuario__WEBPACK_IMPORTED_MODULE_10__["default"],
       meta: {
         Auth: true
       }
     }, {
-      path: '/usuarios',
-      name: 'usuarios',
+      path: "/usuarios",
+      name: "usuarios",
       component: _components_Usuario__WEBPACK_IMPORTED_MODULE_11__["default"],
       meta: {
         Auth: true
       }
     }, {
-      path: '/fichassintomaticas',
-      name: 'fichassintomaticas',
+      path: "/fichassintomaticas",
+      name: "fichassintomaticas",
       component: _components_FichaSintomaticas__WEBPACK_IMPORTED_MODULE_17__["default"],
       meta: {
         Auth: true
       }
     }, {
-      path: '/perfil',
-      name: 'perfil',
+      path: "/perfil",
+      name: "perfil",
       component: _components_Perfil__WEBPACK_IMPORTED_MODULE_15__["default"],
       meta: {
         Auth: true
       }
     }, {
-      path: '/fichas',
-      name: 'fichas',
+      path: "/fichas",
+      name: "fichas",
       component: _components_Fichas_Medico__WEBPACK_IMPORTED_MODULE_18__["default"],
       meta: {
         Auth: true
       }
     }, {
-      path: '/reportes',
-      name: 'reportes',
+      path: "/reportes",
+      name: "reportes",
       component: _components_Reportes__WEBPACK_IMPORTED_MODULE_19__["default"],
       meta: {
         Auth: true
       }
     }]
   }, {
-    path: '/login',
-    name: 'login',
+    path: "/login",
+    name: "login",
     component: _components_Login__WEBPACK_IMPORTED_MODULE_12__["default"],
     meta: {
       login: true
     }
   }, {
-    path: '/',
-    name: 'declaracion',
+    path: "/",
+    name: "declaracion",
     component: _components_Declaracion__WEBPACK_IMPORTED_MODULE_16__["default"]
   }, {
-    path: '*',
+    path: "*",
     component: _components_404__WEBPACK_IMPORTED_MODULE_13__["default"]
   }],
-  mode: 'history'
+  mode: "history"
 });
 router.beforeEach(function (to, from, next) {
-  if (to.meta.Auth && !window.localStorage.getItem('token')) {
+  if (to.meta.Auth && !window.localStorage.getItem("token")) {
     next({
-      path: '/login'
+      path: "/login"
     });
   } else {
     if (localStorage.getItem("token")) {
-      axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
+      axios.defaults.headers.common["Authorization"] = localStorage.getItem("token");
     } else {
-      axios.defaults.headers.common['Authorization'] = null;
+      axios.defaults.headers.common["Authorization"] = null;
     }
 
     next();
   }
 });
 router.beforeEach(function (to, from, next) {
-  if (to.meta.login && window.localStorage.getItem('token')) {
+  if (to.meta.login && window.localStorage.getItem("token")) {
     next({
-      path: '/home'
+      path: "/home"
     });
   } else {
     next();

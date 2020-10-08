@@ -21,9 +21,12 @@
             </ul>
         </nav>
 
-        <div  v-if="Object.entries(arraykey).length > 0">
+        <div v-if="Object.entries(arraykey).length > 0">
             <!-- DIRECTIVO -->
-            <aside class="main-sidebar sidebar-light-primary elevation-4" v-if="key == arraykey[3].key">
+            <aside
+                class="main-sidebar sidebar-light-primary elevation-4"
+                v-if="key == arraykey[3].key"
+            >
                 <router-link to="/perfil" class="brand-link text-center">
                     <span class="brand-text font-weight-light"
                         ><b>SCT || UNASAM</b></span
@@ -46,7 +49,8 @@
                                 <router-link to="/home" class="nav-link">
                                     <i class="nav-icon fas fa-home"></i>
                                     <p>
-                                        Home<span class="right badge badge-danger"
+                                        Home<span
+                                            class="right badge badge-danger"
                                             >New</span
                                         >
                                     </p>
@@ -57,7 +61,8 @@
                                 <router-link to="/reportes" class="nav-link">
                                     <i class="nav-icon far fa-folder-open"></i>
                                     <p>
-                                        Reportes<span class="right badge badge-danger"
+                                        Reportes<span
+                                            class="right badge badge-danger"
                                             >New</span
                                         >
                                     </p>
@@ -70,8 +75,11 @@
                 <!-- /.sidebar -->
             </aside>
 
-            <!-- EMPLEADO -->
-            <aside class="main-sidebar sidebar-light-primary elevation-4" v-if="key == arraykey[2].key">
+            <!-- PACIENTE -->
+            <aside
+                class="main-sidebar sidebar-light-primary elevation-4"
+                v-if="key == arraykey[2].key"
+            >
                 <router-link to="/perfil" class="brand-link text-center">
                     <span class="brand-text font-weight-light"
                         ><b>SCT || UNASAM</b></span
@@ -94,7 +102,25 @@
                                 <router-link to="/home" class="nav-link">
                                     <i class="nav-icon fas fa-home"></i>
                                     <p>
-                                        Home<span class="right badge badge-danger"
+                                        Home<span
+                                            class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
+
+                            <li class="nav-item">
+                                <router-link
+                                    to="/reservas-citas"
+                                    class="nav-link"
+                                >
+                                    <i
+                                        class="nav-icon fas fa-calendar-check"
+                                    ></i>
+                                    <p>
+                                        Reserva de Citas<span
+                                            class="right badge badge-danger"
                                             >New</span
                                         >
                                     </p>
@@ -113,7 +139,10 @@
                                 </router-link>
                             </li>
                             <li class="nav-item">
-                                <router-link to="/fichassintomaticas" class="nav-link">
+                                <router-link
+                                    to="/fichassintomaticas"
+                                    class="nav-link"
+                                >
                                     <i class="nav-icon far fa-file-alt"></i>
                                     <p>
                                         Mis Fichas Sintomaticas<span
@@ -131,7 +160,10 @@
             </aside>
 
             <!-- MEDICO  -->
-            <aside class="main-sidebar sidebar-light-primary elevation-4" v-if="key == arraykey[1].key" >
+            <aside
+                class="main-sidebar sidebar-light-primary elevation-4"
+                v-if="key == arraykey[1].key"
+            >
                 <router-link to="/perfil" class="brand-link text-center">
                     <span class="brand-text font-weight-light"
                         ><b>SCT || UNASAM</b></span
@@ -154,7 +186,8 @@
                                 <router-link to="/home" class="nav-link">
                                     <i class="nav-icon fas fa-home"></i>
                                     <p>
-                                        Home<span class="right badge badge-danger"
+                                        Home<span
+                                            class="right badge badge-danger"
                                             >New</span
                                         >
                                     </p>
@@ -162,8 +195,13 @@
                             </li>
 
                             <li class="nav-item">
-                                <router-link to="/temperaturas" class="nav-link">
-                                    <i class="nav-icon fas fa-temperature-high"></i>
+                                <router-link
+                                    to="/temperaturas"
+                                    class="nav-link"
+                                >
+                                    <i
+                                        class="nav-icon fas fa-temperature-high"
+                                    ></i>
                                     <p>
                                         Temperaturas<span
                                             class="right badge badge-danger"
@@ -184,7 +222,6 @@
                                     </p>
                                 </router-link>
                             </li>
-
                         </ul>
                     </nav>
                     <!-- /.sidebar-menu -->
@@ -193,7 +230,10 @@
             </aside>
 
             <!-- ADMINISTRADOR -->
-            <aside class="main-sidebar sidebar-light-primary elevation-4" v-if="key == arraykey[0].key">
+            <aside
+                class="main-sidebar sidebar-light-primary elevation-4"
+                v-if="key == arraykey[0].key"
+            >
                 <router-link to="/perfil" class="brand-link text-center">
                     <span class="brand-text font-weight-light"
                         ><b>SCT || UNASAM</b></span
@@ -216,7 +256,25 @@
                                 <router-link to="/home" class="nav-link">
                                     <i class="nav-icon fas fa-home"></i>
                                     <p>
-                                        Home<span class="right badge badge-danger"
+                                        Home<span
+                                            class="right badge badge-danger"
+                                            >New</span
+                                        >
+                                    </p>
+                                </router-link>
+                            </li>
+
+                            <li class="nav-item">
+                                <router-link
+                                    to="/reservas-citas"
+                                    class="nav-link"
+                                >
+                                    <i
+                                        class="nav-icon fas fa-calendar-check"
+                                    ></i>
+                                    <p>
+                                        Reserva de Citas<span
+                                            class="right badge badge-danger"
                                             >New</span
                                         >
                                     </p>
@@ -235,8 +293,13 @@
                                 </router-link>
                             </li>
                             <li class="nav-item">
-                                <router-link to="/temperaturas" class="nav-link">
-                                    <i class="nav-icon fas fa-temperature-high"></i>
+                                <router-link
+                                    to="/temperaturas"
+                                    class="nav-link"
+                                >
+                                    <i
+                                        class="nav-icon fas fa-temperature-high"
+                                    ></i>
                                     <p>
                                         Temperaturas<span
                                             class="right badge badge-danger"
@@ -274,7 +337,8 @@
                                 <router-link to="/Organos" class="nav-link">
                                     <i class="nav-icon far fa-building"></i>
                                     <p>
-                                        Organo<span class="right badge badge-danger"
+                                        Organo<span
+                                            class="right badge badge-danger"
                                             >New</span
                                         >
                                     </p>
@@ -297,7 +361,10 @@
                             </li>
 
                             <li class="nav-item">
-                                <router-link to="/tipo_usuarios" class="nav-link">
+                                <router-link
+                                    to="/tipo_usuarios"
+                                    class="nav-link"
+                                >
                                     <i class="nav-icon fas fa-users"></i>
                                     <p>
                                         Tipo de Usuarios<span
@@ -327,7 +394,6 @@
             </aside>
         </div>
 
-
         <div class="content-wrapper">
             <div class="content">
                 <div class="container-fluid">
@@ -345,11 +411,20 @@
                 Sistema de Control de Covid 19 UNASAM
             </div>
             <strong>
-                Copyright &copy; 2020
-                || <a href="http://ogtise.unasam.edu.pe/">Oficina General de Tecnologias de Informacion, Sistemas y Estadistica (OGTISE)</a>
-                || developed by <a href="https://www.facebook.com/yurizito.martin">Yury martin</a>
-                && <a href="https://www.facebook.com/mdelcastillorobles">Max Del Castillo</a>.
-                </strong>
+                Copyright &copy; 2020 ||
+                <a href="http://ogtise.unasam.edu.pe/"
+                    >Oficina General de Tecnologias de Informacion, Sistemas y
+                    Estadistica (OGTISE)</a
+                >
+                || developed by
+                <a href="https://www.facebook.com/yurizito.martin"
+                    >Yury martin</a
+                >
+                &&
+                <a href="https://www.facebook.com/mdelcastillorobles"
+                    >Max Del Castillo</a
+                >.
+            </strong>
         </footer>
     </div>
 </template>
